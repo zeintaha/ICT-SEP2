@@ -1,5 +1,6 @@
 package Member.View;
 
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
 import Member.Controler.MemberControler;
@@ -32,7 +33,7 @@ public class MemberConsol implements MemberView
    }
 
    @Override
-   public void start(MemberControler controler)
+   public void start(MemberControler controler) throws RemoteException
    {
       this.controler = controler;
       int menuSelection;

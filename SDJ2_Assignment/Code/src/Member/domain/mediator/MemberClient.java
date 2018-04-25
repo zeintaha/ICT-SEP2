@@ -37,35 +37,35 @@ public class MemberClient implements RemoteMemberModel
    }
 
    @Override
-   public MemberList getAll()
+   public MemberList getAll() throws RemoteException
    {
       // TODO Auto-generated method stub
       return server.getAll();
    }
 
    @Override
-   public MemberList getMembershipNotPaid(String membershipNotPaid)
+   public MemberList getMembershipNotPaid(String membershipNotPaid) throws RemoteException
    {
       
       return server.getMembershipNotPaid(membershipNotPaid);
    }
 
    @Override
-   public Member getMember(int index)
+   public Member getMember(int index) throws RemoteException
    {
       // TODO Auto-generated method stub
       return server.getMember(index);
    }
 
    @Override
-   public int getNumberOfMembers()
+   public int getNumberOfMembers() throws RemoteException
    {
       // TODO Auto-generated method stub
       return server.getNumberOfMembers();
    }
 
    @Override
-   public void addMember(Member member)
+   public void addMember(Member member) throws RemoteException
    {
       server.addMember(member);
       

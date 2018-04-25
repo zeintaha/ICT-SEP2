@@ -1,5 +1,7 @@
 package Member.Controler;
 
+import java.rmi.RemoteException;
+
 import Member.View.MemberView;
 import Member.domain.mediator.RemoteMemberModel;
 import Member.domain.model.MemberList;
@@ -16,7 +18,7 @@ public class MemberControler
       this.modelManager = modelManager;
    }
 
-   public void execute(String what)
+   public void execute(String what) throws RemoteException
    {
       switch (what)
       {
