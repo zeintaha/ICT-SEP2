@@ -1,42 +1,54 @@
 package Member.domain.model;
 
-public class Member {
-	private String name;
-	private int age;
-	private String membershipPay;
+import java.io.Serializable;
 
-	public Member(String name, int age, String membershipPay) {
-		this.name = name;
-		this.age = age;
-		this.membershipPay = membershipPay;
-	}
+public class Member implements Serializable
+{
+   private String name;
+   private int age;
+   private String membershipPay;
 
-	public String getName() {
-		return name;
-	}
+   public Member(String name, int age, String membershipPay)
+   {
+      this.name = name;
+      this.age = age;
+      this.membershipPay = membershipPay;
+   }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+   public String getName()
+   {
+      return name;
+   }
 
-	public int getAge() {
-		return age;
-	}
+   public void setName(String name)
+   {
+      this.name = name;
+   }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+   public int getAge()
+   {
+      return age;
+   }
 
-	public String getMembershipPay() {
-		return membershipPay;
-	}
+   public void setAge(int age)
+   {
+      this.age = age;
+   }
 
-	public void setMembershipPay(String membershipPay) {
-		this.membershipPay = membershipPay;
-	}
+   public String getMembershipPay()
+   {
+      return membershipPay;
+   }
 
-	public String toString() {
-      return "Name: "+ name+ "; Age: "+ age + "; MemberShip Payment: "+ membershipPay;
+   public void setMembershipPay(String membershipPay)
+   {
+      this.membershipPay = membershipPay;
+   }
 
-  }
+   public String toString()
+   {
+      return "Name: " + name + "; Age: " + age + "; MemberShip Payment: "
+            + membershipPay;
+
+   }
 }

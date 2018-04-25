@@ -1,28 +1,35 @@
 package Member.domain.mediator;
 
-import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+
 import Member.domain.model.Member;
 import Member.domain.model.MemberList;
 
-public class MemberModelManager implements RemoteMemberModel
+public class MemberClient implements RemoteMemberModel
 {
-   private MemberList list;
-   private PersistanceMember textFile;
-   
 
-   public MemberModelManager()
+   private RemoteMemberModel server;
+   
+   public MemberClient()
    {
       try
       {
-         this.textFile = new MemberTextFile("src/member.txt");
-         this.list = textFile.load();
+         server = (RemoteMemberModel) Naming.lookup("rmi://localhost:321/members");
       }
-      catch (IOException e)
+      catch (MalformedURLException e)
       {
          // TODO Auto-generated catch block
          e.printStackTrace();
       }
-      catch (Exception e)
+      catch (RemoteException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      catch (NotBoundException e)
       {
          // TODO Auto-generated catch block
          e.printStackTrace();
@@ -33,38 +40,35 @@ public class MemberModelManager implements RemoteMemberModel
    public MemberList getAll()
    {
       // TODO Auto-generated method stub
-      return list;
+      return server.getAll();
    }
-   
+
    @Override
    public MemberList getMembershipNotPaid(String membershipNotPaid)
    {
-      // TODO Auto-generated method stub
-      return list.getMembershipNotPaid(membershipNotPaid);
+      
+      return server.getMembershipNotPaid(membershipNotPaid);
    }
-   
+
    @Override
    public Member getMember(int index)
    {
       // TODO Auto-generated method stub
-      return list.getMember(index);
+      return server.getMember(index);
    }
-   
+
    @Override
    public int getNumberOfMembers()
    {
       // TODO Auto-generated method stub
-      return list.getNumberOfMembers();
+      return server.getNumberOfMembers();
    }
 
    @Override
    public void addMember(Member member)
    {
-      list.addMember(member);
-
+      server.addMember(member);
+      
    }
-
-
-
 
 }

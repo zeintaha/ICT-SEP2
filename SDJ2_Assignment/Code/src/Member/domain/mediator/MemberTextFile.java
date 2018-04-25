@@ -8,7 +8,7 @@ import java.util.Scanner;
 import Member.domain.model.Member;
 import Member.domain.model.MemberList;
 
-public class MemberTextFile implements RemoteMember {
+public class MemberTextFile implements PersistanceMember {
 	private File file;
 
 	public MemberTextFile(String filename) throws IOException {
