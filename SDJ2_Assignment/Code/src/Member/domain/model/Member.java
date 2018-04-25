@@ -36,7 +36,7 @@ public class Member {
 	}
 
 	public String toString() {
-		return name + age + membershipPay;
+      return "Name: "+ name+ "; Age: "+ age + "; MemberShip Payment: "+ membershipPay;
 
-	}
+  }
 }
