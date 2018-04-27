@@ -21,8 +21,9 @@ public class MainServer
       {
           MemberServer server1= MemberServer.getInstance();
           MemberServer server2= MemberServer.getInstance();
-          System.out.println("sever1=" +server1);
-          System.out.println("sever2=" +server2);
+          System.out.println("sever1 = " +server1);
+          System.out.println("sever2 = " +server2);
+          System.out.println(".........");
           
           RemoteMemberModel model= new MemberModelManager();
           MemberView view=new MemberConsol();
