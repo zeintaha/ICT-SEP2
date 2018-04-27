@@ -51,7 +51,7 @@ public class MemberModelManager implements RemoteMemberModel
    public MemberList getMembershipNotPaid(String membershipNotPaid) throws RemoteException
    {
       // TODO Auto-generated method stub
-      return stub.getMembershipNotPaid(membershipNotPaid);
+      return stub.getMembershipNotPaid("not paid");
    }
    
    @Override
