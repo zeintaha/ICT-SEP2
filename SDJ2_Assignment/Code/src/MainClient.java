@@ -9,7 +9,7 @@ public class MainClient
    {
       MemberClient client = new MemberClient();
       client.getMembershipNotPaid("not paid");
-      client.getAll();
+     System.out.println(client.getAll()); 
 
    }
 
