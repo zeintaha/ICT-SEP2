@@ -14,6 +14,7 @@ public class MemberServer extends
 UnicastRemoteObject implements RemoteMemberModel
 {
    private RemoteMemberModel memberList;
+   private static MemberServer instance;
 
    public MemberServer() throws RemoteException
    {
@@ -73,5 +74,11 @@ UnicastRemoteObject implements RemoteMemberModel
       
    }
 
-
+   public static MemberServer getInstance() throws RemoteException{
+       if (instance==null){
+           instance=new MemberServer();
+           return instance;
+       }
+       return instance;
+   }
 }

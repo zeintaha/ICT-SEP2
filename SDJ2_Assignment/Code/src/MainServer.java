@@ -19,7 +19,11 @@ public class MainServer
    {
       try
       {
-          MemberServer memberServer= new MemberServer();
+          MemberServer server1= MemberServer.getInstance();
+          MemberServer server2= MemberServer.getInstance();
+          System.out.println("sever1=" +server1);
+          System.out.println("sever2=" +server2);
+          
           RemoteMemberModel model= new MemberModelManager();
           MemberView view=new MemberConsol();
           MemberControler controler= new MemberControler(view,model);
