@@ -13,18 +13,12 @@ public class MemberModelManager implements RemoteMemberModel
 {
    private MemberList list;
    private PersistanceMember textFile;
-   private RemoteMemberModel stub;
    
 
    public MemberModelManager()
    {
       try
-      {
-
-//         RemoteMemberModel stub = (RemoteMemberModel) UnicastRemoteObject.exportObject(this, 0);
-//         Registry reg = LocateRegistry.createRegistry(1099);
-//         reg.rebind("members", stub);
-         
+      {         
          this.textFile = new MemberTextFile("member.txt");
          this.list = textFile.load();
       }
@@ -51,7 +45,7 @@ public class MemberModelManager implements RemoteMemberModel
    public MemberList getMembershipNotPaid(String membershipNotPaid) throws RemoteException
    {
       // TODO Auto-generated method stub
-      return stub.getMembershipNotPaid("not paid");
+      return list.getMembershipNotPaid("not paid");
    }
    
    @Override

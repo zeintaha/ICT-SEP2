@@ -17,11 +17,6 @@ public class MainClient
       MemberView view=new MemberConsol();
       MemberControler controler= new MemberControler(view,model);
       view.start(controler);
-      
-      
-//      client.getMembershipNotPaid("not paid");
-//     System.out.println(client.getAll()); 
-
    }
 
 }

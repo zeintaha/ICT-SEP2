@@ -26,23 +26,7 @@ public class MemberControler
             view.show("" + modelManager.getAll());
             break;
          case "2":
-            String input = view.get("MembershipNotPaid");
-            if (input == null)
-               return;
-            String msg = "";
-
-            MemberList list = modelManager.getMembershipNotPaid(input);
-            for (int i = 0; i < list.getNumberOfMembers(); i++)
-            {
-               msg += list.getMember(i) + "\n";
-            }
-            if (list.getNumberOfMembers() == 0)
-            {
-               msg = "No member are: \"" + input + "\" found";
-            }
-
-            view.show(msg);
-            break;
+        	 view.show("" + modelManager.getMembershipNotPaid(what));
          case "3":
             System.out.println("Quit");
             break;

@@ -24,7 +24,6 @@ public class MainServer
           MemberView view=new MemberConsol();
           MemberControler controler= new MemberControler(view,model);
           view.start(controler);
-//         MemberTextFile server = new MemberTextFile("src/member.txt");
 
       }
       catch (Exception ex)

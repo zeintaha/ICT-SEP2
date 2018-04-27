@@ -23,7 +23,7 @@ public class MemberConsol implements MemberView
       System.out.println("Member Application");
       System.out.println("--------------");
       System.out.println("1) List all Member's");
-      System.out.println("2) Search Member by Membership Paid");
+      System.out.println("2) Search Member by Membership not Paid");
       System.out.println("3) Quit");
       System.out.println();
       System.out.print("Select an item 1-3: ");
@@ -53,14 +53,6 @@ public class MemberConsol implements MemberView
    {
       System.out.println(value);
 
-   }
-
-   @Override
-   public String get(String what)
-   {
-      System.out.print("Please enter: " + what + ": ");
-      String input = in.nextLine();
-      return input;
    }
 
 }
