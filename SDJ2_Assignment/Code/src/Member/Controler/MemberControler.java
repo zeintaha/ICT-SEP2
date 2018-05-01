@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 
 import Member.View.MemberView;
 import Member.domain.mediator.RemoteMemberModel;
-import Member.domain.model.MemberList;
 
 public class MemberControler
 {

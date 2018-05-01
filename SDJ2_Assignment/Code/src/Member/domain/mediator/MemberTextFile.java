@@ -37,16 +37,4 @@ public class MemberTextFile implements PersistanceMember {
 		return list;
 		
 	}
-
-	@Override
-	public void save(MemberList memberList) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void save(java.lang.reflect.Member member) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 }
