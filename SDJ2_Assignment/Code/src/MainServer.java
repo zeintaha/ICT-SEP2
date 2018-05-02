@@ -1,23 +1,30 @@
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 
-import Member.domain.mediator.MemberTextFile;
-import Member.domain.mediator.PersistanceMember;
+import Member.Controler.MemberControler;
+import Member.View.MemberConsol;
+import Member.View.MemberView;
+import Member.domain.mediator.MemberModelManager;
+import Member.domain.mediator.MemberServer;
+import Member.domain.mediator.RemoteMemberModel;
 
 public class MainServer
 {
+   
 
    public static void main(String[] args)
    {
       try
       {
-         MemberTextFile server = new MemberTextFile("src/member.txt");
-         PersistanceMember stub = (PersistanceMember) UnicastRemoteObject
-               .exportObject(server, 0);
-         Registry reg = LocateRegistry.createRegistry(321);
-         reg.rebind("members", stub);
-         System.out.println("Starting server...");
+          MemberServer server1= MemberServer.getInstance();
+          MemberServer server2= MemberServer.getInstance();
+          System.out.println("sever1 = " +server1);
+          System.out.println("sever2 = " +server2);
+          System.out.println(".........");
+          
+          RemoteMemberModel model= new MemberModelManager();
+          MemberView view=new MemberConsol();
+          MemberControler controler= new MemberControler(view,model);
+          view.start(controler);
+
       }
       catch (Exception ex)
       {

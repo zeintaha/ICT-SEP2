@@ -10,6 +10,9 @@ public class Member implements Serializable
 
    public Member(String name, int age, String membershipPay)
    {
+	   if ( membershipPay== null) {
+			throw new IllegalArgumentException("Membership Fees Paid or not Paid is required");
+		}
       this.name = name;
       this.age = age;
       this.membershipPay = membershipPay;
@@ -20,29 +23,14 @@ public class Member implements Serializable
       return name;
    }
 
-   public void setName(String name)
-   {
-      this.name = name;
-   }
-
    public int getAge()
    {
       return age;
    }
 
-   public void setAge(int age)
-   {
-      this.age = age;
-   }
-
-   public String getMembershipPay()
+    public String getMembershipPay()
    {
       return membershipPay;
-   }
-
-   public void setMembershipPay(String membershipPay)
-   {
-      this.membershipPay = membershipPay;
    }
 
    public String toString()

@@ -17,7 +17,7 @@ public class MemberClient implements RemoteMemberModel
    {
       try
       {
-         server = (RemoteMemberModel) Naming.lookup("rmi://localhost:321/members");
+         server = (RemoteMemberModel) Naming.lookup("rmi://localhost:1099/MemberServer");
       }
       catch (MalformedURLException e)
       {

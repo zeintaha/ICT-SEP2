@@ -10,6 +10,4 @@ public interface MemberView
 
    void show(String value);
 
-   String get(String what);
-
 }

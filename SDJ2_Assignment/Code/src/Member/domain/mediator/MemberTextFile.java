@@ -21,10 +21,9 @@ public class MemberTextFile implements PersistanceMember {
 	@Override
 	public MemberList load() throws FileNotFoundException {
 		MemberList list = new MemberList();
-		Scanner in = null;
-
+		Scanner in = new Scanner(file);
 		while (in.hasNext()) {
-			in = new Scanner(file);
+			
 			String[] lineToken = in.nextLine().split(";");
 			String memberName = lineToken[0].trim();
 			int age = Integer.parseInt(lineToken[1].trim());
@@ -32,21 +31,10 @@ public class MemberTextFile implements PersistanceMember {
 			Member member = new Member(memberName, age, membershipPay);
 			list.addMember(member);
 		
-			in.close();
+		
 			}
+		 in.close();
 		return list;
-		
-	}
-
-	@Override
-	public void save(MemberList memberList) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void save(java.lang.reflect.Member member) throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 }

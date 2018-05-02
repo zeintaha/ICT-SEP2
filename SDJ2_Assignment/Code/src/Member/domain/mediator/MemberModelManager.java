@@ -1,6 +1,8 @@
 package Member.domain.mediator;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+
 import Member.domain.model.Member;
 import Member.domain.model.MemberList;
 
@@ -13,8 +15,8 @@ public class MemberModelManager implements RemoteMemberModel
    public MemberModelManager()
    {
       try
-      {
-         this.textFile = new MemberTextFile("src/member.txt");
+      {         
+         this.textFile = new MemberTextFile("member.txt");
          this.list = textFile.load();
       }
       catch (IOException e)
@@ -37,10 +39,10 @@ public class MemberModelManager implements RemoteMemberModel
    }
    
    @Override
-   public MemberList getMembershipNotPaid(String membershipNotPaid)
+   public MemberList getMembershipNotPaid(String membershipNotPaid) throws RemoteException
    {
       // TODO Auto-generated method stub
-      return list.getMembershipNotPaid(membershipNotPaid);
+      return list.getMembershipNotPaid("not paid");
    }
    
    @Override
