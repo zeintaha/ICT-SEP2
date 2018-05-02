@@ -22,10 +22,10 @@ public class MemberList implements Serializable {
 		return members.get(index);
 	}
 
-	public MemberList getMembershipNotPaid(String membershipNotPaid) {
+	public MemberList getMembershipNotPaid() {
 		MemberList list = new MemberList();
 		for (int i = 0; i < members.size(); i++) {
-			if (members.get(i).getMembershipPay().equalsIgnoreCase(membershipNotPaid)) {
+			if (members.get(i).getMembershipPay().equalsIgnoreCase("not paid")) {
 				list.addMember(members.get(i));
 
 			}
@@ -36,9 +36,9 @@ public class MemberList implements Serializable {
 	public String toString() {
 		String all = "";
 		for (int i = 0; i < members.size(); i++) {
-			all += "\nMember #" + (i + 1) + "\n" + members.get(i);
-			if (i < members.size() - 1)
-				all += "\n";
+			all += members.get(i);
+			all += "\n";
+
 		}
 		return all;
 	}

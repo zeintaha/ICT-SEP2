@@ -16,7 +16,7 @@ public class MemberModelManager implements RemoteMemberModel
    {
       try
       {         
-         this.textFile = new MemberTextFile("member.txt");
+         this.textFile = new MemberAdopter();
          this.list = textFile.load();
       }
       catch (IOException e)
@@ -39,10 +39,10 @@ public class MemberModelManager implements RemoteMemberModel
    }
    
    @Override
-   public MemberList getMembershipNotPaid(String membershipNotPaid) throws RemoteException
+   public MemberList getMembershipNotPaid() throws RemoteException
    {
       // TODO Auto-generated method stub
-      return list.getMembershipNotPaid("not paid");
+      return list.getMembershipNotPaid();
    }
    
    @Override

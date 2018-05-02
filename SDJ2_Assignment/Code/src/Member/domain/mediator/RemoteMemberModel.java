@@ -11,7 +11,7 @@ public interface RemoteMemberModel extends Remote
 {
    public MemberList getAll() throws RemoteException;
 
-   public MemberList getMembershipNotPaid(String membershipNotPaid)throws RemoteException;
+   public MemberList getMembershipNotPaid()throws RemoteException;
 
    public Member getMember(int index) throws RemoteException;
 

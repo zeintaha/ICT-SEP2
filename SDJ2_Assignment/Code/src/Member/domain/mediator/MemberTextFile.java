@@ -1,5 +1,6 @@
 package Member.domain.mediator;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
