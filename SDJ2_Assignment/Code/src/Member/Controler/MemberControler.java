@@ -25,7 +25,7 @@ public class MemberControler
             view.show("" + modelManager.getAll());
             break;
          case "2":
-        	 view.show("" + modelManager.getMembershipNotPaid(what));
+        	 view.show("" + modelManager.getMembershipNotPaid());
          case "3":
             System.out.println("Quit");
             break;

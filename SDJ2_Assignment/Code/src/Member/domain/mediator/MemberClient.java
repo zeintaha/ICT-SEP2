@@ -44,10 +44,10 @@ public class MemberClient implements RemoteMemberModel
    }
 
    @Override
-   public MemberList getMembershipNotPaid(String membershipNotPaid) throws RemoteException
+   public MemberList getMembershipNotPaid() throws RemoteException
    {
       
-      return server.getMembershipNotPaid(membershipNotPaid);
+      return server.getMembershipNotPaid();
    }
 
    @Override

@@ -2,6 +2,8 @@ package Member.domain.model;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +40,6 @@ private MemberList list= new MemberList();
 		list.addMember(member1);
 		list.addMember(member2);
 		list.addMember(member3);
-		assertEquals("not paid", list.getMembershipNotPaid("not paid"));
+		assertEquals(member2, list.getMembershipNotPaid().getMember(0));
 	}
 }

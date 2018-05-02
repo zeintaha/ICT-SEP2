@@ -46,7 +46,7 @@ UnicastRemoteObject implements RemoteMemberModel
    }
 
    @Override
-   public MemberList getMembershipNotPaid(String membershipNotPaid)
+   public MemberList getMembershipNotPaid()
          throws RemoteException
    {
       // TODO Auto-generated method stub
