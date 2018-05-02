@@ -16,7 +16,7 @@ public class MemberModelManager implements RemoteMemberModel
    {
       try
       {         
-         this.textFile = new MemberTextFile("member.txt");
+         this.textFile = new MemberAdopter();
          this.list = textFile.load();
       }
       catch (IOException e)
