@@ -1,6 +1,6 @@
 package Member.View;
 
-import java.rmi.RemoteException;
+import java.rmi.RemoteException; 
 import java.util.Scanner;
 
 import Member.Controler.MemberControler;
