@@ -14,7 +14,7 @@ public class MemberServer extends UnicastRemoteObject implements RemoteMemberMod
 	private RemoteMemberModel memberList;
 	private static MemberServer instance;
 
-	public MemberServer() throws RemoteException {
+	private MemberServer() throws RemoteException {
 		try {
 			Registry reg = LocateRegistry.createRegistry(1099);
 			Naming.rebind("MemberServer", this);
