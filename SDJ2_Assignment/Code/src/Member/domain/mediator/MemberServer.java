@@ -10,75 +10,56 @@ import java.rmi.server.UnicastRemoteObject;
 import Member.domain.model.Member;
 import Member.domain.model.MemberList;
 
-public class MemberServer extends 
-UnicastRemoteObject implements RemoteMemberModel
-{
-   private RemoteMemberModel memberList;
-   private static MemberServer instance;
+public class MemberServer extends UnicastRemoteObject implements RemoteMemberModel {
+	private RemoteMemberModel memberList;
+	private static MemberServer instance;
 
-   public MemberServer() throws RemoteException
-   {
-      
-        
-        try
-      {
-           Registry  reg  =   LocateRegistry.createRegistry(1099);
-         Naming.rebind("MemberServer", this);
-      }
-      catch (MalformedURLException e)
-      {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-        
-     
-      
-      memberList = new MemberModelManager();
+	public MemberServer() throws RemoteException {
+		try {
+			Registry reg = LocateRegistry.createRegistry(1099);
+			Naming.rebind("MemberServer", this);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		memberList = new MemberModelManager();
+		System.out.println("Starting server...");
+	}
 
-      System.out.println("Starting server...");
-   }
+	@Override
+	public MemberList getAll() throws RemoteException {
+		// TODO Auto-generated method stub
+		return memberList.getAll();
+	}
 
-   @Override
-   public MemberList getAll() throws RemoteException
-   {
-      // TODO Auto-generated method stub
-      return memberList.getAll();
-   }
+	@Override
+	public MemberList getMembershipNotPaid() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-   @Override
-   public MemberList getMembershipNotPaid()
-         throws RemoteException
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	@Override
+	public Member getMember(int index) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-   @Override
-   public Member getMember(int index) throws RemoteException
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	@Override
+	public int getNumberOfMembers() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-   @Override
-   public int getNumberOfMembers() throws RemoteException
-   {
-      // TODO Auto-generated method stub
-      return 0;
-   }
+	@Override
+	public void addMember(Member member) throws RemoteException {
+		// TODO Auto-generated method stub
 
-   @Override
-   public void addMember(Member member) throws RemoteException
-   {
-      // TODO Auto-generated method stub
-      
-   }
+	}
 
-   public static MemberServer getInstance() throws RemoteException{
-       if (instance==null){
-           instance=new MemberServer();
-           return instance;
-       }
-       return instance;
-   }
+	public static MemberServer getInstance() throws RemoteException {
+		if (instance == null) {
+			instance = new MemberServer();
+			return instance;
+		}
+		return instance;
+	}
 }
