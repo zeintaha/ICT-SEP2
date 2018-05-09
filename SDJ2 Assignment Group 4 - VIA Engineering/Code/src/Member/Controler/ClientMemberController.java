@@ -1,18 +1,22 @@
+
 package Member.Controler;
 
 import java.rmi.RemoteException;
 
+import Member.View.ClientMemberView;
 import Member.View.MemberView;
 import Member.domain.mediator.RemoteMemberModel;
+import Member.domain.mediator.ClinetMemberModel;
 
-public class MemberControler
+public class ClientMemberController
 {
-   private MemberView view;
-   private RemoteMemberModel modelManager;
+   private ClientMemberView view;
+   private ClinetMemberModel modelManager;
 
-   public MemberControler(MemberView view, RemoteMemberModel modelManager)
+   public ClientMemberController(ClientMemberView view,
+         ClinetMemberModel modelManager)
    {
-      super();
+
       this.view = view;
       this.modelManager = modelManager;
    }
@@ -27,7 +31,7 @@ public class MemberControler
          case "2":
             view.show("" + modelManager.getMembershipNotPaid());
          case "3":
-            view.show("quit");
+            System.out.println("Quit");
             break;
          default:
             view.show("Wrong input");

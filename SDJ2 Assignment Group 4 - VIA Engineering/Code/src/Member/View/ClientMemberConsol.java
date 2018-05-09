@@ -1,21 +1,23 @@
+
 package Member.View;
 
-import java.rmi.RemoteException; 
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
+import Member.Controler.ClientMemberController;
 import Member.Controler.MemberControler;
 import Member.domain.model.MemberList;
 
-public class MemberConsol implements MemberView
+public class ClientMemberConsol implements ClientMemberView
 {
    private Scanner in;
-   private MemberControler controler;
-   private MemberList memberList;
+   private ClientMemberController controler;
+   
 
-   public MemberConsol()
+   public ClientMemberConsol()
    {
       in = new Scanner(System.in);
-      memberList = null;
+   
    }
 
    private int menu()
@@ -33,7 +35,7 @@ public class MemberConsol implements MemberView
    }
 
    @Override
-   public void start(MemberControler controler) throws RemoteException
+   public void start(ClientMemberController controler) throws RemoteException 
    {
       this.controler = controler;
       int menuSelection;
@@ -41,11 +43,10 @@ public class MemberConsol implements MemberView
       {
          menuSelection = menu();
          controler.execute(String.valueOf(menuSelection));
-       
+    
          in.nextLine();
       }
       while (menuSelection != 3);
-      
 
    }
 
