@@ -1,0 +1,449 @@
+CREATE SCHEMA "COMPANY";
+set search_path = 'COMPANY';
+
+CREATE TABLE DEPARTMENT
+(
+   DNAME          VARCHAR (20) UNIQUE,
+   DNUMBER        INTEGER NOT NULL,
+   MGRSSN         CHAR (9),
+   MGRSTARTDATE   DATE,
+   PRIMARY KEY (DNUMBER));
+
+INSERT INTO DEPARTMENT (DNAME,
+                        DNUMBER,
+                        MGRSSN,
+                        MGRSTARTDATE)
+     VALUES ('Research',
+             5,
+             '333445555',
+             '1988-05-22');
+
+INSERT INTO DEPARTMENT (DNAME,
+                        DNUMBER,
+                        MGRSSN,
+                        MGRSTARTDATE)
+     VALUES ('Administration',
+             4,
+             '987654321',
+             '1995-01-01');
+
+INSERT INTO DEPARTMENT (DNAME,
+                        DNUMBER,
+                        MGRSSN,
+                        MGRSTARTDATE)
+     VALUES ('Headquarters',
+             1,
+             '888665555',
+             '1981-06-19');
+
+CREATE TABLE EMPLOYEE
+(
+   FNAME      varchar (20),
+   MINIT      varchar (1),
+   LNAME      varchar (20),
+   SSN        char (9),
+   BDATE      date,
+   ADDRESS    varchar (30),
+   SEX        CHAR (1) default 'M',
+   SALARY     decimal (9,2),
+   SUPERSSN   char (9),
+   DNO        integer,
+   PRIMARY KEY (SSN)
+);
+
+INSERT INTO EMPLOYEE (FNAME,
+                      MINIT,
+                      LNAME,
+                      SSN,
+                      BDATE,
+                      ADDRESS,
+                      SEX,
+                      SALARY,
+                      SUPERSSN,
+                      DNO)
+     VALUES ('John',
+             'B',
+             'Smith',
+             '123456789',
+             '1965-01-09',
+             '731 Fondren, Houston, TX',
+             'M',
+             30000,
+             '333445555',
+             5);
+
+INSERT INTO EMPLOYEE (FNAME,
+                      MINIT,
+                      LNAME,
+                      SSN,
+                      BDATE,
+                      ADDRESS,
+                      SEX,
+                      SALARY,
+                      SUPERSSN,
+                      DNO)
+     VALUES ('FranWin',
+             'T',
+             'Wong',
+             '443445555',
+             '1955-12-08',
+             '638 Voss, Houston, TX',
+             'M',
+             40000,
+             '888665555',
+             5);
+
+INSERT INTO EMPLOYEE (FNAME,
+                      MINIT,
+                      LNAME,
+                      SSN,
+                      BDATE,
+                      ADDRESS,
+                      SEX,
+                      SALARY,
+                      SUPERSSN)
+     VALUES ('Alicia',
+             'J',
+             'Zelaya',
+             '999887777',
+             ' 1968-07-19',
+             '3321 Castle, Spring, TX',
+             'F',
+             25000,
+             '987654321');
+
+INSERT INTO EMPLOYEE (FNAME,
+                      MINIT,
+                      LNAME,
+                      SSN,
+                      BDATE,
+                      ADDRESS,
+                      SEX,
+                      SALARY,
+                      SUPERSSN,
+                      DNO)
+     VALUES ('Jennifer',
+             'S',
+             'Wallace',
+             '987654321',
+             '   1941-06-20',
+             ' 291 Berry, Bellaire, TX',
+             'F',
+             43000,
+             '888665555',
+             4);
+
+INSERT INTO EMPLOYEE (FNAME,
+                      MINIT,
+                      LNAME,
+                      SSN,
+                      BDATE,
+                      ADDRESS,
+                      SEX,
+                      SALARY,
+                      SUPERSSN,
+                      DNO)
+     VALUES ('Ramesh',
+             'K',
+             'Narayan',
+             '666884444',
+             '   1962-09-15 ',
+             ' 975 Fire Oak, Humble, TX',
+             'M',
+             38000,
+             '333445555',
+             5);
+
+INSERT INTO EMPLOYEE (FNAME,
+                      MINIT,
+                      LNAME,
+                      SSN,
+                      BDATE,
+                      ADDRESS,
+                      SEX,
+                      SALARY,
+                      SUPERSSN,
+                      DNO)
+     VALUES ('Joyce',
+             'A',
+             'English',
+             '453453453',
+             ' 1972-07-31  ',
+             ' 5631 Rice, Houston, TX',
+             'F',
+             25000,
+             '333445555',
+             5);
+
+INSERT INTO EMPLOYEE (FNAME,
+                      MINIT,
+                      LNAME,
+                      SSN,
+                      BDATE,
+                      ADDRESS,
+                      SEX,
+                      SALARY,
+                      SUPERSSN,
+                      DNO)
+     VALUES ('James',
+             'E',
+             'Borg',
+             '888665555',
+             '   1937-11-10    ',
+             '  450 Stone, Houston, TX',
+             'M',
+             55000,
+             'null',
+             NULL);
+
+
+
+
+
+CREATE TABLE DEPT_LOCATIONS
+(
+   DNUMBER     INTEGER NOT NULL,
+   DLOCATION   VARCHAR (15),
+   PRIMARY KEY (DNUMBER, DLOCATION)
+);
+
+INSERT INTO DEPT_LOCATIONS (DNUMBER, DLOCATION)
+     VALUES (1, 'Houston');
+
+INSERT INTO DEPT_LOCATIONS (DNUMBER, DLOCATION)
+     VALUES (4, 'Stafford');
+
+INSERT INTO DEPT_LOCATIONS (DNUMBER, DLOCATION)
+     VALUES (5, 'Bellaire');
+
+INSERT INTO DEPT_LOCATIONS (DNUMBER, DLOCATION)
+     VALUES (5, 'Sugarland');
+
+INSERT INTO DEPT_LOCATIONS (DNUMBER, DLOCATION)
+     VALUES (5, 'Houston');
+
+
+CREATE TABLE DEPENDENT
+(
+   ESSN             CHAR (9),
+   DEPENDENT_NAME   VARCHAR (20),
+   SEX              CHAR (1),
+   BDATE            DATE,
+   RELATIONSHIP     VARCHAR (20),
+   PRIMARY KEY (ESSN, DEPENDENT_NAME)
+);
+
+INSERT INTO DEPENDENT (ESSN,
+                       DEPENDENT_NAME,
+                       SEX,
+                       BDATE,
+                       RELATIONSHIP)
+     VALUES ('333445555',
+             'Alice',
+             'F',
+             ' 1986-04-05',
+             ' DAUGHTER');
+
+INSERT INTO DEPENDENT (ESSN,
+                       DEPENDENT_NAME,
+                       SEX,
+                       BDATE,
+                       RELATIONSHIP)
+     VALUES ('333445555',
+             ' theodore',
+             'M',
+             '1983-10-25',
+             'SON');
+
+INSERT INTO DEPENDENT (ESSN,
+                       DEPENDENT_NAME,
+                       SEX,
+                       BDATE,
+                       RELATIONSHIP)
+     VALUES ('333445555',
+             'Joy',
+             'F',
+             '1958-05-03',
+             'SPOUSE');
+
+INSERT INTO DEPENDENT (ESSN,
+                       DEPENDENT_NAME,
+                       SEX,
+                       BDATE,
+                       RELATIONSHIP)
+     VALUES ('987654321',
+             ' Abner',
+             'M',
+             '1942-02-28',
+             'SPOUSE');
+
+INSERT INTO DEPENDENT (ESSN,
+                       DEPENDENT_NAME,
+                       SEX,
+                       BDATE,
+                       RELATIONSHIP)
+     VALUES ('123456789',
+             ' Michael',
+             'M',
+             '1988-01-04',
+             'SON');
+
+INSERT INTO DEPENDENT (ESSN,
+                       DEPENDENT_NAME,
+                       SEX,
+                       BDATE,
+                       RELATIONSHIP)
+     VALUES ('123456789',
+             ' Alice ',
+             'F',
+             '1988-12-30',
+             'DAUGHTER');
+
+INSERT INTO DEPENDENT (ESSN,
+                       DEPENDENT_NAME,
+                       SEX,
+                       BDATE,
+                       RELATIONSHIP)
+     VALUES ('123456789',
+             'Elizabeth',
+             'F',
+             '1967-05-05',
+             'SPOUSE');
+
+CREATE TABLE WORKS_ON
+(
+   ESSN    CHAR (9) NOT NULL,
+   PNO     INTEGER NOT NULL,
+   HOURS   INTEGER,
+   PRIMARY KEY (ESSN, PNO)
+);
+
+CREATE TABLE PROJECT
+(
+   PNAME       VARCHAR (20) NOT NULL,
+   PNUMBER     INTEGER,
+   PLOCATION   VARCHAR (15),
+   DNUM        INTEGER,
+   PRIMARY KEY (PNUMBER)
+);
+
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('123456789', 1, 32.5);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('123456789', 2, 7.5);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('666884444', 3, 40.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('453453453', 1, 20.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('453453453', 2, 20.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('333445555', 2, 10.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('3334455S5', 3, 10.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('333445555', 10, 10.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('333445555', 20, 10.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('999887777', 30, 30.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('999887777', 10, 10.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('987987987', 10, 35.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('987987987', 30, 5.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('987654321', 30, 20.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('987654321', 20, 15.0);
+
+INSERT INTO WORKS_ON (ESSN, PNO, HOURS)
+     VALUES ('881366555', 20, NULL);
+
+
+INSERT INTO PROJECT (PNAME,
+                     PNUMBER,
+                     PLOCATION,
+                     DNUM)
+     VALUES ('ProductX',
+             1,
+             'Bellaire',
+             5);
+
+INSERT INTO PROJECT (PNAME,
+                     PNUMBER,
+                     PLOCATION,
+                     DNUM)
+     VALUES ('ProductY',
+             2,
+             'Sugarland',
+             5);
+
+INSERT INTO PROJECT (PNAME,
+                     PNUMBER,
+                     PLOCATION,
+                     DNUM)
+     VALUES ('ProductZ',
+             3,
+             'Houston  ',
+             5);
+
+INSERT INTO PROJECT (PNAME,
+                     PNUMBER,
+                     PLOCATION,
+                     DNUM)
+     VALUES ('Computerization',
+             10,
+             'Stafford',
+             4);
+
+INSERT INTO PROJECT (PNAME,
+                     PNUMBER,
+                     PLOCATION,
+                     DNUM)
+     VALUES ('Reorganization',
+             20,
+             'Houston',
+             1);
+
+INSERT INTO PROJECT (PNAME,
+                     PNUMBER,
+                     PLOCATION,
+                     DNUM)
+     VALUES ('Newbenef its',
+             30,
+             'Stafford',
+             4);
+
+
+update employee set superssn = 'null'  where ssn = '888665555';
+update employee set superssn = 'null'  where ssn = '999887777';
+update employee set superssn = '888665555'  where ssn = '123456789';
+update employee set superssn = '888665555'  where ssn = '453453453';
+update employee set superssn = '999887777'  where ssn = '987654321';
+update employee set superssn = '999887777'  where ssn = '666884444';
+update employee set superssn = '999887777'  where ssn = '443445555';
+
+
+select * from department;
+select * from dependent;
+select * from dept_locations;
+select * from employee;
+select * from project;
+select * from works_on;

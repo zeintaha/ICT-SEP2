@@ -1,0 +1,324 @@
+2018-05-10 09:10:20 CEST LOG:  database system was shut down at 2018-05-09 12:09:40 CEST
+2018-05-10 09:10:20 CEST FATAL:  the database system is starting up
+2018-05-10 09:10:20 CEST FATAL:  the database system is starting up
+2018-05-10 09:10:20 CEST LOG:  MultiXact member wraparound protections are now enabled
+2018-05-10 09:10:21 CEST LOG:  database system is ready to accept connections
+2018-05-10 09:10:21 CEST LOG:  autovacuum launcher started
+2018-05-10 09:48:30 CEST ERROR:  relation "dept_location" does not exist at character 15
+2018-05-10 09:48:30 CEST STATEMENT:  select * from dept_location;
+2018-05-10 10:12:43 CEST ERROR:  syntax error at or near "selcect" at character 1
+2018-05-10 10:12:43 CEST STATEMENT:  selcect or replace view firstView as select * from works_on;
+2018-05-10 10:13:03 CEST ERROR:  syntax error at or near "or" at character 8
+2018-05-10 10:13:03 CEST STATEMENT:  select or replace view firstView as select * from works_on;
+2018-05-10 10:13:25 CEST ERROR:  relation "fristview" does not exist at character 15
+2018-05-10 10:13:25 CEST STATEMENT:  select * from fristView;
+2018-05-10 10:17:50 CEST ERROR:  syntax error at or near "sum" at character 38
+2018-05-10 10:17:50 CEST STATEMENT:  create or replace view secondView as sum (hours);
+2018-05-10 10:19:11 CEST ERROR:  relation "work_on" does not exist at character 61
+2018-05-10 10:19:11 CEST STATEMENT:  create or replace view secondView as select sum(hours) from work_on;
+2018-05-10 10:38:17 CEST ERROR:  column "pame" does not exist at character 32
+2018-05-10 10:38:17 CEST HINT:  Perhaps you meant to reference the column "project.pname".
+2018-05-10 10:38:17 CEST STATEMENT:  select pname as "first name" , pame as "project name", sum(hours) as "sum hours"
+	from employee inner join project on dno=dnum;
+2018-05-10 10:38:28 CEST ERROR:  column "hours" does not exist at character 61
+2018-05-10 10:38:28 CEST STATEMENT:  select pname as "first name" , pname as "project name", sum(hours) as "sum hours"
+	from employee inner join project on dno=dnum;
+2018-05-10 10:56:11 CEST ERROR:  syntax error at or near "(" at character 16
+2018-05-10 10:56:11 CEST STATEMENT:  select essn as ("EMP#"), pno, hours, fname, pname
+	from works_on inner join employee on essn = ssn inner join project on pno = pnumber
+2018-05-10 10:58:31 CEST ERROR:  syntax error at or near "from" at character 95
+2018-05-10 10:58:31 CEST STATEMENT:  select essn as "EMP#", fname as "EMP_Name", pno as "PROJ#",  pname as "Project Name" ,hours, 
+	from works_on inner join employee on essn = ssn inner join project on pno = pnumber
+2018-05-10 11:00:01 CEST ERROR:  function cost(integer) does not exist at character 95
+2018-05-10 11:00:01 CEST HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2018-05-10 11:00:01 CEST STATEMENT:  select essn as "EMP#", fname as "EMP_Name", pno as "PROJ#",  pname as "Project Name" , hours, cost(hours*300)
+	from works_on inner join employee on essn = ssn inner join project on pno = pnumber
+2018-05-10 11:01:58 CEST ERROR:  syntax error at end of input at character 36
+2018-05-10 11:01:58 CEST STATEMENT:  create or replace view thirdView as
+2018-05-10 11:35:06 CEST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2018-05-10 11:35:06 CEST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2018-05-10 11:35:49 CEST ERROR:  relation "employee" does not exist at character 42
+2018-05-10 11:35:49 CEST STATEMENT:  select superssn as "superVisor ssn" from employee where superssn != null
+2018-05-10 11:36:39 CEST ERROR:  relation "employee" does not exist at character 42
+2018-05-10 11:36:39 CEST STATEMENT:  select superssn as "superVisor ssn" from employee
+2018-05-10 11:37:15 CEST ERROR:  syntax error at or near "not" at character 67
+2018-05-10 11:37:15 CEST STATEMENT:  select superssn as "superVisor ssn" from employee  where superssn not null
+2018-05-10 11:37:36 CEST ERROR:  syntax error at or near "Exercise" at character 227
+2018-05-10 11:37:36 CEST STATEMENT:  set search_path = 'COMPANY';
+	select * from department;
+	select * from dependent;
+	select * from dept_locations;
+	select * from employee;
+	select * from project;
+	select * from works_on;
+	--------------------------------------------
+	Exercise 1.1
+	create or replace view firstView as select * from works_on;
+	select * from firstView;
+	--------------------------------------------
+	
+	Exercsie 1.2
+	create or replace view secondView as select sum(hours) from works_on;
+	select * from secondView;
+	--------------------------------------------
+	
+	Exercsie 1.3
+	create or replace view thirdView as
+	select essn as "EMP#", fname as "EMP_Name", pno as "PROJ#",  pname as "Project Name" , hours, hours*300 as "Cost"
+	from works_on inner join employee on essn = ssn inner join project on pno = pnumber
+	
+	select * from thirdView
+	--------------------------------------------
+	
+	Exercsie 1.4
+	create or replace view FourthView as
+	select dname as "Department Name", fname as "Manager Name", salary as "Manager Salary"
+	from department inner join employee on ssn = mgrssn
+	
+	select * from FourthView
+	--------------------------------------------
+	
+	Exercsie 1.5
+	create or replace view FifthView as
+	select superssn as "superVisor ssn" from employee  where superssn = null
+	
+	
+	
+2018-05-10 11:38:37 CEST ERROR:  syntax error at or near "from" at character 61
+2018-05-10 11:38:37 CEST STATEMENT:  select superssn as "superVisor ssn"  where superssn != null
+	from employee
+2018-05-10 11:39:04 CEST ERROR:  syntax error at or near "not" at character 53
+2018-05-10 11:39:04 CEST STATEMENT:  select superssn as "superVisor ssn"  where superssn not null
+	from employee
+2018-05-10 11:39:18 CEST ERROR:  syntax error at or near "not" at character 53
+2018-05-10 11:39:18 CEST STATEMENT:  select superssn as "superVisor ssn"  where superssn not = null
+	from employee
+2018-05-10 11:39:31 CEST ERROR:  syntax error at or near "from" at character 64
+2018-05-10 11:39:31 CEST STATEMENT:  select superssn as "superVisor ssn"  where superssn = not null
+	from employee
+2018-05-10 11:39:53 CEST ERROR:  syntax error at or near "where" at character 39
+2018-05-10 11:39:53 CEST STATEMENT:  select superssn as "superVisor ssn",  where superssn = not null
+	from employee;
+2018-05-10 11:40:12 CEST ERROR:  column "superssn" does not exist at character 8
+2018-05-10 11:40:12 CEST STATEMENT:  select superssn as "superVisor ssn"
+2018-05-10 11:40:48 CEST ERROR:  syntax error at or near "from" at character 63
+2018-05-10 11:40:48 CEST STATEMENT:  select superssn as "superVisor ssn" where superssn= 888665555
+	from employee;
+2018-05-10 11:41:28 CEST ERROR:  syntax error at or near "from" at character 65
+2018-05-10 11:41:28 CEST STATEMENT:  select superssn as "superVisor ssn" where superssn= "888665555"
+	from employee;
+2018-05-10 11:43:17 CEST ERROR:  syntax error at or near "from" at character 65
+2018-05-10 11:43:17 CEST STATEMENT:  select superssn as "superVisor ssn" where superssn= '888665555'
+	from employee;
+2018-05-10 11:44:39 CEST ERROR:  syntax error at or near "from" at character 63
+2018-05-10 11:44:39 CEST STATEMENT:  select fname as "superVisor name" where superssn= '888665555'
+	from employee;
+2018-05-10 11:44:57 CEST ERROR:  syntax error at or near "from" at character 64
+2018-05-10 11:44:57 CEST STATEMENT:  select fname as "superVisor name" where superssn = '888665555'
+	from employee;
+2018-05-10 11:45:11 CEST ERROR:  syntax error at or near "from" at character 64
+2018-05-10 11:45:11 CEST STATEMENT:  select fname as "superVisor name" where superssn = '888665555'
+	from employee;
+2018-05-10 11:45:18 CEST ERROR:  syntax error at or near "from" at character 64
+2018-05-10 11:45:18 CEST STATEMENT:  select fname as "superVisor name" where superssn = '888665555'
+	from employee;
+	
+2018-05-10 11:45:59 CEST ERROR:  syntax error at or near "from" at character 62
+2018-05-10 11:45:59 CEST STATEMENT:  select fname as "superVisor name" where superssn = 888665555
+	from employee;
+2018-05-10 11:46:18 CEST ERROR:  syntax error at or near "from" at character 43
+2018-05-10 11:46:18 CEST STATEMENT:  select fname where superssn = '888665555'
+	from employee;
+2018-05-10 11:47:39 CEST ERROR:  syntax error at or near "from" at character 37
+2018-05-10 11:47:39 CEST STATEMENT:  select fname where fname = 'Ramesh'
+	from employee;
+2018-05-10 11:51:25 CEST ERROR:  column "sperssn" does not exist at character 34
+2018-05-10 11:51:25 CEST HINT:  Perhaps you meant to reference the column "employee.superssn".
+2018-05-10 11:51:25 CEST STATEMENT:  select fname from employee where sperssn = '888665555'
+2018-05-10 11:52:20 CEST ERROR:  operator does not exist: character = boolean at character 43
+2018-05-10 11:52:20 CEST HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2018-05-10 11:52:20 CEST STATEMENT:  select fname from employee where superssn = not null
+2018-05-10 11:52:27 CEST ERROR:  syntax error at or near "not" at character 43
+2018-05-10 11:52:27 CEST STATEMENT:  select fname from employee where superssn not null
+2018-05-10 11:53:39 CEST ERROR:  column "null" does not exist at character 45
+2018-05-10 11:53:39 CEST STATEMENT:  select fname from employee where superssn = "null"
+2018-05-10 12:00:51 CEST ERROR:  syntax error at or near "from" at character 63
+2018-05-10 12:00:51 CEST STATEMENT:  select fname as "employee name",  fname as "SuperVisor Name", from employee where superssn != 'null'
+2018-05-10 12:20:31 CEST ERROR:  syntax error at or near "," at character 67
+2018-05-10 12:20:31 CEST STATEMENT:  update employee set superssn = '999887777' where ssn = '666884444','987654321','453453453'
+2018-05-10 12:34:53 CEST ERROR:  relation "ssn" does not exist at character 50
+2018-05-10 12:34:53 CEST STATEMENT:  select fname as "SuperVisor Name" from employee, ssn as "Supervisorssn" where superssn = 'null'
+2018-05-10 12:48:54 CEST ERROR:  syntax error at end of input at character 97
+2018-05-10 12:48:54 CEST STATEMENT:  select fname as "employee name ", fname as "supersivor name" from employee inner join Supervisor
+2018-05-10 12:50:37 CEST ERROR:  column reference "ssn" is ambiguous at character 101
+2018-05-10 12:50:37 CEST STATEMENT:  select fname as "employee name ", fname as "supersivor name" from employee inner join Supervisor on ssn = ssn
+2018-05-10 12:51:08 CEST ERROR:  column reference "ssn" is ambiguous at character 112
+2018-05-10 12:51:08 CEST STATEMENT:  select fname as "employee name ", fname as "supersivor name" from employee inner join Supervisor on superssn = ssn
+2018-05-10 12:51:56 CEST ERROR:  syntax error at end of input at character 97
+2018-05-10 12:51:56 CEST STATEMENT:  select fname as "employee name ", fname as "supersivor name" from employee inner join Supervisor
+2018-05-10 12:52:16 CEST ERROR:  syntax error at or near "where" at character 98
+2018-05-10 12:52:16 CEST STATEMENT:  select fname as "employee name ", fname as "supersivor name" from employee inner join Supervisor where fname = "jems"
+2018-05-10 12:54:10 CEST ERROR:  syntax error at or near "Name" at character 19
+2018-05-10 12:54:10 CEST STATEMENT:  select Supervisor Name from Supervisor; 
+2018-05-10 12:56:37 CEST ERROR:  syntax error at or near "drope" at character 1
+2018-05-10 12:56:37 CEST STATEMENT:  drope view Supervisor
+2018-05-10 12:59:02 CEST ERROR:  column "fname" does not exist at character 8
+2018-05-10 12:59:02 CEST STATEMENT:  select fname from supervisor 
+2018-05-10 12:59:16 CEST ERROR:  column "fname" does not exist at character 8
+2018-05-10 12:59:16 CEST STATEMENT:  select fname from supervisor 
+2018-05-10 12:59:59 CEST ERROR:  syntax error at or near "Name" at character 19
+2018-05-10 12:59:59 CEST STATEMENT:  select SuperVisor Name from supervisor 
+2018-05-10 13:00:10 CEST ERROR:  syntax error at or near "Name" at character 20
+2018-05-10 13:00:10 CEST STATEMENT:  select (SuperVisor Name) from supervisor 
+2018-05-10 13:00:51 CEST ERROR:  syntax error at or near "select" at character 125
+2018-05-10 13:00:51 CEST STATEMENT:  create or replace view supervisor as
+	
+	select fname as "SuperVisor_Name", ssn as "ssn" from employee where superssn = 'null'
+	select * from Supervisor
+2018-05-10 13:01:10 CEST ERROR:  column "supervisor_name" does not exist at character 8
+2018-05-10 13:01:10 CEST HINT:  Perhaps you meant to reference the column "supervisor.SuperVisor_Name".
+2018-05-10 13:01:10 CEST STATEMENT:  select SuperVisor_Name from supervisor 
+2018-05-10 13:09:05 CEST ERROR:  syntax error at end of input at character 103
+2018-05-10 13:09:05 CEST STATEMENT:  select fname as "employee name", sper as "SuperVisor Name" from employee inner join employeeSupervisor
+2018-05-10 13:10:14 CEST ERROR:  column reference "ssn" is ambiguous at character 110
+2018-05-10 13:10:14 CEST STATEMENT:  select fname as "employee name", sper as "SuperVisor Name" from employee inner join supervisor on superssn = ssn
+2018-05-10 13:10:44 CEST ERROR:  column reference "ssn" is ambiguous at character 99
+2018-05-10 13:10:44 CEST STATEMENT:  select fname as "employee name", sper as "SuperVisor Name" from employee inner join supervisor on ssn =superssn;
+2018-05-10 13:14:42 CEST ERROR:  column "projectname" does not exist at character 8
+2018-05-10 13:14:42 CEST HINT:  Perhaps you meant to reference the column "seventhview.ProjectName".
+2018-05-10 13:14:42 CEST STATEMENT:  select ProjectName from SeventhView
+2018-05-10 13:15:11 CEST ERROR:  column "pname" does not exist at character 8
+2018-05-10 13:15:11 CEST STATEMENT:  select pname from SeventhView
+2018-05-10 13:16:05 CEST ERROR:  column "pname" does not exist at character 8
+2018-05-10 13:16:05 CEST STATEMENT:  select pname from SeventhView
+2018-05-10 13:17:45 CEST ERROR:  syntax error at or near "elect" at character 1
+2018-05-10 13:17:45 CEST STATEMENT:  elect pname as "ProjectName", dname as "DeptName", count(ssn) as "NmbrOfEmployees", sum(hours) as "TotalHours"
+	from works_on inner join employee on essn = ssn
+	inner join project on pno = pnumber
+	inner join department on pnumber = dnumber
+2018-05-10 13:17:49 CEST ERROR:  column "project.pname" must appear in the GROUP BY clause or be used in an aggregate function at character 8
+2018-05-10 13:17:49 CEST STATEMENT:  select pname as "ProjectName", dname as "DeptName", count(ssn) as "NmbrOfEmployees", sum(hours) as "TotalHours"
+	from works_on inner join employee on essn = ssn
+	inner join project on pno = pnumber
+	inner join department on pnumber = dnumber
+2018-05-10 13:18:15 CEST ERROR:  column "project.pname" must appear in the GROUP BY clause or be used in an aggregate function at character 8
+2018-05-10 13:18:15 CEST STATEMENT:  select pname as "ProjectName", dname as "DeptName", count(ssn) as "NmbrOfEmployees", sum(hours) as "TotalHours"
+	from works_on inner join employee on essn = ssn
+	inner join project on pno = pnumber
+	inner join department on pnumber = dnumber
+2018-05-10 13:19:21 CEST ERROR:  column "projectname" does not exist at character 8
+2018-05-10 13:19:21 CEST HINT:  Perhaps you meant to reference the column "seventhview.ProjectName".
+2018-05-10 13:19:21 CEST STATEMENT:  select ProjectName from SeventhView
+2018-05-10 13:19:53 CEST ERROR:  column seventhview.projectname does not exist at character 8
+2018-05-10 13:19:53 CEST HINT:  Perhaps you meant to reference the column "seventhview.ProjectName".
+2018-05-10 13:19:53 CEST STATEMENT:  select seventhview.ProjectName from SeventhView
+2018-05-10 13:20:13 CEST ERROR:  column "projectname" does not exist at character 8
+2018-05-10 13:20:13 CEST HINT:  Perhaps you meant to reference the column "seventhview.ProjectName".
+2018-05-10 13:20:13 CEST STATEMENT:  select ProjectName from SeventhView
+2018-05-10 13:21:00 CEST ERROR:  column "projectname" does not exist at character 8
+2018-05-10 13:21:00 CEST HINT:  Perhaps you meant to reference the column "seventhview.ProjectName".
+2018-05-10 13:21:00 CEST STATEMENT:  select ProjectName from SeventhView
+2018-05-10 14:07:38 CEST ERROR:  column "works_on.hours" must appear in the GROUP BY clause or be used in an aggregate function at character 79
+2018-05-10 14:07:38 CEST STATEMENT:  select pname as "ProjectName", dname as "DeptName", ssn as "NmbrOfEmployees", hours as "TotalHours"
+	from works_on inner join employee on essn = ssn
+	inner join project on pno = pnumber
+	inner join department on pnumber = dnumber
+	
+	group by pname, dname, ssn 
+	having count(ssn)>0
+	order by ssn desc;
+2018-05-10 14:09:32 CEST ERROR:  syntax error at end of input at character 99
+2018-05-10 14:09:32 CEST STATEMENT:  select fname as "employee name", sper as "SuperVisor Name" from employee inner join supervisor on 
+2018-05-10 14:11:41 CEST ERROR:  cannot drop view supervisor because other objects depend on it
+2018-05-10 14:11:41 CEST DETAIL:  view employeesupervisor depends on view supervisor
+2018-05-10 14:11:41 CEST HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+2018-05-10 14:11:41 CEST STATEMENT:  drop view supervisor
+2018-05-10 14:12:36 CEST ERROR:  syntax error at or near "select" at character 80
+2018-05-10 14:12:36 CEST STATEMENT:  select fname as "EmployeeFirstName", ssn from employee where superssn = 'null'
+	select * from Supervisor
+	
+2018-05-10 14:14:34 CEST ERROR:  syntax error at or near "select" at character 104
+2018-05-10 14:14:34 CEST STATEMENT:  select fname as "employee name", superssn as "SuperVisor Name" from employee inner join supervisor on 
+	select * from employee
+2018-05-10 14:17:43 CEST ERROR:  relation "supervisor" does not exist at character 15
+2018-05-10 14:17:43 CEST STATEMENT:  select * from Supervisor
+2018-05-10 14:19:01 CEST ERROR:  column reference "ssn" is ambiguous at character 112
+2018-05-10 14:19:01 CEST STATEMENT:  select fname as "EmployeeName", superssn as "SuperVisorName" from employee inner join supervisor on superssn = ssn
+2018-05-10 14:19:42 CEST ERROR:  column reference "ssn" is ambiguous at character 102
+2018-05-10 14:19:42 CEST STATEMENT:  select fname as "EmployeeName", superssn as "SuperVisorName" from employee inner join supervisor on  ssn = superssn
+2018-05-10 14:20:45 CEST ERROR:  column "supervisorname" does not exist at character 102
+2018-05-10 14:20:45 CEST STATEMENT:  select fname as "EmployeeName", superssn as "SuperVisorName" from employee inner join supervisor on  SuperVisorName = ssn
+2018-05-10 14:20:51 CEST ERROR:  column "supervisorname" does not exist at character 102
+2018-05-10 14:20:51 CEST STATEMENT:  select fname as "EmployeeName", superssn as "SuperVisorName" from employee inner join supervisor on  SuperVisorName = ssn
+2018-05-10 14:25:07 CEST ERROR:  column reference "ssn" is ambiguous at character 101
+2018-05-10 14:25:07 CEST STATEMENT:  select fname as "EmployeeName", superssn as "SuperVisorName" from employee inner join supervisor on ssn = superssn
+2018-05-10 14:25:44 CEST ERROR:  column "fname" does not exist at character 8
+2018-05-10 14:25:44 CEST STATEMENT:  select fname as "EmployeeName", superssn as "SuperVisorName"
+2018-05-10 14:28:16 CEST ERROR:  syntax error at or near "from" at character 63
+2018-05-10 14:28:16 CEST STATEMENT:  select fname as "EmployeeName", superssn as "SuperVisorName", from employee
+2018-05-10 14:28:56 CEST ERROR:  column "employeename" does not exist at character 8
+2018-05-10 14:28:56 CEST STATEMENT:  select EmployeeName from Supervisor
+2018-05-10 14:29:47 CEST ERROR:  column "employeefirstname" does not exist at character 8
+2018-05-10 14:29:47 CEST HINT:  Perhaps you meant to reference the column "supervisor.EmployeeFirstName".
+2018-05-10 14:29:47 CEST STATEMENT:  select EmployeeFirstName from Supervisor
+2018-05-10 14:30:12 CEST ERROR:  column "employeefirstname" does not exist at character 8
+2018-05-10 14:30:12 CEST HINT:  Perhaps you meant to reference the column "supervisor.EmployeeFirstName".
+2018-05-10 14:30:12 CEST STATEMENT:  select EmployeeFirstName from Supervisor
+2018-05-10 14:30:32 CEST ERROR:  column "fname" does not exist at character 8
+2018-05-10 14:30:32 CEST STATEMENT:  select fname from Supervisor
+2018-05-10 14:31:46 CEST ERROR:  column "name" does not exist at character 8
+2018-05-10 14:31:46 CEST HINT:  Perhaps you meant to reference the column "supervisor.Name".
+2018-05-10 14:31:46 CEST STATEMENT:  select Name from Supervisor
+2018-05-10 14:35:23 CEST ERROR:  column "superssn" does not exist at character 43
+2018-05-10 14:35:23 CEST STATEMENT:  select name1 from Supervisor where ssn1 = superssn
+2018-05-10 14:38:18 CEST ERROR:  more than one row returned by a subquery used as an expression
+2018-05-10 14:38:18 CEST STATEMENT:  select fname as "EmployeeName", (select name1 from Supervisor) from employee
+2018-05-10 14:39:01 CEST ERROR:  column "name1" does not exist at character 33
+2018-05-10 14:39:01 CEST HINT:  Perhaps you meant to reference the column "employee.fname" or the column "employee.lname".
+2018-05-10 14:39:01 CEST STATEMENT:  select fname as "EmployeeName", name1 as "SuperVisorName" from employee
+2018-05-10 14:46:18 CEST ERROR:  column reference "ssn" is ambiguous at character 98
+2018-05-10 14:46:18 CEST STATEMENT:  select fname as "EmployeeName", name1 as "SuperVisorName" from employee inner join supervisor on ssn = superssn
+2018-05-10 14:53:55 CEST ERROR:  "department" is not a view
+2018-05-10 14:53:55 CEST STATEMENT:  create or replace view department as
+	select dname as "departmentname1", dnumber from department
+2018-05-10 15:02:33 CEST ERROR:  view "seventhview" does not exist
+2018-05-10 15:02:33 CEST STATEMENT:  drop view SeventhView
+2018-05-10 15:06:09 CEST ERROR:  view "seventhview" does not exist
+2018-05-10 15:06:09 CEST STATEMENT:  drop view SeventhView
+2018-05-10 15:06:25 CEST ERROR:  relation "seventhview" does not exist at character 15
+2018-05-10 15:06:25 CEST STATEMENT:  select * from SeventhView
+2018-05-10 15:06:48 CEST ERROR:  column "projectname" does not exist at character 8
+2018-05-10 15:06:48 CEST HINT:  Perhaps you meant to reference the column "seventhview.ProjectName".
+2018-05-10 15:06:48 CEST STATEMENT:  select ProjectName from SeventhView
+2018-05-10 15:09:12 CEST ERROR:  column "deptname" does not exist at character 8
+2018-05-10 15:09:12 CEST HINT:  Perhaps you meant to reference the column "seventhview.deptName".
+2018-05-10 15:09:12 CEST STATEMENT:  select deptName from SeventhView 
+2018-05-10 15:11:50 CEST ERROR:  column "seventhview.projectname" must appear in the GROUP BY clause or be used in an aggregate function at character 8
+2018-05-10 15:11:50 CEST STATEMENT:  select projectname, deptname,  sum(nmbrofemployees) as "totalemployees" from SeventhView 
+2018-05-10 15:13:02 CEST ERROR:  column "seventhview.projectname" must appear in the GROUP BY clause or be used in an aggregate function at character 8
+2018-05-10 15:13:02 CEST STATEMENT:  select projectname, deptname, sum(nmbrofemployees) as "totalemployees" from SeventhView 
+2018-05-10 15:13:51 CEST ERROR:  column "seventhview.nmbrofemployees" must appear in the GROUP BY clause or be used in an aggregate function at character 131
+2018-05-10 15:13:51 CEST STATEMENT:  select projectname, deptname, sum(nmbrofemployees) as "totalemployees" from SeventhView 
+	group by projectname, deptname
+	
+	order by nmbrofemployees desc;
+2018-05-10 15:22:47 CEST ERROR:  syntax error at or near "order" at character 162
+2018-05-10 15:22:47 CEST STATEMENT:  create or replace view EightView as
+	select fname as "Name", MAX(salary) as "Salary"
+	from employee inner join department on dno = dnumber
+	group by fname, salary;
+	order by salary desc;
+2018-05-10 16:34:58 CEST ERROR:  cannot drop columns from view
+2018-05-10 16:34:58 CEST STATEMENT:  create or replace view TempView as
+	select dname as "deptname", count(ssn) as "nmbrofemployees"
+	from employee 
+	inner join department on dno = dnumber
+	group by dname, ssn 
+	having salary>=30000
+	order by ssn desc;
+2018-05-10 18:48:14 CEST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2018-05-10 18:48:14 CEST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
