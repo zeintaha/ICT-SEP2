@@ -8,12 +8,12 @@ import java.rmi.RemoteException;
 import Member.domain.model.Member;
 import Member.domain.model.MemberList;
 
-public class ClinetMemberModel
+public class MemberClient
 {
 
    private RemoteMemberModel server;
 
-   public ClinetMemberModel()
+   public MemberClient()
    {
       try
       {

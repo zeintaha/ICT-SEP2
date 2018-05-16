@@ -3,18 +3,16 @@ package Member.Controler;
 
 import java.rmi.RemoteException;
 
-import Member.View.ClientMemberView;
 import Member.View.MemberView;
-import Member.domain.mediator.RemoteMemberModel;
-import Member.domain.mediator.ClinetMemberModel;
+import Member.domain.mediator.MemberClient;
 
-public class ClientMemberController
+public class MemberController
 {
-   private ClientMemberView view;
-   private ClinetMemberModel modelManager;
+   private MemberView view;
+   private MemberClient modelManager;
 
-   public ClientMemberController(ClientMemberView view,
-         ClinetMemberModel modelManager)
+   public MemberController(MemberView view,
+         MemberClient modelManager)
    {
 
       this.view = view;
