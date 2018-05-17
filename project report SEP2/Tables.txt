@@ -1,0 +1,141 @@
+create schema "Clinic";
+set search_path = 'Clinic';
+
+CREATE TABLE Patient
+(
+    firstName       VARCHAR (20),
+    lastName        VARCHAR (20),
+    patientId       CHAR (4),
+    dob			    DATE,
+	telNumber		VARCHAR (20),
+	email			VARCHAR (40),
+	gender			char (1),
+		
+    PRIMARY KEY (patientId));
+	
+	
+CREATE TABLE Employee
+(
+    firstName       VARCHAR (20),
+    lastName        VARCHAR (20),
+    employeeId      CHAR (4),
+    dob			    DATE,
+	telNumber		VARCHAR (20),
+	email			VARCHAR (40),
+	gender			char (1),
+	startDate		DATE,
+	
+    PRIMARY KEY (employeeId));	
+	
+
+CREATE TABLE Secretary
+(
+    firstName       VARCHAR (20),
+    lastName        VARCHAR (20),
+    secretaryId       CHAR (4),
+    dob			    DATE,
+	telNumber		VARCHAR (20),
+	email			VARCHAR (40),
+	gender			char (1),
+		
+    PRIMARY KEY (secretaryId));
+	
+select * from doctor;
+
+
+CREATE TABLE Doctor
+(
+    firstName       VARCHAR (20),
+    lastName        VARCHAR (20),
+    doctorId        CHAR (4),
+    dob			    DATE,
+	telNumber		VARCHAR (20),
+	email			VARCHAR (40),
+	gender			char (1),
+		
+    PRIMARY KEY (doctorId));
+	
+
+Create table RequestRenewal
+(
+	requestRenewalId	CHAR (4),
+	dateOfRequest		DATE,	
+	dateOfDecision		DATE,
+	patientId			CHAR (4),
+	
+	PRIMARY KEY	(requestRenewalId), 
+	FOREIGN KEY (patientID) REFERENCES Patient(patientID));
+	
+
+Create table Appointment
+(
+	dateOfAppointment	CHAR (4),
+	time				DATE,	
+	date				DATE,
+	patientId			CHAR (4),
+	
+	PRIMARY KEY	(dateOfAppointment, time ), 
+	FOREIGN KEY (patientID) REFERENCES Patient(patientID));
+	
+	
+Create table Medicine
+(
+	medicineName		VarChar (20),
+	type				VarChar (20),
+	description			VarChar (50),
+	
+	Primary key (medicineName));
+	
+	
+Create table RecordsOfRequestForRenewal
+(
+	approved			CHAR (4),
+	quantity			DATE,	
+	dailyDosage			DATE,
+	requestRenewalId	CHAR (4),
+	medicineName		VARCHAR (20),
+	
+	PRIMARY KEY	(requestRenewalId),
+	FOREIGN KEY (requestRenewalId) REFERENCES RequestRenewal(requestRenewalId),
+	FOREIGN KEY (medicineName) REFERENCES Medicine(medicineName));	
+
+
+Create table Precription
+(
+	prescriptionId		Char (4),
+	date				DATE,
+	caseId				Char (4),
+	
+	Primary key (prescriptionId),
+	Foreign key (caseId) References MedicalCase (caseId));
+	
+	
+Create table MedicalCase
+(
+	caseId				Char (4),
+	caseTitle			VarChar (20),
+	caseBody			VarChar (20),
+	date				DATE,
+	medicalRecodsId		Char (4),
+	Primary key (caseId),
+	Foreign key (medicalRecodsId) References MedicalRecord (medicalRecodsId));
+
+
+Create table MedicalRecord
+(
+	medicalRecodsId		Char (4),
+	
+	Primary key (medicalRecodsId));
+
+Create table PrescriptionRecord
+(
+	prescriptionRecordId	Char (4),
+	dailyDose				VarChar (2),
+	medicineName			VarChar (20),
+	
+	Primary key (prescriptionRecordId),
+	Foreign key (medicineName) References Medicine (medicineName));
+);
+
+
+	
