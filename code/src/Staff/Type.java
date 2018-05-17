@@ -1,6 +1,8 @@
 package Staff;
 
-public class Type
+public enum Type
 {
-
+Doctor,
+Secratary,
+Maneger;
 }

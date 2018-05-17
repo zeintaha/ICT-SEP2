@@ -13,10 +13,10 @@ abstract public class Employee
    private String telNumber;
    private String eamil;
    private char gender;
-   private Type type;
+ 
 
    public Employee(String firstName, String lastName, int id, Date dob,
-         Date startDate, String telNumber, String eamil, char gender, Type type)
+         Date startDate, String telNumber, String eamil, char gender)
    {
       super();
       this.firstName = firstName;
@@ -27,7 +27,7 @@ abstract public class Employee
       this.telNumber = telNumber;
       this.eamil = eamil;
       this.gender = gender;
-      this.type = type;
+     
    }
 
    public void setFirstName(String firstName)
@@ -70,10 +70,7 @@ abstract public class Employee
       this.gender = gender;
    }
 
-   public void setType(Type type)
-   {
-      this.type = type;
-   }
+  
 
    public String getFirstName()
    {
@@ -115,17 +112,15 @@ abstract public class Employee
       return gender;
    }
 
-   public Type getType()
-   {
-      return type;
-   }
+  
+   
 
    public String toString()
    {
       return "Employee [firstName=" + firstName + ", lastName=" + lastName
             + ", id=" + id + ", dob=" + dob + ", startDate=" + startDate
             + ", telNumber=" + telNumber + ", eamil=" + eamil + ", gender="
-            + gender + ", type=" + type + "]";
+            + gender + ", type=" +  "]";
    }
 
 }

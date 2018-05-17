@@ -50,15 +50,31 @@ public class EmployeeList
             " we can not find that employee id in the system  : " + id + "!! ");
       return null;
    }
- 
-   public Employee editEmployee(String oldName,String  newName)
+
+   public Employee editEmployee(String oldName, String newName)
    {
-    Employee employee =  getEmployeeByName(oldName);
-    
-    employee.setFirstName(newName);
-    
-    return employee;
-      
+      Employee employee = getEmployeeByName(oldName);
+
+      employee.setFirstName(newName);
+
+      return employee;
+
+   }
+
+   public Employee searchEmployeeByName(String name)
+   {
+      Employee employee = getEmployeeByName(name);
+
+      return employee;
+
+   }
+
+   public Employee searchEmployeeById(int id)
+   {
+      Employee employee = getEmployeeById(id);
+
+      return employee;
+
    }
 
 }
