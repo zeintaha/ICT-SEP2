@@ -9,7 +9,7 @@ import org.junit.Test;
 import Member.domain.model.Member;
 import Member.domain.model.MemberList;
 
-public class TestMemberModelManager {
+public class TestServerMemberModel {
 	Member member1 = new Member("Taha", 26, "paid");
 	Member member2 = new Member("Alex", 24, "not paid");
 	Member member3 = new Member("Oskar", 22, "not paid");

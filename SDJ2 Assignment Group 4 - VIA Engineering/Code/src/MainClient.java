@@ -1,14 +1,9 @@
 import java.rmi.RemoteException;
 
-import Member.Controler.ClientMemberController;
-import Member.Controler.MemberControler;
-import Member.View.ClientMemberConsol;
-import Member.View.ClientMemberView;
+import Member.Controler.MemberController;
 import Member.View.MemberConsol;
 import Member.View.MemberView;
-import Member.domain.mediator.ClinetMemberModel;
-import Member.domain.mediator.MemberModelManager;
-import Member.domain.mediator.RemoteMemberModel;
+import Member.domain.mediator.MemberClient;
 
 public class MainClient
 {
@@ -16,10 +11,10 @@ public class MainClient
    public static void main(String[] args) throws RemoteException
    {
       
-       ClinetMemberModel model = new ClinetMemberModel();
+       MemberClient model = new MemberClient();
     
-      ClientMemberView view = new ClientMemberConsol();
-      ClientMemberController controler = new ClientMemberController(view, model);
+      MemberView view = new MemberConsol();
+      MemberController controler = new MemberController(view, model);
       view.start(controler);
    }
    

@@ -1,37 +1,35 @@
 package Member.domain.mediator;
 
 import java.net.MalformedURLException;
-import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-import Member.Controler.MemberControler;
-import Member.View.MemberConsol;
-import Member.View.MemberView;
 import Member.domain.model.Member;
 import Member.domain.model.MemberList;
 
-public class MemberServer extends UnicastRemoteObject implements RemoteMemberModel {
-	private RemoteMemberModel memberList;
-	private static MemberServer instance;
+public class ServerMemberModel extends UnicastRemoteObject implements RemoteMemberModel {
+	private MemberList memberList;
+	 private PersistanceMember textFile;
+	private static ServerMemberModel instance;
 
-	private MemberServer() throws RemoteException {
+	public ServerMemberModel() throws Exception {
 		try {
 			Registry reg = LocateRegistry.createRegistry(1099);
-			Naming.rebind("MemberServer", this);
+			reg.rebind("MemberServer", this);
+			this.textFile = new MemberAdopter();
+			memberList = textFile.load();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		memberList = new MemberModelManager();
 		System.out.println("Starting server...");
 	}
 
    @Override
    public MemberList getAll() throws RemoteException {
       // TODO Auto-generated method stub
-      return memberList.getAll();
+      return memberList;
    }
 
    @Override
@@ -61,9 +59,9 @@ public class MemberServer extends UnicastRemoteObject implements RemoteMemberMod
 
 	
 
-	public static MemberServer getInstance() throws RemoteException {
+	public static ServerMemberModel getInstance() throws Exception {
 		if (instance == null) {
-			instance = new MemberServer();
+			instance = new ServerMemberModel();
 			return instance;
 		}
 		return instance;

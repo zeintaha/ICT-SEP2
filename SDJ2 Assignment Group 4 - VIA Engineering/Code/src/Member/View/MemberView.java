@@ -2,11 +2,11 @@ package Member.View;
 
 import java.rmi.RemoteException;
 
-import Member.Controler.MemberControler;
+import Member.Controler.MemberController;
 
 public interface MemberView
 {
-   void start(MemberControler controler) throws RemoteException;
+   void start(MemberController controler) throws RemoteException;
 
    void show(String value);
 
