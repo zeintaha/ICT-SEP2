@@ -1,6 +1,7 @@
-package StaffMediator;
+package domain.mediator.staff;
 
-import Staff.*;
+
+import domain.model.staff.Employee;
 
 public interface StaffClinicModel
 {

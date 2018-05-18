@@ -1,4 +1,4 @@
-package Staff;
+package domain.model.staff;
 
 public enum Type
 {

@@ -1,11 +1,12 @@
-package Staff;
+package domain.model.staff;
 
 import java.util.Date;
 
-public class Secretary extends Employee
+public class Doctor extends Employee
 {
-private Type type;
-   public Secretary(String firstName, String lastName, int id, Date dob,
+   private Type type;
+
+   public Doctor(String firstName, String lastName, int id, Date dob,
          Date startDate, String telNumber, String eamil, char gender, Type type)
    {
       super(firstName, lastName, id, dob, startDate, telNumber, eamil, gender);
@@ -21,5 +22,5 @@ private Type type;
    {
       this.type = type;
    }
- 
+
 }

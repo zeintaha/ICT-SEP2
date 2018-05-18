@@ -1,4 +1,4 @@
-package Patient;
+package domain.model.patient;
 
 import java.util.Date;
 

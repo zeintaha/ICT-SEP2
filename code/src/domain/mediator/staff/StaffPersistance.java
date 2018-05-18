@@ -1,10 +1,8 @@
-package StaffMediator;
+package domain.mediator.staff;
 
 import java.io.IOException;
 
-import Staff.Employee;
-
-
+import domain.model.staff.Employee;
 
 public interface StaffPersistance
 {
