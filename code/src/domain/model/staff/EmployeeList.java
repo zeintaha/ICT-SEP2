@@ -8,7 +8,7 @@ public class EmployeeList
 
    public EmployeeList()
    {
-      employees = new ArrayList<Employee>();
+      this.employees = new ArrayList<Employee>();
    }
 
    public void addEmployee(Employee employee)
@@ -77,4 +77,7 @@ public class EmployeeList
 
    }
 
+      public int getNumerOfEmployees() {
+         return employees.size();
+      }
 }
