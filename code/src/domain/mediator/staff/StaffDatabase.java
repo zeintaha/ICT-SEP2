@@ -6,7 +6,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import domain.model.staff.*;
 import utility.persistence.MyDatabase;
@@ -14,11 +18,13 @@ import utility.persistence.MyDatabase;
 public class StaffDatabase
 {
    
+   private Date date = new Date();
+   
    private  MyDatabase db;
    private  final String DRIVER = "org.postgresql.Driver";
    private  final String URL = "jdbc:postgresql://localhost:5432/postgres";
    private  final String USER = "postgres";
-   private  final String PASSWORD = "0940";
+   private  final String PASSWORD = "123456789";
 
 public StaffDatabase() throws ClassNotFoundException {
    this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
@@ -26,9 +32,7 @@ public StaffDatabase() throws ClassNotFoundException {
 
 public  EmployeeList load() throws IOException
 {
-   String sql = "SELECT employee.firstname, employee.lasttname, employee.employeeid, employee.dob, employee.telnumber,employee.email,employee.gender,employee.startdate"
-         + " FROM Clinic.employee"
-         ;
+   String sql = "SELECT * FROM \"Clinic\".employee;";
    ArrayList<Object[]> results;
    EmployeeList employees = new EmployeeList();
   
@@ -36,33 +40,57 @@ public  EmployeeList load() throws IOException
    String telNumber = "?", email = "?";
    String gender = "?", startDate = "?";
    String dob = "?";
+   int id = 0;
+   
    
    try
    {
       results = db.query(sql);
+     
+      
       for (int i = 0; i < results.size(); i++)
       {
          Object[] row = results.get(i);
-          int id = Integer.parseInt(row[2].toString());
          
-          firstName = row[0].toString();
-          lastName = row[1].toString();
-         dob = row[3].toString();
-         telNumber = row[4].toString();
-         email = row[5].toString();
-         gender  = row[6].toString();
-         startDate = row[7].toString();
-         
-         Employee employee = new Secretary(firstName, lastName, id, dob,telNumber  , email, gender, startDate, null);
-         employees.addEmployee(employee);
 
-      }}
+            firstName = row[0].toString();
+            lastName =row[1].toString();
+            id = Integer.parseInt((String) row[2]);
+            dob = row[3].toString();
+            startDate = row[7].toString();
+            telNumber = row[4].toString();
+            email = row[5].toString();
+            gender = row[6].toString();
+            
+            String string = "February 3, 2010";
+            DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
+           
+            try
+            {
+               Date date = format.parse(string);
+            }
+            catch (ParseException e)
+            {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            }
+            
+            
+
+         Employee employee = new Secretary(firstName, lastName, id, date, telNumber, email);
+         employees.addEmployee(employee);
+         System.out.println(employees.getNumerOfEmployees());
+         System.out.println(employees.getEmployeeByName("Taha"));
+         
+
+      }
+     }
    catch (SQLException e)
    {
       e.printStackTrace();
    }
 
-   return employees;
+   return null;
 }
 
 

@@ -15,28 +15,37 @@ abstract public class Employee
    private char gender;
  
 
-//   public Employee(String firstName, String lastName, int id, Date dob,
-//         Date startDate, String telNumber, String eamil, char gender)
-//   {
-//      super();
-//      this.firstName = firstName;
-//      this.lastName = lastName;
-//      this.id = id;
-//      this.dob = dob;
-//      this.startDate = startDate;
-//      this.telNumber = telNumber;
-//      this.eamil = eamil;
-//      this.gender = gender;
-//     
-//   }
+   public Employee(String firstName, String lastName, int id, Date dob,
+         Date startDate, String telNumber, String eamil, char gender)
+   {
+      super();
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.id = id;
+      this.dob = dob;
+      this.startDate = startDate;
+      this.telNumber = telNumber;
+      this.eamil = eamil;
+      this.gender = gender;
+     
+   }
+
+   public Employee(String firstName, String lastName, int id, Date dob, String telNumber, String eamil)
+   {
+      super();
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.id = id;
+      this.dob = dob;
+      this.startDate = startDate;
+      this.telNumber = telNumber;
+      this.eamil = eamil;
+      this.gender = gender;
+     
+   }
 
   
 
-   public Employee(String firstName2, String lastName2, int id2, String dob2,
-         String telNumber2, String email, String gender2, String startDate2)
-   {
-      // TODO Auto-generated constructor stub
-   }
 
    public void setFirstName(String firstName)
    {
