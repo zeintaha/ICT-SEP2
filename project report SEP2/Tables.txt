@@ -137,5 +137,6 @@ Create table PrescriptionRecord
 	Foreign key (medicineName) References Medicine (medicineName));
 );
 
-
+insert into patient(firstname, lastname, patientid, dob, telnumber, email) values
+('nadeem','muhammad','p001', '16/04/1979', '61279786', 'nadeem4eco@yahoo.com');
 	
