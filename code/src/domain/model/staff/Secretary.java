@@ -9,10 +9,10 @@ private Type type;
 
 
 
-   public Secretary(String firstName, String lastName, int id, Date dob, String telNumber,
+   public Secretary(String firstName, String lastName, int id, String telNumber,
       String email)
 {
-   super(firstName,lastName,id, dob, telNumber,email);
+   super(firstName,lastName,id, telNumber,email);
 }
 
    public Type getType()

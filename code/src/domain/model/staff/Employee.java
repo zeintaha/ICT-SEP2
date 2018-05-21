@@ -30,7 +30,7 @@ abstract public class Employee
      
    }
 
-   public Employee(String firstName, String lastName, int id, Date dob, String telNumber, String eamil)
+   public Employee(String firstName, String lastName, int id,  String telNumber, String eamil)
    {
       super();
       this.firstName = firstName;

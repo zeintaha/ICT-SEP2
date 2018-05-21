@@ -24,7 +24,7 @@ public class StaffDatabase
    private  final String DRIVER = "org.postgresql.Driver";
    private  final String URL = "jdbc:postgresql://localhost:5432/postgres";
    private  final String USER = "postgres";
-   private  final String PASSWORD = "123456789";
+   private  final String PASSWORD = "0940";
 
 public StaffDatabase() throws ClassNotFoundException {
    this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
@@ -62,22 +62,10 @@ public  EmployeeList load() throws IOException
             email = row[5].toString();
             gender = row[6].toString();
             
-            String string = "February 3, 2010";
-            DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
-           
-            try
-            {
-               Date date = format.parse(string);
-            }
-            catch (ParseException e)
-            {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-            }
-            
+         
             
 
-         Employee employee = new Secretary(firstName, lastName, id, date, telNumber, email);
+         Employee employee = new Secretary(firstName, lastName, id, telNumber, email);
          employees.addEmployee(employee);
          System.out.println(employees.getNumerOfEmployees());
          System.out.println(employees.getEmployeeByName("Taha"));
