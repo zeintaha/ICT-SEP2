@@ -7,6 +7,6 @@ public class Test
 public static void main(String[] args) throws ClassNotFoundException, IOException
 {
    StaffDatabase test = new StaffDatabase();
-   test.load();
+//   test.load();
 }
 }
