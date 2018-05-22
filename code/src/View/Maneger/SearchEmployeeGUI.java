@@ -73,7 +73,11 @@ public class SearchEmployeeGUI extends JFrame implements ManegerView
       
      this.manegerController= manegerController;
      this.listener = new ButtonHandler(this,this.manegerController);
-//     button.addActionListener(listener);
+     if (!(button == null))
+     {
+
+        button.addActionListener(listener);
+     }
      setVisible(true);
    }
      
