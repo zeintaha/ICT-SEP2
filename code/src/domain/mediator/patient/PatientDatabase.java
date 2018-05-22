@@ -1,4 +1,4 @@
-package domian.mediator.patient;
+package domain.mediator.patient;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,8 +50,8 @@ public class PatientDatabase implements PatientPersistence {
 				telNumber = row[4].toString();
 				 email = row[5].toString();
 				 
-				Patient patient = new Patient(firstName, lastName, patientid, date,telNumber,email);
-				patients.addPatient(patient);
+//				Patient patient = new Patient(firstName, lastName, patientid, date,telNumber,email);
+//				patients.addPatient(patient);
 
 			}
 		} catch (SQLException e) {

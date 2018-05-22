@@ -2,92 +2,75 @@ package domain.model.patient;
 
 import java.util.Date;
 
-public class Patient
-{
+public class Patient {
    private String firstName;
    private String lastName;
-   private int id;
+   private String id;
    private String email;
    private Date dob;
    private String telNumber;
 
-   public Patient(String firstName, String lastName, int id, String email,
-         Date dob, String telNumber)
-   {
+   public Patient(String firstName, String lastName, String id, Date dob, String telNumber, String email) {
 
       this.firstName = firstName;
       this.lastName = lastName;
       this.id = id;
-      this.email = email;
       this.dob = dob;
       this.telNumber = telNumber;
+      this.email = email;
    }
 
-   public String getFirstName()
-   {
+   public String getFirstName() {
       return firstName;
    }
 
-   public void setFirstName(String firstName)
-   {
+   public void setFirstName(String firstName) {
       this.firstName = firstName;
    }
 
-   public String getLastName()
-   {
+   public String getLastName() {
       return lastName;
    }
 
-   public void setLastName(String lastName)
-   {
+   public void setLastName(String lastName) {
       this.lastName = lastName;
    }
 
-   public int getId()
-   {
+   public String getId() {
       return id;
    }
 
-   public void setId(int id)
-   {
+   public void setId(String id) {
       this.id = id;
    }
 
-   public String getEmail()
-   {
+   public String getEmail() {
       return email;
    }
 
-   public void setEmail(String email)
-   {
+   public void setEmail(String email) {
       this.email = email;
    }
 
-   public Date getDob()
-   {
+   public Date getDob() {
       return dob;
    }
 
-   public void setDob(Date dob)
-   {
+   public void setDob(Date dob) {
       this.dob = dob;
    }
 
-   public String getTelNumber()
-   {
+   public String getTelNumber() {
       return telNumber;
    }
 
-   public void setTelNumber(String telNumber)
-   {
+   public void setTelNumber(String telNumber) {
       this.telNumber = telNumber;
    }
 
-   public String toString()
-   {
-      return "Patient [firstName=" + firstName + ", lastName=" + lastName
-            + ", id=" + id + ", email=" + email + ", dob=" + dob
-            + ", telNumber=" + telNumber + "]";
+   public String toString() {
+      return "Patient [firstName=" + firstName + ", lastName=" + lastName + ", id=" + id + ", dob=" + dob
+            + ", telNumber=" + telNumber + ", email=" + email + "]";
    }
 
 }

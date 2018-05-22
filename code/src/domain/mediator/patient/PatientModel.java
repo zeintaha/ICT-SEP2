@@ -1,4 +1,4 @@
-package domian.mediator.patient;
+package domain.mediator.patient;
 
 import java.io.IOException;
 

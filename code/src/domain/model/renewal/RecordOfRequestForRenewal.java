@@ -1,4 +1,4 @@
-package domian.model.renewel;
+package domain.model.renewal;
 
 import domain.model.medicalrecord.PrescriptionRecord;
 
