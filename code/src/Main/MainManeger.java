@@ -15,6 +15,6 @@ public class MainManeger
       StaffClinicModel model = new StaffClinicModelManeger();
       SearchEmployeeGUI view = new SearchEmployeeGUI();
       ManegerController controller = new ManegerController(model, view);
-      view.strat(controller);
+      view.start(controller);
    }
 }

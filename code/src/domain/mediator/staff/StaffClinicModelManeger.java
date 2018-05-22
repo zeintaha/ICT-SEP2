@@ -8,11 +8,11 @@ import domain.model.staff.EmployeeList;
 public class StaffClinicModelManeger implements StaffClinicModel
 {
    private EmployeeList list;
-   private StaffPersistence persistence;
+   private StaffDatabase persistence;
 
    public StaffClinicModelManeger() throws IOException, ClassNotFoundException
    {
-      this.persistence = (StaffPersistence) new StaffDatabase();
+      this.persistence = new StaffDatabase();
       this.list = persistence.load();
    }
 
@@ -22,27 +22,27 @@ public class StaffClinicModelManeger implements StaffClinicModel
       return list;
    }
 
-   @Override
-   public void addOneEmployee(Employee employee)
-   {
-     list.addEmployee(employee);
-     try { 
-        persistence.save(employee);
-     } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-     }
+//   @Override
+//   public void addOneEmployee(Employee employee)
+//   {
+//     list.addEmployee(employee);
+//     try { 
+//        persistence.save(employee);
+//     } catch (IOException e) {
+//        // TODO Auto-generated catch block
+//        e.printStackTrace();
+//     }
+//
+//   } 
 
-   } 
-
-   @Override
-   public void removeEmployee(Employee employee) throws IOException
-   {
-     
-      list.removeEmployee(employee);
-      persistence.remove(employee);
-
-   }
+//   @Override
+//   public void removeEmployee(Employee employee) throws IOException
+//   {
+//     
+//      list.removeEmployee(employee);
+//      persistence.remove(employee);
+//
+//   }
 
    @Override
    public Employee getEmployeeByname(String name)
@@ -50,11 +50,11 @@ public class StaffClinicModelManeger implements StaffClinicModel
     Employee employee = list.getEmployeeByName(name);
     return employee;
    }
-
-   @Override
-   public int getNumberOfEmployees()
-   {
-     return list.getNumerOfEmployees();
-   }
+//
+//   @Override
+//   public int getNumberOfEmployees()
+//   {
+//     return list.getNumerOfEmployees();
+//   }
 
 }
