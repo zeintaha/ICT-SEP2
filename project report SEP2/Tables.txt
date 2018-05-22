@@ -3,9 +3,9 @@ set search_path = 'Clinic';
 
 CREATE TABLE Patient
 (
+	patientId       CHAR (4),
     firstName       VARCHAR (20),
     lastName        VARCHAR (20),
-    patientId       CHAR (4),
     dob			    DATE,
 	telNumber		VARCHAR (20),
 	email			VARCHAR (40),
@@ -16,9 +16,9 @@ CREATE TABLE Patient
 	
 CREATE TABLE Employee
 (
+	employeeId      CHAR (4),
     firstName       VARCHAR (20),
     lastName        VARCHAR (20),
-    employeeId      CHAR (4),
     dob			    DATE,
 	telNumber		VARCHAR (20),
 	email			VARCHAR (40),
@@ -30,13 +30,14 @@ CREATE TABLE Employee
 
 CREATE TABLE Secretary
 (
+	secretaryId       CHAR (4),
     firstName       VARCHAR (20),
     lastName        VARCHAR (20),
-    secretaryId       CHAR (4),
     dob			    DATE,
 	telNumber		VARCHAR (20),
 	email			VARCHAR (40),
 	gender			char (1),
+	startDate		DATE,
 		
     PRIMARY KEY (secretaryId));
 	
@@ -45,13 +46,14 @@ select * from doctor;
 
 CREATE TABLE Doctor
 (
+	doctorId        CHAR (4),
     firstName       VARCHAR (20),
     lastName        VARCHAR (20),
-    doctorId        CHAR (4),
     dob			    DATE,
 	telNumber		VARCHAR (20),
 	email			VARCHAR (40),
 	gender			char (1),
+	startDate		DATE,
 		
     PRIMARY KEY (doctorId));
 	
@@ -69,10 +71,11 @@ Create table RequestRenewal
 
 Create table Appointment
 (
+	patientId			CHAR (4),
 	dateOfAppointment	CHAR (4),
 	time				DATE,	
 	date				DATE,
-	patientId			CHAR (4),
+	
 	
 	PRIMARY KEY	(dateOfAppointment, time ), 
 	FOREIGN KEY (patientID) REFERENCES Patient(patientID));
@@ -80,31 +83,35 @@ Create table Appointment
 	
 Create table Medicine
 (
-	medicineName		VarChar (20),
+	medicineId			Char (4),
+	name				VarChar (20),
 	type				VarChar (20),
 	description			VarChar (50),
 	
-	Primary key (medicineName));
+	Primary key (medicineId));
 	
 	
 Create table RecordsOfRequestForRenewal
 (
-	approved			CHAR (4),
-	quantity			DATE,	
-	dailyDosage			DATE,
-	requestRenewalId	CHAR (4),
-	medicineName		VARCHAR (20),
+	recordsOfRequestForRenewalId		Char (4),
+	requestRenewalId					CHAR (4),
+	medicineId							Char (4),
+	approved							CHAR (4),
+	quantity							DATE,	
+	dailyDosage							DATE,
 	
-	PRIMARY KEY	(requestRenewalId),
+	
+	PRIMARY KEY	(recordsOfRequestForRenewalId),
 	FOREIGN KEY (requestRenewalId) REFERENCES RequestRenewal(requestRenewalId),
-	FOREIGN KEY (medicineName) REFERENCES Medicine(medicineName));	
+	FOREIGN KEY (medicineId) REFERENCES Medicine(medicineId));	
 
 
 Create table Precription
 (
 	prescriptionId		Char (4),
-	date				DATE,
 	caseId				Char (4),
+	date				DATE,
+
 	
 	Primary key (prescriptionId),
 	Foreign key (caseId) References MedicalCase (caseId));
@@ -113,29 +120,31 @@ Create table Precription
 Create table MedicalCase
 (
 	caseId				Char (4),
+	medicalRecodId		Char (4),
 	caseTitle			VarChar (20),
 	caseBody			VarChar (20),
 	date				DATE,
-	medicalRecodsId		Char (4),
 	Primary key (caseId),
-	Foreign key (medicalRecodsId) References MedicalRecord (medicalRecodsId));
+	Foreign key (medicalRecodId) References MedicalRecord (medicalRecodId));
 
 
 Create table MedicalRecord
 (
-	medicalRecodsId		Char (4),
+	medicalRecodId		Char (4),
 	
-	Primary key (medicalRecodsId));
+	Primary key (medicalRecodId));
 
 Create table PrescriptionRecord
 (
 	prescriptionRecordId	Char (4),
+	medicineId				VarChar (20),
 	dailyDose				VarChar (2),
-	medicineName			VarChar (20),
+
 	
 	Primary key (prescriptionRecordId),
-	Foreign key (medicineName) References Medicine (medicineName));
-);
+	Foreign key (medicineId) References Medicine (medicineId));
 
 
+
+	
 	
