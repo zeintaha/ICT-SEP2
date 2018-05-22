@@ -1,34 +1,27 @@
 package controller.employee.maneger;
-import java.io.IOException;
-
 import javax.swing.JButton;
 
 
 
 import com.sun.glass.ui.View;
 
-import View.Maneger.SearchEmployeeGUI;
 import domain.Facad;
 import domain.mediator.staff.StaffClinicModel;
-import domain.mediator.staff.StaffClinicModelManeger;
 
 public class ManegerController
 {
-   private StaffClinicModel staffClinicModel;
-  
-   private SearchEmployeeGUI addManeger;
+   private View addManeger;
    private Facad facad;
-  
    
-   public ManegerController(StaffClinicModel model, SearchEmployeeGUI view) throws ClassNotFoundException, IOException {
-      staffClinicModel = new StaffClinicModelManeger();
-      this.addManeger=view;
+   public ManegerController(Facad facad, View addManeger) {
+      this.facad=facad;
+      this.addManeger=addManeger;
       
      
+
    }
    
    public void executes(String what) {
-      staffClinicModel.getEmployeeByname(what);
       
    }
    
