@@ -55,7 +55,7 @@ public  EmployeeList load() throws IOException
 
             firstName = row[0].toString();
             lastName =row[1].toString();
-      //      id = Integer.parseInt((String) row[2]);
+            id = Integer.parseInt((String) row[2]);
             dob = row[3].toString();
             startDate = row[7].toString();
             telNumber = row[4].toString();
@@ -68,9 +68,8 @@ public  EmployeeList load() throws IOException
          Employee employee = new Secretary(firstName, lastName, id, telNumber, email);
          employees.addEmployee(employee);
          System.out.println(employees.getNumerOfEmployees());
-         System.out.println(employees.getEmployeeByName("Fadi"));
          System.out.println(employees.getEmployeeByName("Taha"));
-  
+         
 
       }
      }
