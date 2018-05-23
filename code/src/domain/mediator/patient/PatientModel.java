@@ -10,6 +10,6 @@ public interface PatientModel {
 	public Patient getPatient(int index);
 	 public void addPatient(Patient patient);
 	 public void removePatient(Patient patient) throws IOException;
-	 public Patient getPatientByName(String name);
+	 public PatientList getPatientByName(String name);
 	 public int getNumberOfPatients();
 }

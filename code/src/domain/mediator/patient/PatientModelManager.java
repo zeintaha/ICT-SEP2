@@ -51,9 +51,10 @@ public class PatientModelManager implements PatientModel {
 	}
 
 	@Override
-	public Patient getPatientByName(String name) {
-		Patient patient = list.getPatientByName(name);
+	public PatientList getPatientByName(String name) {
+		PatientList patient=  list.getPatientByName(name);
 		return patient;
+		
 	}
 
 	@Override

@@ -22,37 +22,41 @@ public class PatientList {
       patients.remove(patient);
 
    }
+   public PatientList getPatientByName(String name) {
+		PatientList list= new PatientList();
+		for (int i = 0; i < patients.size(); i++) {
+			if (patients.get(i).getFirstName().equalsIgnoreCase(name)) {
+				list.addPatient(patients.get(i));
+			}
+		}
+		System.out.println(" we can not find the patient wiht the name : " + name + "!! ");
+		return list;
+	}
 
-   public Patient getPatientByName(String name) {
-      for (int i = 0; i < patients.size(); i++) {
-         if (patients.get(i).getFirstName().equals(name)) {
-            return patients.get(i);
-         }
-      }
-      System.out.println(" we can not find the patient wiht the name : " + name + "!! ");
-      return null;
-   }
+	public PatientList editPatient(String oldName, String newName) {
 
-   public Patient editPatient(String oldName, String newName) {
+		PatientList patient=getPatientByName(oldName);
+				patient.setFirstName(newName);
+				return patient;
+	}
 
-      Patient patient=getPatientByName(oldName);
-            patient.setFirstName(newName);
-            return patient;
-   }
+	private void setFirstName(String newName) {
+		// TODO Auto-generated method stub
+		
+	}
 
-   public Patient searchPatientByName(String name) {
-      Patient patient=getPatientByName(name);
-      return patient;
-   }
+	public PatientList searchPatientByName(String name) {
+		PatientList patient=getPatientByName(name);
+		return patient;
+	}
 
 
-   public int getNumberOfPatient() {
-      // TODO Auto-generated method stub
-      return patients.size();
-   }
-   
-   public ArrayList<Patient> getPatients() {
-      return patients;
-   }
-
+	public int getNumberOfPatient() {
+		// TODO Auto-generated method stub
+		return patients.size();
+	}
+	
+	public ArrayList<Patient> getPatients() {
+		return patients;
+	}
 }
