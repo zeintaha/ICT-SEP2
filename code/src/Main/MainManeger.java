@@ -2,10 +2,10 @@ package Main;
 
 import java.io.IOException;
 
-import View.Maneger.SearchEmployeeGUI;
 import controller.employee.maneger.ManegerController;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
+import view.manager.manageemployee.SearchEmployeeGUI;
 
 public class MainManeger
 {

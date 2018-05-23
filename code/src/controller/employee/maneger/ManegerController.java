@@ -7,11 +7,11 @@ import javax.swing.JButton;
 
 import com.sun.glass.ui.View;
 
-import View.Maneger.SearchEmployeeGUI;
 import domain.Facad;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
 import domain.model.staff.Employee;
+import view.manager.manageemployee.SearchEmployeeGUI;
 
 public class ManegerController
 {

@@ -1,4 +1,4 @@
-package View.Maneger;
+package view.manager.manageemployee;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
