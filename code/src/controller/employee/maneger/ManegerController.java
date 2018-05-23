@@ -11,7 +11,7 @@ import domain.Facad;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
 import domain.model.staff.Employee;
-import view.manager.manageemployee.SearchEmployeeGUI;
+import view.manager.searchemployee.SearchEmployeeGUI;
 
 public class ManegerController
 {

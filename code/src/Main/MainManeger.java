@@ -5,7 +5,7 @@ import java.io.IOException;
 import controller.employee.maneger.ManegerController;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
-import view.manager.manageemployee.SearchEmployeeGUI;
+import view.manager.searchemployee.SearchEmployeeGUI;
 
 public class MainManeger
 {

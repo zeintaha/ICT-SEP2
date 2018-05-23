@@ -1,5 +1,5 @@
 
-package view.manager.manageemployee;
+package view.manager.searchemployee;
 
 import controller.employee.maneger.*;
 
