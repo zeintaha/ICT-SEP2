@@ -1,4 +1,4 @@
-package View.Patient;
+package View.patient.searchpatient;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -51,9 +51,9 @@ public class SearchPatientGUI extends JFrame implements PatientView
 
    private void createComponents()
    {
-      JButton btn = new JButton("Search");
-      btn.setBounds(26, 210, 89, 23);
-      contentPane.add(btn);
+      button = new JButton("Search");
+      button.setBounds(26, 210, 89, 23);
+      contentPane.add(button);
    }
 
    @Override
@@ -63,7 +63,7 @@ public class SearchPatientGUI extends JFrame implements PatientView
       
      this.patientController= patientController;
      this.listener = new ButtonHandler(this,this.patientController);
-     if ((button != null))
+     if (!(button == null))
      {
 
         button.addActionListener(listener);
@@ -80,7 +80,7 @@ public class SearchPatientGUI extends JFrame implements PatientView
    }
 
    @Override
-   public String get()
+   public String getName()
    {
       String name = textField.getText();
       return name;

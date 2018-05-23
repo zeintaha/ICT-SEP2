@@ -1,7 +1,9 @@
-package View.Patient;
+package View.patient.searchpatient;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 
 import controller.patient.PatientController;
 
@@ -20,8 +22,11 @@ public class ButtonHandler implements ActionListener
    @Override
    public void actionPerformed(ActionEvent e)
    {
-     
-      patientController.executes("Search");
+	   if (!(e.getSource() instanceof JButton))
+	         return;
+	      System.out.println("I´m here");
+	      String name = searchPatientGUI.getName();
+	      patientController.executes(name);
    }
 
 }

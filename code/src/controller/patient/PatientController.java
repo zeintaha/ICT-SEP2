@@ -1,10 +1,11 @@
 package controller.patient;
 import java.io.IOException;
 
-import View.Patient.SearchPatientGUI;
+import View.patient.searchpatient.*;
 import domain.Facad;
 import domain.mediator.patient.PatientModel;
 import domain.mediator.patient.PatientModelManager;
+import domain.model.patient.Patient;
 import domain.model.patient.PatientList;
 public class PatientController {
 
@@ -22,7 +23,8 @@ public class PatientController {
 	   }
 	   
 	   public void executes(String what) {
-		      
+		   Patient patient = patientModel.getPatientByName(what);
+		   System.out.println(patient.toString());
 
 	}
 }

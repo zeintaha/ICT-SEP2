@@ -1,5 +1,5 @@
 
-package View.Patient;
+package View.patient.searchpatient;
 
 import controller.patient.PatientController;
 
@@ -9,5 +9,5 @@ public interface PatientView
 
    public void show(String value);
 
-   public String get();
+   public String getName();
 }
