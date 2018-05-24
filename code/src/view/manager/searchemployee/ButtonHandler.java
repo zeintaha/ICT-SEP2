@@ -5,23 +5,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import controller.employee.maneger.SearchEmployeeController;
+import controller.employee.maneger.ManegerController;
 
 public class ButtonHandler implements ActionListener
 {
-<<<<<<< HEAD
    private SearchEmployeeGUI search;
-   private SearchEmployeeController manegerController;
-
-   public ButtonHandler(SearchEmployeeGUI search,
-         SearchEmployeeController manegerController)
-=======
-   private SearchEmployeeGUIOld searchEmployeeGUI;
    private ManegerController manegerController;
 
-   public ButtonHandler(SearchEmployeeGUIOld searchEmployeeGUI,
+   public ButtonHandler(SearchEmployeeGUI search,
          ManegerController manegerController)
->>>>>>> 90ecc797ccbe4f3f05982b488a98ac9f760655ec
    {
       this.search = search;
       this.manegerController = manegerController;
