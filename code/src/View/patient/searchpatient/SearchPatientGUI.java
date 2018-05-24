@@ -1,4 +1,4 @@
-package View.patient.searchpatient;
+package view.patient.searchpatient;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

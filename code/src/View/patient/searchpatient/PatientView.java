@@ -1,5 +1,5 @@
 
-package View.patient.searchpatient;
+package view.patient.searchpatient;
 
 import controller.patient.PatientController;
 

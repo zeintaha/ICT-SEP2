@@ -1,8 +1,8 @@
-package Main;
+package main;
 
 import java.io.IOException;
 
-import View.patient.searchpatient.*;
+import view.patient.searchpatient.*;
 import controller.patient.PatientController;
 import domain.mediator.patient.PatientModel;
 import domain.mediator.patient.PatientModelManager;
