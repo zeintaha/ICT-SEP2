@@ -9,10 +9,10 @@ import controller.employee.maneger.ManegerController;
 
 public class ButtonHandler implements ActionListener
 {
-   private SearchEmployeeGUI searchEmployeeGUI;
+   private SearchEmployeeGUIOld searchEmployeeGUI;
    private ManegerController manegerController;
 
-   public ButtonHandler(SearchEmployeeGUI searchEmployeeGUI,
+   public ButtonHandler(SearchEmployeeGUIOld searchEmployeeGUI,
          ManegerController manegerController)
    {
       this.searchEmployeeGUI = searchEmployeeGUI;

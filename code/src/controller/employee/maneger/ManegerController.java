@@ -11,17 +11,17 @@ import domain.Facad;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
 import domain.model.staff.Employee;
-import view.manager.searchemployee.SearchEmployeeGUI;
+import view.manager.searchemployee.SearchEmployeeGUIOld;
 
 public class ManegerController
 {
    private StaffClinicModel staffClinicModel;
   
-   private SearchEmployeeGUI addManeger;
+   private SearchEmployeeGUIOld addManeger;
    private Facad facad;
   
    
-   public ManegerController(StaffClinicModel model, SearchEmployeeGUI view) throws ClassNotFoundException, IOException {
+   public ManegerController(StaffClinicModel model, SearchEmployeeGUIOld view) throws ClassNotFoundException, IOException {
       staffClinicModel = new StaffClinicModelManeger();
       this.addManeger=view;
       

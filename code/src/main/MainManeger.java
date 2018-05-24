@@ -1,11 +1,11 @@
-package Main;
+package main;
 
 import java.io.IOException;
 
 import controller.employee.maneger.ManegerController;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
-import view.manager.searchemployee.SearchEmployeeGUI;
+import view.manager.searchemployee.SearchEmployeeGUIOld;
 
 public class MainManeger
 {
@@ -13,7 +13,7 @@ public class MainManeger
          throws IOException, ClassNotFoundException
    {
       StaffClinicModel model = new StaffClinicModelManeger();
-      SearchEmployeeGUI view = new SearchEmployeeGUI();
+      SearchEmployeeGUIOld view = new SearchEmployeeGUIOld();
       ManegerController controller = new ManegerController(model, view);
       view.start(controller);
    }
