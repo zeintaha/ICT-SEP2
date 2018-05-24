@@ -24,6 +24,9 @@ CREATE TABLE Employee
 	email			VARCHAR (40),
 	gender			char (1),
 	startDate		DATE,
+	userName		VarChar (20),
+	password		VarChar (20),
+	type			Varchar	(20),
 	
     PRIMARY KEY (employeeId));	
 	
