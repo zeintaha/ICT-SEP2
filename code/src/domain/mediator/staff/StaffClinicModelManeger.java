@@ -23,18 +23,18 @@ public class StaffClinicModelManeger implements StaffClinicModel
       return list;
    }   
 
-//   @Override
-//   public void addOneEmployee(Employee employee)
-//   {
-//     list.addEmployee(employee);
-//     try { 
-//        persistence.save(employee);
-//     } catch (IOException e) {
-//        // TODO Auto-generated catch block
-//        e.printStackTrace();
-//     }
-//
-//   } 
+   @Override
+   public void addOneEmployee(Employee employee)
+   {
+     list.addEmployee(employee);
+     try {
+        persistence.save(employee);
+     } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+     }
+
+   }
 
 //   @Override
 //   public void removeEmployee(Employee employee) throws IOException

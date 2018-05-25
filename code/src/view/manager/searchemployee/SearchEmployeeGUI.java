@@ -115,7 +115,14 @@ public class SearchEmployeeGUI extends JFrame
 
     for (int i = 0; i < employees.size(); i++)
    {
+       
        String firstName = employees.get(i).getFirstName();
+      
+       if(!(firstName==null) ) {
+          String firstNameTable = null;
+          firstNameTable = firstName.toString();
+       }
+       
        String lastName = employees.get(i).getLastName();
        String id = String.valueOf(employees.get(i).getId());
        

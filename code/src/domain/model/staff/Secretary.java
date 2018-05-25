@@ -4,25 +4,24 @@ import java.util.Date;
 
 public class Secretary extends Employee
 {
-private Type type;
+  
 
+   public Secretary(String userName, String password, String firstName,
+         String lastName, int id, Date dob, Type type, Date startDate,
+         String telNumber, String eamil, char gender)
+   {
+      super(userName, password, firstName, lastName, id, dob, type, startDate,
+            telNumber, eamil, gender);
+      type = Type.Secratary;
 
-
+   }
 
    public Secretary(String firstName, String lastName, int id, String telNumber,
-      String email)
-{
-   super(firstName,lastName,id, telNumber,email);
-}
-
-   public Type getType()
+         String email)
    {
-      return type;
+      super(firstName, lastName, id, telNumber, email);
    }
 
-   public void setType(Type type)
-   {
-      this.type = type;
-   }
- 
+  
+
 }

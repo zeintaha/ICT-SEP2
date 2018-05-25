@@ -4,24 +4,19 @@ import java.util.Date;
 
 public class Maneger extends Employee
 {
-   private Type type;
+ 
 
-   public Maneger(String firstName, String lastName, int id, Date dob,
-         Date startDate, String telNumber, String eamil, char gender, Type type)
+   public Maneger(String userName, String password, String firstName,
+         String lastName, int id, Date dob, Type type, Date startDate,
+         String telNumber, String eamil, char gender)
    {
-      super(firstName, lastName, id, dob, startDate, telNumber, eamil, gender);
-      this.type = Type.Doctor;
+      super( userName,  password, firstName,
+             lastName,  id,  dob,  type,  startDate,
+             telNumber,  eamil,  gender);
+      type = Type.Maneger;
 
    }
 
-   public Type getType()
-   {
-      return type;
-   }
-
-   public void setType(Type type)
-   {
-      this.type = type;
-   }
+  
 
 }
