@@ -1,17 +1,20 @@
 package view.manager.addemployee;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-public class AddEmployeeGUI extends JFrame
+import controller.employee.maneger.AddEmployeeController;
+import domain.model.staff.Doctor;
+import domain.model.staff.Employee;
+import domain.model.staff.Maneger;
+
+public class AddEmployeeGUI extends JFrame implements AddEmployeeView
+
 {
 
    private JPanel contentPane;
@@ -22,28 +25,14 @@ public class AddEmployeeGUI extends JFrame
    private JTextField txtEmail;
    private JTextField txtGender;
    private JTextField txtStartDate;
-
+   private JButton btnAdd;
+   private JComboBox cmbEmployeeType;
+   
+   private AddEmployeeController addEmployeeController;
+   private AddEmployeeButtonHandler listener;
    /**
     * Launch the application.
     */
-   public static void main(String[] args)
-   {
-      EventQueue.invokeLater(new Runnable()
-      {
-         public void run()
-         {
-            try
-            {
-               AddEmployeeGUI frame = new AddEmployeeGUI();
-               frame.setVisible(true);
-            }
-            catch (Exception e)
-            {
-               e.printStackTrace();
-            }
-         }
-      });
-   }
 
    /**
     * Create the frame.
@@ -58,7 +47,7 @@ public class AddEmployeeGUI extends JFrame
       setContentPane(contentPane);
       contentPane.setLayout(null);
       
-      JComboBox cmbEmployeeType = new JComboBox();
+      cmbEmployeeType = new JComboBox();
       cmbEmployeeType.setBounds(236, 26, 116, 22);
       contentPane.add(cmbEmployeeType);
       
@@ -129,8 +118,44 @@ public class AddEmployeeGUI extends JFrame
       lblStartDate.setBounds(62, 348, 162, 16);
       contentPane.add(lblStartDate);
       
-      JButton btnAdd = new JButton("Add");
+      btnAdd = new JButton("Add");
       btnAdd.setBounds(323, 415, 97, 25);
       contentPane.add(btnAdd);
    }
+
+   @Override
+   public void start(AddEmployeeController controller)
+   {
+      
+     this.addEmployeeController= controller;
+     this.listener = new AddEmployeeButtonHandler(this,this.addEmployeeController);
+     if (!(btnAdd == null))
+     {
+
+        btnAdd.addActionListener(listener);
+     }
+        
+     setVisible(true);
+      
+   }
+
+   @Override
+   public void show(String value)
+   {
+    
+      
+   }
+
+   @Override
+   public void getEmployee()
+   {
+//      if (cmbEmployeeType.getSelectedItem().toString().equals("Doctor"))
+//      {
+//         Employee employee= new Doctor(txtFirstName.getText(),txtLastName.getText(),txtDOB.getColumns());    
+//      }
+     
+   }
+
+
+
 }
