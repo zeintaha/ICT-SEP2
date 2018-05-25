@@ -1,2 +1,10 @@
+<<<<<<< HEAD
 code/.classpath
 code/src/domain/mediator/staff/StaffDatabase.java
+=======
+
+code/src/domain/mediator/staff/StaffDatabase.java
+
+code/.classpath
+
+>>>>>>> da0e619b5b6b9597892ad13bef39648cf1dc0104
