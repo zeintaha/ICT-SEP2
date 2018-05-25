@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import controller.employee.maneger.ManegerController;
+import controller.employee.maneger.SearchEmployeeController;
 import domain.model.staff.Employee;
 
 import javax.swing.JLabel;
@@ -21,7 +21,7 @@ import javax.swing.JTable;
 
 public class SearchEmployeeGUI extends JFrame
 {
-   private ManegerController manegerController;
+   private SearchEmployeeController searchEmployeeController;
    private JPanel contentPane;
    private JTextField txtName;
    private JTable table;
@@ -52,7 +52,7 @@ public class SearchEmployeeGUI extends JFrame
    /**
     * Create the frame.
     */
-   public SearchEmployeeGUI(ManegerController manegerController)
+   public SearchEmployeeGUI(SearchEmployeeController searchEmployeeController)
    {
       
       
@@ -83,8 +83,8 @@ public class SearchEmployeeGUI extends JFrame
       contentPane.add(table);
       
       
-      this.manegerController= manegerController;
-      this.listener = new ButtonHandler(this,this.manegerController);
+      this.searchEmployeeController= searchEmployeeController;
+      this.listener = new ButtonHandler(this,this.searchEmployeeController);
       if (!(btnSearch == null))
       {
 
