@@ -9,12 +9,12 @@ import domain.mediator.staff.StaffClinicModelManeger;
 import domain.model.staff.Employee;
 import view.manager.searchemployee.SearchEmployeeGUI;
 
-public class ManegerController
+public class SearchEmployeeController
 {
    private StaffClinicModel staffClinicModel;
    private SearchEmployeeGUI searchEmployee;
 
-   public ManegerController(StaffClinicModel model)
+   public SearchEmployeeController(StaffClinicModel model)
          throws ClassNotFoundException, IOException
    {
       staffClinicModel = new StaffClinicModelManeger();

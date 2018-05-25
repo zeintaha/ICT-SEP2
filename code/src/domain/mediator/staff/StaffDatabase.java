@@ -24,7 +24,7 @@ public class StaffDatabase
    private  final String DRIVER = "org.postgresql.Driver";
    private  final String URL = "jdbc:postgresql://localhost:5432/postgres";
    private  final String USER = "postgres";
-   private  final String PASSWORD = "123456789";
+   private  final String PASSWORD = "0940";
 
 public StaffDatabase() throws ClassNotFoundException {
    this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
@@ -36,10 +36,10 @@ public  EmployeeList load() throws IOException
    ArrayList<Object[]> results;
    EmployeeList employees = new EmployeeList();
   
-   String firstName = "?", lastName = "?";
-   String telNumber = "?", email = "?";
-   String gender = "?", startDate = "?";
-   String dob = "?";
+   String firstName = "", lastName = "";
+   String telNumber = "", email = "";
+   String gender = "", startDate = "";
+   String dob = "";
    int id = 0;
    
    
@@ -67,7 +67,7 @@ public  EmployeeList load() throws IOException
 
          Employee employee = new Secretary(firstName, lastName, id, telNumber, email);
          employees.addEmployee(employee);
-         System.out.println(employees.getNumerOfEmployees());
+//         System.out.println(employees.getNumerOfEmployees());
 //         System.out.println(employees.getEmployeeByName("Fadi"));
 //         System.out.println(employees.getEmployeeByName("Taha"));
   

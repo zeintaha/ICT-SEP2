@@ -9,13 +9,13 @@ import controller.employee.maneger.ManegerController;
 
 public class ButtonHandler implements ActionListener
 {
-   private SearchEmployeeGUIOld searchEmployeeGUI;
+   private SearchEmployeeGUI search;
    private ManegerController manegerController;
 
-   public ButtonHandler(SearchEmployeeGUIOld searchEmployeeGUI,
+   public ButtonHandler(SearchEmployeeGUI search,
          ManegerController manegerController)
    {
-      this.searchEmployeeGUI = searchEmployeeGUI;
+      this.search = search;
       this.manegerController = manegerController;
    }
 
@@ -25,8 +25,7 @@ public class ButtonHandler implements ActionListener
       if (!(e.getSource() instanceof JButton))
          return;
       System.out.println("I´m here");
-      String name = searchEmployeeGUI.getName();
-      manegerController.executes(name);
+      manegerController.executes();
    }
 
 }

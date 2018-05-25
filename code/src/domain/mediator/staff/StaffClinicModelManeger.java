@@ -1,6 +1,7 @@
 package domain.mediator.staff;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import domain.model.staff.Employee;
 import domain.model.staff.EmployeeList;
@@ -20,7 +21,7 @@ public class StaffClinicModelManeger implements StaffClinicModel
    {
       // TODO Auto-generated method stub
       return list;
-   }
+   }   
 
 //   @Override
 //   public void addOneEmployee(Employee employee)
@@ -45,10 +46,14 @@ public class StaffClinicModelManeger implements StaffClinicModel
 //   }
 
    @Override
-   public Employee getEmployeeByname(String name)
-   {
-    Employee employee = list.getEmployeeByName(name);
-    return employee;
+   public ArrayList<Employee> getEmployeeByname(String name)
+   { 
+      Employee employee = list.getEmployeeByName(name);
+      ArrayList<Employee> employees = new ArrayList<Employee>();
+      employees.add(employee);
+      
+    
+    return employees;
    }
 //
 //   @Override
