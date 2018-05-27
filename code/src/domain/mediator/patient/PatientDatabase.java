@@ -19,7 +19,7 @@ public class PatientDatabase implements PatientPersistence {
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 
 	private static final String USER = "postgres";
-	private static final String PASSWORD = "123456789";
+	private static final String PASSWORD = "0940";
 
 	public PatientDatabase() throws ClassNotFoundException {
 		this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
