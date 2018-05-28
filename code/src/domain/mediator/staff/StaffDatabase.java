@@ -82,6 +82,29 @@ public  EmployeeList load() throws IOException
    return employees;
 }
 
+public synchronized void save(Employee employee) throws IOException {
+   {
+
+       try {
+//            String sql = "SELECT * from \"Clinic\".employee;";
+//            ArrayList<Object[]> results = db.query(sql, patient.getFirstName(), patient.getLastName(),
+//                    patient.getId(), patient.getDob(), patient.getTelNumber(), patient.getEmail());
+ //
+//            if (results.size() > 0) {
+//                return;
+//            }
+
+           String sql = "INSERT INTO \"Clinic\".employee (firstname, lastname, id, dob, telnumber, email, gender, startdate)"
+                   + "VALUES (? , ? , ? , ? , ? , ?, ? , ?);";
+           db.update(sql, employee.getFirstName(), employee.getLastName(), employee.getId(), employee.getDob(),
+                 employee.getTelNumber(), employee.getEamil(),employee.getGender(),employee.getStartDate());
+
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+   }
+
+
 
 
 
@@ -122,5 +145,5 @@ public  EmployeeList load() throws IOException
 //    }
 //    System.out.println("Database query ok ");
 //  }
-
+}
 }
