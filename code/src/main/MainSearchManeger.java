@@ -10,11 +10,10 @@ import view.manager.searchemployee.SearchEmployeeGUI;
 public class MainSearchManeger {
 	public static void main(String args[]) throws IOException, ClassNotFoundException {
 		StaffClinicModel model = new StaffClinicModelManeger();
+		
+		SearchEmployeeGUI view = new SearchEmployeeGUI();
+		SearchEmployeeController searchEmployeeController = new SearchEmployeeController(model,view);
+		view.start(searchEmployeeController);
 
-		SearchEmployeeController controller = new SearchEmployeeController(model);
-		SearchEmployeeGUI view = new SearchEmployeeGUI(controller);
-		controller.initializeVew(view);
-
-		// view.start(controller);
 	}
 }

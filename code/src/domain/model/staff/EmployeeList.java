@@ -27,7 +27,7 @@ public class EmployeeList
    {
       for (int i = 0; i < employees.size(); i++)
       {
-         if (employees.get(i).getFirstName().equals(name))
+         if (employees.get(i).getFirstName().equalsIgnoreCase(name))
          {
             return employees.get(i);
          }
@@ -37,11 +37,11 @@ public class EmployeeList
       return null;
    }
 
-   public Employee getEmployeeById(int id)
+   public Employee getEmployeeById(String id)
    {
       for (int i = 0; i < employees.size(); i++)
       {
-         if (employees.get(i).getId() == id)
+         if (employees.get(i).getId().equals(id))
          {
             return employees.get(i);
          }
@@ -69,13 +69,7 @@ public class EmployeeList
 
    }
 
-   public Employee searchEmployeeById(int id)
-   {
-      Employee employee = getEmployeeById(id);
-
-      return employee;
-
-   }
+   
 
       public int getNumerOfEmployees() {
          return employees.size();

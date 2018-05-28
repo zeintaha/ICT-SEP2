@@ -9,15 +9,15 @@ import controller.employee.maneger.SearchEmployeeController;
 
 
 
-public class ButtonHandler implements ActionListener
+public class SearchEmployeeButtonHandler implements ActionListener
 {
-   private SearchEmployeeGUI search;
+   
    private SearchEmployeeController searchEmployeeController;
 
-   public ButtonHandler(SearchEmployeeGUI search,
+   public SearchEmployeeButtonHandler(
 		   SearchEmployeeController searchEmployeeController)
    {
-      this.search = search;
+      
       this.searchEmployeeController = searchEmployeeController;
    }
 

@@ -8,17 +8,19 @@ abstract public class Employee
    private String password;
    private String firstName;
    private String lastName;
-   private int id;
+   private String id;
    private Date dob;
    private Type type;
    private Date startDate;
    private String telNumber;
    private String eamil;
-   private char gender;
+   private String gender;
 
-
-   public Employee(String firstName, String lastName, int id, String telNumber,
-         String eamil)
+// this constructor for earchEmployeeView I did not add the userName and the Password to it since we did not finalise them 
+   // either on the database side or on the GUI 
+   public Employee(String firstName,
+	         String lastName, String id, Date dob, Date startDate,
+	         String telNumber, String eamil, String gender,Type type)
    {
       super();
       this.firstName = firstName;
@@ -33,8 +35,8 @@ abstract public class Employee
    }
 
    public Employee(String userName, String password, String firstName,
-         String lastName, int id, Date dob, Type type, Date startDate,
-         String telNumber, String eamil, char gender)
+         String lastName, String id, Date dob, Type type, Date startDate,
+         String telNumber, String eamil, String gender)
    {
      
       this.userName = userName;
@@ -60,7 +62,7 @@ abstract public class Employee
       this.lastName = lastName;
    }
 
-   public void setId(int id)
+   public void setId(String id)
    {
       this.id = id;
    }
@@ -85,7 +87,7 @@ abstract public class Employee
       this.eamil = eamil;
    }
 
-   public void setGender(char gender)
+   public void setGender(String gender)
    {
       this.gender = gender;
    }
@@ -100,7 +102,7 @@ abstract public class Employee
       return lastName;
    }
 
-   public int getId()
+   public String getId()
    {
       return id;
    }
@@ -125,7 +127,7 @@ abstract public class Employee
       return eamil;
    }
 
-   public char getGender()
+   public String getGender()
    {
       return gender;
    }
