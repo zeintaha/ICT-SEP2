@@ -5,4 +5,14 @@ public enum Type
 Doctor,
 Secratary,
 Maneger;
+
+    public static String[] enumsToStringArray() {
+        String[] results = new String[Type.values().length];
+        int count = 0;
+        for (Type each  : Type.values()) {
+            results[count] = each.toString();
+            count++;
+        }
+        return results;
+    }
 }

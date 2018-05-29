@@ -28,8 +28,9 @@ public class StaffDatabase {
 	public StaffDatabase() throws ClassNotFoundException {
 		this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
 	}
-
-	public EmployeeList load() throws IOException {
+	
+/*//
+ * public EmployeeList load() throws IOException {
 		String sql = "SELECT * FROM \"Clinic\".employee;";
 		ArrayList<Object[]> results;
 		EmployeeList employees = new EmployeeList();
@@ -67,13 +68,69 @@ public class StaffDatabase {
 		return employees;
 	}
 
+ */
+
+	public EmployeeList load() throws IOException {
+		String sql = "SELECT * FROM \"Clinic\".employee;";
+		ArrayList<Object[]> results;
+		EmployeeList employees = new EmployeeList();
+
+		String firstName = " ", lastName = " ";
+		String telNumber = " ", email = " ";
+		String gender = " ";
+		String id = "";
+		Date startDate;
+		Date dob;
+
+		try {
+			results = db.query(sql);
+
+			for (int i = 0; i < results.size(); i++) {
+				Object[] row = results.get(i);
+
+				firstName = row[0].toString();
+				lastName = row[1].toString();
+				id = row[2].toString();
+				dob = (Date) row[3];
+				startDate = (Date) row[7];
+				telNumber = row[4].toString();
+				email = row[5].toString();
+				if(row[6]!= null) {
+					gender = row[6].toString();
+				}
+				String type= null;
+				if(row[7]!= null) {
+					 type = row[7].toString();
+				}
+				
+
+				Employee employee = new Secretary(firstName, lastName, id, dob, startDate, telNumber,email,gender);
+				employees.addEmployee(employee);
+			
+				
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return employees;
+	}
+
 	public synchronized void save(Employee employee) throws IOException {
 		{
 
 			try {
 
-				String sql = "INSERT INTO \"Clinic\".employee (firstname, lastname, id, dob, telnumber, email, gender, startdate)"
+				String sql = "INSERT INTO \"Clinic\".employee (firstname, lastname, employeeid, dob, telnumber, email, gender, startdate)"
 						+ "VALUES (? , ? , ? , ? , ? , ?, ? , ?);";
+				
+				
+//				Employee selectedEmployee = EmployeeFactory.create(employee.getFirstName(), employee.getLastName(), employee.getId(),
+//						null, null, employee.getTelNumber(),employee.getEamil(),employee.getGender(), null);
+//				
+				
+				
 				db.update(sql, employee.getFirstName(), employee.getLastName(), employee.getId(), employee.getDob(),
 						employee.getTelNumber(), employee.getEamil(), employee.getGender(), employee.getStartDate());
 

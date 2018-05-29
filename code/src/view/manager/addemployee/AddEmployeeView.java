@@ -6,6 +6,6 @@ import domain.model.staff.Employee;
 public interface AddEmployeeView
 {
    public void start(AddEmployeeController controller);
-   public void show(String value);
-   public void getEmployee();
+   
+   public String[] get();
 }

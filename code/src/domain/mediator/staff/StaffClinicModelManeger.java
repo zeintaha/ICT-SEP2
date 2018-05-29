@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import domain.model.staff.Employee;
 import domain.model.staff.EmployeeList;
+import domain.model.staff.Type;
 
 public class StaffClinicModelManeger implements StaffClinicModel {
+
 	private EmployeeList list;
 	private StaffDatabase persistence;
 
@@ -20,6 +22,9 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		return list;
 	}
 
+	public Type[] reachType() {
+		return Type.values();
+	}
 	@Override
 	public void addOneEmployee(Employee employee) {
 		list.addEmployee(employee);
