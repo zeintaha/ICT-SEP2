@@ -36,7 +36,7 @@ public class SearchEmployeeGUI extends JFrame implements SearchEmployeeView {
 		setTitle("Search Employee");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 1000, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,9 +87,9 @@ public class SearchEmployeeGUI extends JFrame implements SearchEmployeeView {
 
 	public void showTable(ArrayList<Employee> employees) {
 
-		String[] columnNames = { "First Name", "Last Name", "id", "dob", "startDate", "telNumber", "eamil", "gender" };
+		String[] columnNames = { "id", "First Name", "Last Name",  "dob", "Start Date", "Tel Number", "Eamil", "Gender", "Employee Type", "Username", "Password" };
 
-		String[][] tableArray = new String[employees.size()][7];
+		String[][] tableArray = new String[employees.size()][10];
 
 		for (int i = 0; i < employees.size(); i++) {
 
@@ -107,9 +107,9 @@ public class SearchEmployeeGUI extends JFrame implements SearchEmployeeView {
 				dateStartDate = startDate.toString();
 			}
 
-			tableArray[i] = new String[] { employees.get(i).getFirstName(), employees.get(i).getLastName(), id, dateDob,
+			tableArray[i] = new String[] {id, employees.get(i).getFirstName(), employees.get(i).getLastName(), dateDob,
 					dateStartDate, employees.get(i).getTelNumber(), employees.get(i).getEamil(),
-					String.valueOf(employees.get(i).getGender()) };
+					employees.get(i).getGender(), employees.get(i).getEmployeeType(),  employees.get(i).getUserName(), employees.get(i).getPassword()};
 
 		}
 

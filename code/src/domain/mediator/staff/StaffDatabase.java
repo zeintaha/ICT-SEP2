@@ -40,23 +40,20 @@ public class StaffDatabase {
 		String employeetype = "";
 		String username = "";
 		String employeepassword = "";
-		
+
 		try {
 			results = db.query(sql);
 
 			for (int i = 0; i < results.size(); i++) {
 				Object[] row = results.get(i);
-//			id = Integer.parseInt((String) row[0]);
+				id = Integer.parseInt(row[0].toString());
 
 				firstname = row[1].toString();
 				lastname = row[2].toString();
-				
-				
+
 				dob = (Date) row[3];
 				startdate = (Date) row[4];
-				
 
-				
 				telnumber = row[5].toString();
 				email = row[6].toString();
 
@@ -65,13 +62,13 @@ public class StaffDatabase {
 				employeetype = row[8].toString();
 				username = row[9].toString();
 				employeepassword = row[10].toString();
-				
-				
-//				if (row[7] != null) {
-//					type = row[7].toString();
-//				}
-				Employee employee = new Secretary(id,firstname, lastname, dob, startdate, telnumber, email, gender,employeetype,username,employeepassword);
-				
+
+				// if (row[7] != null) {
+				// type = row[7].toString();
+				// }
+				Employee employee = new Secretary(id, firstname, lastname, dob, startdate, telnumber, email, gender,
+						employeetype, username, employeepassword);
+
 				employees.addEmployee(employee);
 
 			}

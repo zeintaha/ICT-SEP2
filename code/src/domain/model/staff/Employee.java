@@ -16,6 +16,7 @@ abstract public class Employee {
 	private String userName;
 	private String password;
 
+
 	public Employee(int id, String firstName, String lastName, Date dob, Date startDate, String telNumber, String email,
 			String gender, String employeeType, String userName, String password) {
 
@@ -95,6 +96,39 @@ abstract public class Employee {
 	public String getGender() {
 		return gender;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmployeeType() {
+		return employeeType;
+	}
+
+	public void setEmployeeType(String employeeType) {
+		this.employeeType = employeeType;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 
 	public String toString() {
 		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", id=" + id + ", dob=" + dob
