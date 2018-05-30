@@ -14,6 +14,10 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 
 	public StaffClinicModelManeger() throws IOException, ClassNotFoundException {
 		this.persistence = new StaffDatabase();
+
+	}
+
+	public void callLoad() throws IOException {
 		this.list = persistence.load();
 	}
 
@@ -22,12 +26,13 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		return list;
 	}
 
-	public Type[] reachType() {
-		return Type.values();
+	public String[] reachType() {
+		return Type.enumsToStringArray();
 	}
+
 	@Override
 	public void addOneEmployee(Employee employee) {
-		list.addEmployee(employee);
+		// list.addEmployee(employee);
 		try {
 			persistence.save(employee);
 		} catch (IOException e) {

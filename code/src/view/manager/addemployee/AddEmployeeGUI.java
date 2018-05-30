@@ -1,6 +1,5 @@
 package view.manager.addemployee;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -10,13 +9,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.employee.maneger.AddEmployeeController;
-import domain.model.staff.Doctor;
-import domain.model.staff.Employee;
-import domain.model.staff.Maneger;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import domain.model.staff.Type;
 
 public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 
@@ -55,10 +47,6 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		JLabel lblSelectEmployeeType = new JLabel("Select Employee Type");
 		lblSelectEmployeeType.setBounds(67, 5, 157, 14);
 		contentPane.add(lblSelectEmployeeType);
-
-		cmbEmployeeType = new JComboBox(domain.model.staff.Type.enumsToStringArray());
-		cmbEmployeeType.setBounds(229, 5, 184, 20);
-		contentPane.add(cmbEmployeeType);
 
 		JLabel lblFirstName = new JLabel("First Name");
 		lblFirstName.setBounds(67, 30, 157, 14);
@@ -130,40 +118,37 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 
 	@Override
 	public void start(AddEmployeeController controller) {
-
 		this.addEmployeeController = controller;
-		//cmbEmployeeType = new JComboBox<>();
-		//cmbEmployeeType.setModel(new DefaultComboBoxModel<>());
+		cmbEmployeeType = new JComboBox(controller.setComboboxValue());
+		cmbEmployeeType.setBounds(229, 5, 184, 20);
+		contentPane.add(cmbEmployeeType);
 
 		this.listener = new AddEmployeeButtonHandler(this, this.addEmployeeController);
 		if (!(btnAdd == null)) {
 
 			btnAdd.addActionListener(listener);
 		}
-		
 
 		setVisible(true);
 
 	}
 
-@Override
-public String[] get() {
-	String firstName = txtFirstName.getText();
-	String lastName = txtLastName.getText();
-	
-	String dob = txtDOB.getText();
-	String tlf = txtTel.getText();
-	String email = txtEmail.getText();
-	String gender = txtGender.getText();
-	String startDate = txtStartDate.getText();
-	String type = null;
-//			cmbEmployeeType.getSelectedItem().toString();
-	
-String[]  employeeData = {firstName,lastName,dob,tlf,email,gender,startDate,type};
+	@Override
+	public String[] getTextFieldValues() {
+		String firstName = txtFirstName.getText();
+		String lastName = txtLastName.getText();
 
-	return employeeData;
+		String dob = txtDOB.getText();
+		String tlf = txtTel.getText();
+		String email = txtEmail.getText();
+		String gender = txtGender.getText();
+		String startDate = txtStartDate.getText();
+		String type = null;
+		// cmbEmployeeType.getSelectedItem().toString();
+
+		String[] employeeData = { firstName, lastName, dob, tlf, email, gender, startDate, type };
+
+		return employeeData;
+	}
+
 }
-
-}
-
-

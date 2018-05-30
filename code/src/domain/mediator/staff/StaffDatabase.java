@@ -1,14 +1,9 @@
 package domain.mediator.staff;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +12,7 @@ import utility.persistence.MyDatabase;
 
 public class StaffDatabase {
 
-	private Date date = new Date();
+	
 
 	private MyDatabase db;
 	private final String DRIVER = "org.postgresql.Driver";
@@ -99,7 +94,7 @@ public class StaffDatabase {
 					gender = row[6].toString();
 				}
 				String type= null;
-				if(row[7]!= null) {
+				if(row[7] != null) {
 					 type = row[7].toString();
 				}
 				
@@ -126,13 +121,13 @@ public class StaffDatabase {
 						+ "VALUES (? , ? , ? , ? , ? , ?, ? , ?);";
 				
 				
-//				Employee selectedEmployee = EmployeeFactory.create(employee.getFirstName(), employee.getLastName(), employee.getId(),
-//						null, null, employee.getTelNumber(),employee.getEamil(),employee.getGender(), null);
-//				
+
+				
 				
 				
 				db.update(sql, employee.getFirstName(), employee.getLastName(), employee.getId(), employee.getDob(),
 						employee.getTelNumber(), employee.getEamil(), employee.getGender(), employee.getStartDate());
+				
 
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -9,26 +9,13 @@ abstract public class Employee {
 	private String lastName;
 	private String id;
 	private Date dob;
-	private Type type;
+	
 	private Date startDate;
 	private String telNumber;
 	private String eamil;
 	private String gender;
 	
-	public Employee(String firstName, String lastName, String id, Date dob, Date startDate, String telNumber,
-			String eamil, String gender,String type) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.id = id;
-		this.dob = dob;
-		this.startDate = startDate;
-		this.telNumber = telNumber;
-		this.eamil = eamil;
-		this.gender = gender;
-		
-	 
-		
-	}
+
 
 	// this constructor for earchEmployeeView I did not add the userName and the
 	// Password to it since we did not finalise them
