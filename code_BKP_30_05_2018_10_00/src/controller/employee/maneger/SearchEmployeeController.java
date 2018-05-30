@@ -20,10 +20,7 @@ public class SearchEmployeeController
    {
 	   
       staffClinicModel = new StaffClinicModelManeger();
-      staffClinicModel.callLoad();
- 
       this.searchEmployee = searchEmployee;
-      
    }
 
   
@@ -31,7 +28,6 @@ public class SearchEmployeeController
    public void executes()
    {
       String name = ((SearchEmployeeGUI) searchEmployee).get();
-      
       ArrayList<Employee> employees = new ArrayList<Employee>();
       employees = staffClinicModel.getEmployeeByname(name);
       System.out.println(employees.toString());
