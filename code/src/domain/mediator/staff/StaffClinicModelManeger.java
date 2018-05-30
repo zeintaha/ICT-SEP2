@@ -62,11 +62,6 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 
 		return employees;
 	}
-	//
-	// @Override
-	// public int getNumberOfEmployees()
-	// {
-	// return list.getNumerOfEmployees();
-	// }
+	
 
 }

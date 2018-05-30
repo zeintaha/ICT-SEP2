@@ -16,22 +16,20 @@ CREATE TABLE Patient
 	
 CREATE TABLE Employee
 (
-	employeeId      Serial,
-    firstName       VARCHAR (20),
-    lastName        VARCHAR (20),
-    dob			    DATE,
-	startDate		DATE,
-	telNumber		VARCHAR (20),
-	email			VARCHAR (40),
-	gender			VarChar (10),
-	type			Varchar	(20),
-	userName		VarChar (20),
-	password		VarChar (20),
-	
-	
-    PRIMARY KEY (employeeId));	
-	
-
+    employeeId      Serial,
+   firstName       VARCHAR (20),
+   lastName        VARCHAR (20),
+   dob                DATE,
+    startDate        DATE,
+    telNumber        VARCHAR (20),
+    email            VARCHAR (40),
+    gender            VarChar (10),
+    employeetype    Varchar    (20),
+    userName        VarChar (20),
+    employeepassword    VarChar (20),
+    
+    
+   PRIMARY KEY (employeeId));
 ............CREATE TABLE Secretary
 (
 	secretaryId       CHAR (4),
