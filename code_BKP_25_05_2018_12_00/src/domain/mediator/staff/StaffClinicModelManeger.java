@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import domain.model.staff.Employee;
-import domain.model.staff.EmployeeList;
+import domain.model.staff.EmployeeListTest;
 
 public class StaffClinicModelManeger implements StaffClinicModel
 {
-   private EmployeeList list;
+   private EmployeeListTest list;
    private StaffDatabase persistence;
 
    public StaffClinicModelManeger() throws IOException, ClassNotFoundException
@@ -17,7 +17,7 @@ public class StaffClinicModelManeger implements StaffClinicModel
       this.list = persistence.load();
    }
 
-   public EmployeeList getAll()
+   public EmployeeListTest getAll()
    {
       // TODO Auto-generated method stub
       return list;

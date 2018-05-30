@@ -112,7 +112,7 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		txtStartDate.setColumns(10);
 
 		btnAdd = new JButton("Add");
-		btnAdd.setBounds(362, 253, 51, 25);
+		btnAdd.setBounds(300, 253, 61, 25);
 		contentPane.add(btnAdd);
 	}
 

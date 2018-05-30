@@ -20,7 +20,6 @@ abstract public class Employee
    public Employee(String firstName, String lastName, int id, String telNumber,
          String eamil)
    {
-      super();
       this.firstName = firstName;
       this.lastName = lastName;
       this.id = id;
@@ -118,6 +117,9 @@ abstract public class Employee
    public String getTelNumber()
    {
       return telNumber;
+   }
+   public Type getType() {
+      return type;
    }
 
    public String getEamil()
