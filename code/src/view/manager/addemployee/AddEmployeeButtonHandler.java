@@ -31,7 +31,7 @@ public class AddEmployeeButtonHandler implements ActionListener
    {
       if (!(e.getSource() instanceof JButton))
          return;
-      System.out.println("I´m here AddEmployee");
+      
       addEmployeeController.executes();
 
     

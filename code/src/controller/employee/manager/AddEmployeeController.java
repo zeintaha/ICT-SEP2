@@ -26,8 +26,9 @@ public class AddEmployeeController {
 
 	public void executes() {
 		String[] data = view.getTextFieldValues();
-		// String string = Date
-
+//		System.out.println(data[0]+data[1]+data[2]+data[3]+data[4]+data[5]+data[6]+data[7]);
+		staffClinicModel.addOneEmployee(data);
+//
 //		Employee employee = EmployeeFactory.create(data[0], data[1], data[2], null, null, data[5], data[6], data[7],
 //				Type.Doctor);
 //		staffClinicModel.addOneEmployee(employee);

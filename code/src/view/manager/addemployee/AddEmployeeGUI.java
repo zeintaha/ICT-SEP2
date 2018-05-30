@@ -137,16 +137,17 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 	public String[] getTextFieldValues() {
 		String firstName = txtFirstName.getText();
 		String lastName = txtLastName.getText();
-
 		String dob = txtDOB.getText();
 		String tlf = txtTel.getText();
 		String email = txtEmail.getText();
 		String gender = txtGender.getText();
 		String startDate = txtStartDate.getText();
-		String type = null;
-		// cmbEmployeeType.getSelectedItem().toString();
-
-		String[] employeeData = { firstName, lastName, dob, tlf, email, gender, startDate, type };
+		String employeeType = cmbEmployeeType.getSelectedItem().toString();
+		
+		
+		
+		 
+		String[] employeeData = { firstName, lastName, dob, startDate, tlf, email, gender, employeeType };
 
 		return employeeData;
 	}
