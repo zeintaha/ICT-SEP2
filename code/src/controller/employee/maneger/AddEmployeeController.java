@@ -1,13 +1,12 @@
 package controller.employee.maneger;
 
 import java.io.IOException;
-import java.util.Date;
 
 import domain.mediator.staff.StaffClinicModel;
 import domain.model.staff.Employee;
 import domain.model.staff.EmployeeFactory;
 import domain.model.staff.Type;
-import view.manager.addemployee.AddEmployeeGUI;
+
 import view.manager.addemployee.AddEmployeeView;
 
 public class AddEmployeeController {
@@ -21,13 +20,13 @@ public class AddEmployeeController {
 		this.view = view;
 	}
 
-	public Type[] getValues() {
+	public String[] setComboboxValue() {
 		return staffClinicModel.reachType();
 	}
 
 	public void executes() {
-		String[] data = view.get();
-//		String string = Date
+		String[] data = view.getTextFieldValues();
+		// String string = Date
 
 		Employee employee = EmployeeFactory.create(data[0], data[1], data[2], null, null, data[5], data[6], data[7],
 				Type.Doctor);

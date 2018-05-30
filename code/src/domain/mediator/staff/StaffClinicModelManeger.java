@@ -22,8 +22,8 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		return list;
 	}
 
-	public Type[] reachType() {
-		return Type.values();
+	public String[] reachType() {
+		return Type.enumsToStringArray();
 	}
 	@Override
 	public void addOneEmployee(Employee employee) {

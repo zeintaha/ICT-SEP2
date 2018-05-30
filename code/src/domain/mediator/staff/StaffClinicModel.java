@@ -14,7 +14,7 @@ public interface StaffClinicModel
 //   public void removeEmployee(Employee employee) throws IOException;
    public ArrayList<Employee> getEmployeeByname(String name);
 //   public int getNumberOfEmployees();
-   Type[] reachType();
+   public String[] reachType();
    
  
 

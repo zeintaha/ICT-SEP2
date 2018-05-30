@@ -7,5 +7,5 @@ public interface AddEmployeeView
 {
    public void start(AddEmployeeController controller);
    
-   public String[] get();
+   public String[] getTextFieldValues();
 }
