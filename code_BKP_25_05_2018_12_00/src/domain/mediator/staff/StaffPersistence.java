@@ -7,7 +7,7 @@ import domain.model.staff.*;
 
 public interface StaffPersistence
 {
-   public EmployeeList load();
+   public EmployeeListTest load();
    public boolean save(Employee employee) throws IOException;
    public void remove(Employee employee);
 }

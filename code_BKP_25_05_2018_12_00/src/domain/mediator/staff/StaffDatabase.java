@@ -30,11 +30,11 @@ public StaffDatabase() throws ClassNotFoundException {
    this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
 }
 
-public  EmployeeList load() throws IOException
+public  EmployeeListTest load() throws IOException
 {
    String sql = "SELECT * FROM \"Clinic\".employee;";
    ArrayList<Object[]> results;
-   EmployeeList employees = new EmployeeList();
+   EmployeeListTest employees = new EmployeeListTest();
   
    String firstName = "", lastName = "";
    String telNumber = "", email = "";
