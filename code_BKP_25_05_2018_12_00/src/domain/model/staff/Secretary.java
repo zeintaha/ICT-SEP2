@@ -7,12 +7,12 @@ public class Secretary extends Employee
   
 
    public Secretary(String userName, String password, String firstName,
-         String lastName, int id, Date dob, Type type, Date startDate,
+         String lastName, int id, Date dob,  Date startDate,
          String telNumber, String eamil, char gender)
    {
-      super(userName, password, firstName, lastName, id, dob, type, startDate,
+      super(userName, password, firstName, lastName, id, dob,Type.Secratary , startDate,
             telNumber, eamil, gender);
-      type = Type.Secratary;
+  
 
    }
 
