@@ -11,7 +11,7 @@ import domain.model.staff.*;
 public interface StaffClinicModel
 {
 
-   public void addOneEmployee(Employee employee);
+   public void addOneEmployee(String[] employeeData);
 
    public ArrayList<Employee> getEmployeeByname(String name);
 
