@@ -4,10 +4,9 @@ import java.util.Date;
 
 public class Doctor extends Employee {
 
-	public Doctor(String firstName, String lastName, String id, Date dob, Date startDate, String telNumber,
-			String eamil, String gender) {
-		super(firstName, lastName, id, dob, startDate, telNumber, eamil, gender);
-
+	public Doctor(int id, String firstname, String lastname, Date dob, Date startdate, String telnumber,
+			String email, String gender, String employeetype, String username, String employeepassword) {
+		super(id,firstname , lastname, dob, startdate, telnumber, email,gender,employeetype,username,employeepassword);
 	}
 
 }

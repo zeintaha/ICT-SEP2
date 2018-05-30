@@ -2,7 +2,7 @@ package main;
 
 import java.io.IOException;
 
-import controller.employee.maneger.AddEmployeeController;
+import controller.employee.manager.AddEmployeeController;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
 import view.manager.addemployee.AddEmployeeGUI;

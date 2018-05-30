@@ -3,7 +3,7 @@ package view.manager.searchemployee;
 
 import java.util.ArrayList;
 
-import controller.employee.maneger.*;
+import controller.employee.manager.*;
 import domain.model.staff.Employee;
 
 public interface SearchEmployeeView

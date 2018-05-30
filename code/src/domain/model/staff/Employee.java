@@ -3,36 +3,33 @@ package domain.model.staff;
 import java.util.Date;
 
 abstract public class Employee {
-//	private String userName;
-//	private String password;
+
+	private int id;
 	private String firstName;
 	private String lastName;
-	private String id;
 	private Date dob;
-	
 	private Date startDate;
 	private String telNumber;
-	private String eamil;
+	private String email;
 	private String gender;
-	
+	private String employeeType;
+	private String userName;
+	private String password;
 
+	public Employee(int id, String firstName, String lastName, Date dob, Date startDate, String telNumber, String email,
+			String gender, String employeeType, String userName, String password) {
 
-	// this constructor for earchEmployeeView I did not add the userName and the
-	// Password to it since we did not finalise them
-	// either on the database side or on the GUI
-
-	public Employee(String firstName, String lastName, String id, Date dob, Date startDate, String telNumber,
-			String eamil, String gender) {
-		
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.id = id;
 		this.dob = dob;
 		this.startDate = startDate;
 		this.telNumber = telNumber;
-		this.eamil = eamil;
+		this.email = email;
 		this.gender = gender;
-
+		this.employeeType = employeeType;
+		this.userName = userName;
+		this.password = password;
 	}
 
 	public void setFirstName(String firstName) {
@@ -43,7 +40,7 @@ abstract public class Employee {
 		this.lastName = lastName;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -59,8 +56,8 @@ abstract public class Employee {
 		this.telNumber = telNumber;
 	}
 
-	public void setEamil(String eamil) {
-		this.eamil = eamil;
+	public void setEamil(String email) {
+		this.email = email;
 	}
 
 	public void setGender(String gender) {
@@ -75,7 +72,7 @@ abstract public class Employee {
 		return lastName;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -92,7 +89,7 @@ abstract public class Employee {
 	}
 
 	public String getEamil() {
-		return eamil;
+		return email;
 	}
 
 	public String getGender() {
@@ -101,7 +98,7 @@ abstract public class Employee {
 
 	public String toString() {
 		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", id=" + id + ", dob=" + dob
-				+ ", startDate=" + startDate + ", telNumber=" + telNumber + ", eamil=" + eamil + ", gender=" + gender
+				+ ", startDate=" + startDate + ", telNumber=" + telNumber + ", eamil=" + email + ", gender=" + gender
 				+ ", type=" + "]";
 	}
 

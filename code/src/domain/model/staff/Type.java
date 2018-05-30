@@ -4,7 +4,7 @@ public enum Type
 {
 Doctor,
 Secratary,
-Maneger;
+Manager;
 
     public static String[] enumsToStringArray() {
         String[] results = new String[Type.values().length];

@@ -1,8 +1,9 @@
 package main;
 
 import java.io.IOException;
+import java.text.ParseException;
 
-import controller.employee.maneger.SearchEmployeeController;
+import controller.employee.manager.SearchEmployeeController;
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
 import view.manager.searchemployee.SearchEmployeeGUI;
