@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import controller.employee.maneger.AddEmployeeController;
+import controller.employee.manager.AddEmployeeController;
 
 
 

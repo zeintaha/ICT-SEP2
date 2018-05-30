@@ -1,4 +1,4 @@
-package controller.employee.maneger;
+package controller.employee.manager;
 
 import java.io.IOException;
 
@@ -28,10 +28,10 @@ public class AddEmployeeController {
 		String[] data = view.getTextFieldValues();
 		// String string = Date
 
-		Employee employee = EmployeeFactory.create(data[0], data[1], data[2], null, null, data[5], data[6], data[7],
-				Type.Doctor);
-		staffClinicModel.addOneEmployee(employee);
-		System.out.println(employee.toString());
+//		Employee employee = EmployeeFactory.create(data[0], data[1], data[2], null, null, data[5], data[6], data[7],
+//				Type.Doctor);
+//		staffClinicModel.addOneEmployee(employee);
+//		System.out.println(employee.toString());
 
 	}
 }

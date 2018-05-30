@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import controller.employee.maneger.SearchEmployeeController;
+import controller.employee.manager.SearchEmployeeController;
 import domain.model.staff.Employee;
 
 import javax.swing.JLabel;

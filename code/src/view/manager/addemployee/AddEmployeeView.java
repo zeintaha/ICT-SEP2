@@ -1,6 +1,6 @@
 package view.manager.addemployee;
 
-import controller.employee.maneger.AddEmployeeController;
+import controller.employee.manager.AddEmployeeController;
 import domain.model.staff.Employee;
 
 public interface AddEmployeeView

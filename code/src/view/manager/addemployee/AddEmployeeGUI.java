@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controller.employee.maneger.AddEmployeeController;
+import controller.employee.manager.AddEmployeeController;
 
 public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 
