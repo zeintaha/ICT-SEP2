@@ -9,12 +9,13 @@ import domain.model.staff.*;
 
 public interface StaffClinicModel
 {
-//   public EmployeeList getAll();
+
    public void addOneEmployee(Employee employee);
-//   public void removeEmployee(Employee employee) throws IOException;
+
    public ArrayList<Employee> getEmployeeByname(String name);
-//   public int getNumberOfEmployees();
+
    public String[] reachType();
+   public void callLoad() throws IOException;
    
  
 

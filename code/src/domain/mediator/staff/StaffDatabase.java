@@ -127,6 +127,7 @@ public class StaffDatabase {
 				
 				db.update(sql, employee.getFirstName(), employee.getLastName(), employee.getId(), employee.getDob(),
 						employee.getTelNumber(), employee.getEamil(), employee.getGender(), employee.getStartDate());
+				
 
 			} catch (SQLException e) {
 				e.printStackTrace();
