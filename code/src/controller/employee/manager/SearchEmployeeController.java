@@ -36,7 +36,7 @@ public class SearchEmployeeController
       try {
 		staffClinicModel.callLoad(name);
 		
-		System.out.println(staffClinicModel.toString());
+		
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

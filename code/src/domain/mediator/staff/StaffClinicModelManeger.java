@@ -36,13 +36,7 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 
 	@Override
 	public void addOneEmployee(String[] employeeData) {
-		System.out.println(" printing the array");
-	for (int i = 0; i < employeeData.length; i++) {
-		System.out.println(employeeData[i]);
-		
-	}
-	System.out.println(" done ");
-		
+
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date dob = null;
 		try {
@@ -75,13 +69,10 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		String username = employeeData[0];
 		String password = "123456";
 		
-		System.out.println(" hi we are creating the object ");
+		
 		employee = EmployeeFactory.create(id, firstName, lastName, dob,
 				startDate, telNumber, email, gender, employeeType, username, password);
-		System.out.println(" object has been created ");
-			
-		System.out.println("we are here object details"  + employee);
-
+	
 		try {
 			persistence.save(employee);
 		} catch (IOException e) {
@@ -91,14 +82,7 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 
 	}
 
-	// @Override
-	// public void removeEmployee(Employee employee) throws IOException
-	// {
-	//
-	// list.removeEmployee(employee);
-	// persistence.remove(employee);
-	//
-	// }
+	
 
 	@Override
 	public ArrayList<Employee> getEmployeeByname(String name) {
@@ -110,10 +94,7 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 			employees.add(employee);
 		}
 
-		for (int i = 0; i < employees.size(); i++) {
-			System.out.println(" hi from the model getname method ");
-			System.out.println(employees.get(i).toString());
-		}
+		
 		return employees;
 	}
 	 public ArrayList<Employee> getAllEmployeesFromTheList(){

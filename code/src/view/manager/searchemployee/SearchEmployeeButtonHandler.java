@@ -26,7 +26,7 @@ public class SearchEmployeeButtonHandler implements ActionListener
    {
       if (!(e.getSource() instanceof JButton))
          return;
-      System.out.println("I´m here");
+     
       searchEmployeeController.executes();
    }
 
