@@ -3,7 +3,7 @@ package domain.model.patient;
 import java.util.ArrayList;
 
 public class PatientList {
-	private ArrayList<Patient> patients;
+	ArrayList<Patient> patients;
 
 	public PatientList() {
 		patients = new ArrayList<Patient>();
@@ -21,11 +21,11 @@ public class PatientList {
 
 	public Patient getPatientByName(String name) {
 		for (int i = 0; i < patients.size(); i++) {
-			if (patients.get(i).getFirstName().equals(name)) {
+			if (patients.get(i).getFirstName().equalsIgnoreCase(name)) {
 				return patients.get(i);
 			}
 		}
-		System.out.println(" we can not find the patient wiht the name : " + name + "!! ");
+		System.out.println(" we can not find the patient with the name : " + name + "!! ");
 		return null;
 	}
 

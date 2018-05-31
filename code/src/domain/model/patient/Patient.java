@@ -3,24 +3,27 @@ package domain.model.patient;
 import java.util.Date;
 
 public class Patient {
+	private int id;
    private String firstName;
    private String lastName;
-   private String id;
-   private String email;
    private Date dob;
    private String telNumber;
+   private String email;
+   private String gender;
 
-   public Patient(String firstName, String lastName, String id, Date dob, String telNumber, String email) {
+   
 
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.id = id;
-      this.dob = dob;
-      this.telNumber = telNumber;
-      this.email = email;
-   }
+   public Patient(int id, String firstName, String lastName, Date dob, String telNumber, String email, String gender) {
+	this.id = id;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.dob = dob;
+	this.telNumber = telNumber;
+	this.email = email;
+	this.gender = gender;
+}
 
-   public String getFirstName() {
+public String getFirstName() {
       return firstName;
    }
 
@@ -36,11 +39,11 @@ public class Patient {
       this.lastName = lastName;
    }
 
-   public String getId() {
+   public int getId() {
       return id;
    }
 
-   public void setId(String id) {
+   public void setId(int id) {
       this.id = id;
    }
 
@@ -68,9 +71,20 @@ public class Patient {
       this.telNumber = telNumber;
    }
 
-   public String toString() {
-      return "Patient [firstName=" + firstName + ", lastName=" + lastName + ", id=" + id + ", dob=" + dob
-            + ", telNumber=" + telNumber + ", email=" + email + "]";
-   }
+public String getGender() {
+	return gender;
+}
+
+public void setGender(String gender) {
+	this.gender = gender;
+}
+
+@Override
+public String toString() {
+	return "Patient [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", telNumber="
+			+ telNumber + ", email=" + email + ", gender=" + gender + "]";
+}
+
+
 
 }
