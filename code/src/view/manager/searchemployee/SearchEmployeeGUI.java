@@ -109,7 +109,7 @@ public class SearchEmployeeGUI extends JFrame implements SearchEmployeeView {
 
 			tableArray[i] = new String[] {id, employees.get(i).getFirstName(), employees.get(i).getLastName(), dateDob,
 					dateStartDate, employees.get(i).getTelNumber(), employees.get(i).getEamil(),
-					employees.get(i).getGender(), employees.get(i).getEmployeeType(),  employees.get(i).getUserName(), employees.get(i).getPassword()};
+					employees.get(i).getGender(), employees.get(i).getClass().getSimpleName(),  employees.get(i).getUserName(), employees.get(i).getPassword()};
 
 		}
 

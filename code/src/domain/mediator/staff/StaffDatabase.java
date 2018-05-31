@@ -37,7 +37,7 @@ public class StaffDatabase {
 		String telnumber = " ";
 		String email = " ";
 		String gender = " ";
-		String employeetype = "";
+
 		String username = "";
 		String employeepassword = "";
 
@@ -59,15 +59,16 @@ public class StaffDatabase {
 
 				gender = row[7].toString();
 
-				employeetype = row[8].toString();
+				Type employeeType = Type.valueOf(row[8].toString());
 				username = row[9].toString();
 				employeepassword = row[10].toString();
 
 				// if (row[7] != null) {
 				// type = row[7].toString();
 				// }
-				Employee employee = new Secretary(id, firstname, lastname, dob, startdate, telnumber, email, gender,
-						employeetype, username, employeepassword);
+
+				Employee employee = EmployeeFactory.create(id, firstname, lastname, dob, startdate, telnumber, email,
+						gender, employeeType, username, employeepassword);
 
 				employees.addEmployee(employee);
 
@@ -82,13 +83,35 @@ public class StaffDatabase {
 	public synchronized void save(Employee employee) throws IOException {
 		{
 
+			String type = "";
+			if (employee instanceof Doctor) {
+				type = "Doctor";
+			} else if (employee instanceof Secretary) {
+
+				type = "Secretary";
+			} else if (employee instanceof Manager) {
+
+				type = "Manager";
+			}
+			
+			
+			
+//			DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+//			String dateOfBirth = format.format(employee.getDob());
+			java.sql.Date sqlDate = new java.sql.Date(employee.getDob().getTime());
+			java.sql.Date sqlStartDate = new java.sql.Date(employee.getStartDate().getTime());
+			
+			
+//			String startDate =  format.format(employee.getStartDate());
+
 			try {
 
-				String sql = "INSERT INTO \"Clinic\".employee (firstname, lastname, employeeid, dob, telnumber, email, gender, startdate)"
-						+ "VALUES (? , ? , ? , ? , ? , ?, ? , ?);";
+				String sql = "INSERT INTO \"Clinic\".employee (firstname, lastname, dob, startdate, telnumber, email, gender,employeetype,username )"
+						+ "VALUES (? , ? , ? , ? , ? , ?, ? , ?,?);";
 
-				db.update(sql, employee.getFirstName(), employee.getLastName(), employee.getId(), employee.getDob(),
-						employee.getTelNumber(), employee.getEamil(), employee.getGender(), employee.getStartDate());
+				db.update(sql, employee.getFirstName(), employee.getLastName(), sqlDate,sqlStartDate,
+						employee.getTelNumber(), employee.getEamil(), employee.getGender(), type,
+						employee.getUserName());
 
 			} catch (SQLException e) {
 				e.printStackTrace();

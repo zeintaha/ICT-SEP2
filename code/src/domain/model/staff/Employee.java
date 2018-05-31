@@ -12,13 +12,12 @@ abstract public class Employee {
 	private String telNumber;
 	private String email;
 	private String gender;
-	private String employeeType;
 	private String userName;
 	private String password;
 
 
 	public Employee(int id, String firstName, String lastName, Date dob, Date startDate, String telNumber, String email,
-			String gender, String employeeType, String userName, String password) {
+			String gender,  String userName, String password) {
 
 		this.id = id;
 		this.firstName = firstName;
@@ -28,7 +27,6 @@ abstract public class Employee {
 		this.telNumber = telNumber;
 		this.email = email;
 		this.gender = gender;
-		this.employeeType = employeeType;
 		this.userName = userName;
 		this.password = password;
 	}
@@ -105,13 +103,7 @@ abstract public class Employee {
 		this.email = email;
 	}
 
-	public String getEmployeeType() {
-		return employeeType;
-	}
 
-	public void setEmployeeType(String employeeType) {
-		this.employeeType = employeeType;
-	}
 
 	public String getUserName() {
 		return userName;

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -39,21 +41,33 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 
 	@Override
 	public void addOneEmployee(String[] employeeData) {
+		System.out.println(" printing the array");
+	for (int i = 0; i < employeeData.length; i++) {
+		System.out.println(employeeData[i]);
 		
-	
+	}
+	System.out.println(" done ");
 		
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-		format.parseObject(employeeData[2]);
-		
-		
-		
-			Date dob =format.parseObject(employeeData[2]);
-	
+		Date dob = null;
+		try {
+			dob = format.parse(employeeData[2]);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 			
 		Date startDate = null;
-		if (startDate != null) {
-			startDate = employeeData[2].toString();
-			 }
+		try {
+			
+			startDate = format.parse(employeeData[3]);
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
+		
 		
 		int id = 0;
 		String firstName = employeeData[0];
@@ -62,22 +76,23 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		String telNumber = employeeData[4];
 		String email = employeeData[5];
 		String gender = employeeData[6];
-		String employeeType = employeeData[7];
+		Type employeeType = Type.valueOf(employeeData[7]);
 		String username = employeeData[0];
 		String password = "123456";
 		
-		employee = EmployeeFactory.create(id, firstName, lastName, dob, startDate, telNumber, email, gender, employeeType, username, password);
-		
-		
-//		
-		System.out.println("we are here first name "  + employee.getFirstName());
+		System.out.println(" hi we are creating the object ");
+		employee = EmployeeFactory.create(id, firstName, lastName, dob,
+				startDate, telNumber, email, gender, employeeType, username, password);
+		System.out.println(" object has been created ");
+			
+		System.out.println("we are here object details"  + employee);
 
-//		try {
-//			persistence.save(employeeData);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			persistence.save(employee);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
