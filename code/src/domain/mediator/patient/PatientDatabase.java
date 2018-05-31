@@ -34,22 +34,24 @@ public class PatientDatabase implements PatientPersistence {
 
 		ArrayList<Object[]> results;
 		PatientList patients = new PatientList();
-		String firstName = "?", lastName = "?", patientid = "?";
-		String telNumber = "?", email = "?";
-		String dob = "?";
+		int id=0;
+		String firstName = " ", lastName = " ";
+		Date dob;
+		String telNumber = " ", email = " ";
+		String gender = " ";
 		try {
 			results = db.query(sql);
 			for (int i = 0; i < results.size(); i++) {
 				Object[] row = results.get(i);
-
-				firstName = row[0].toString();
-				lastName = row[1].toString();
-				patientid = row[2].toString();
-				dob = row[3].toString();
+				id = Integer.parseInt(row[0].toString());
+				firstName = row[1].toString();
+				lastName = row[2].toString();
+				dob = (Date)row[3];
 				telNumber = row[4].toString();
 				email = row[5].toString();
+				gender = row[6].toString();
 
-				 Patient patient = new Patient(firstName, lastName, patientid,date,telNumber,email);
+				 Patient patient = new Patient(id, firstName, lastName,dob, telNumber,email, gender);
 				patients.addPatient(patient);
 
 			}
@@ -76,38 +78,30 @@ public class PatientDatabase implements PatientPersistence {
 		{
 
 			try {
-				String sql = "SELECT * from \"Clinic\".patient;";
-				ArrayList<Object[]> results = db.query(sql, patient.getFirstName(), patient.getLastName(),
-						patient.getId(), patient.getDob(), patient.getTelNumber(), patient.getEmail());
-
-				if (results.size() > 0) {
-					return;
-				}
-
-				sql = "INSERT INTO \"Clinic\".patient (firstname, lastname, patientid, dob, telnumber,email)"
+				String sql = "INSERT INTO \"Clinic\".patient (firstname, lastname, patientid, dob, telnumber,email, gender)"
 						+ "VALUES (? , ? , ? , ? , ? , ?);";
-				db.update(sql, patient.getFirstName(), patient.getLastName(), patient.getId(), patient.getDob(),
-						patient.getTelNumber(), patient.getEmail());
+				db.update(sql, patient.getFirstName(), patient.getLastName(),
+						 patient.getDob(),patient.getTelNumber(),patient.getEmail(), patient.getGender());
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 
-		// @Override
-		// public synchronized void remove(Patient patient) throws IOException {
-		// {
-		// try {
-		//
-		// sql = "DELETE FROM \"Clinic\".patient WHERE \"Clinic\".patient.firstname = ?
-		// AND \"Clinic\".patient.lastname ="
-		// ?;
-		// db.update(sql, patient.getFirstName(), patient.getLastName(),
-		// patient.getId(), patient.getDob(), patient.getTelNumber(),
-		// patient.getEmail());
-		//
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
-	}
+//		 @Override
+//		 public synchronized void remove(Patient patient) throws IOException {
+//		 {
+//		 try {
+//		
+//		 sql = "DELETE FROM \"Clinic\".patient WHERE \"Clinic\".patient.firstname = ?
+//		 AND \"Clinic\".patient.lastname ="
+//		 ?;
+//		 db.update(sql, patient.getFirstName(), patient.getLastName(),
+//		 patient.getDob(),patient.getTelNumber(),patient.getEmail(), patient.getGender());
+
+//		 } catch (SQLException e) {
+//		 e.printStackTrace();
+//		 }
+//	}
 }
+	}

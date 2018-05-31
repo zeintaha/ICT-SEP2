@@ -2,6 +2,7 @@ package domain.mediator.patient;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,18 +37,13 @@ public class PatientModelManager implements PatientModel {
 	public void addPatient(String[] patientData) {
 		
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-		format.parseObject(patientData[2]);
-		
-		
-		
-			Date dob =format.parseObject(patientData[2]);
-	
-			
-		Date startDate = null;
-		if (startDate != null) {
-			startDate = patientData[2].toString();
-			 }
-		
+		Date dob = null;
+		try {
+			dob = format.parse(patientData[2]);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int id = 0;
 		String firstName = patientData[0];
 		String lastName = patientData[1];
@@ -55,10 +51,20 @@ public class PatientModelManager implements PatientModel {
 		String telNumber = patientData[4];
 		String email = patientData[5];
 		String gender = patientData[6];
-		String employeeType = patientData[7];
-		
-		patient = EmployeeFactory.create(id, firstName, lastName, dob, startDate, telNumber, email, gender, employeeType, username, password);
-			}
+		System.out.println(" hi we are creating the object ");
+		patient = new Patient(id, firstName, lastName, dob, telNumber, email, gender);
+		System.out.println(" object has been created ");		
+		System.out.println("we are here object details"  + patient);
+
+		try {
+			persistence.save(patient);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	
+	}
 
 //	@Override
 //	public void removePatient(Patient patient) throws IOException {
