@@ -29,7 +29,7 @@ public class PatientDatabase implements PatientPersistence {
 	}
 
 	@Override
-	public PatientList load() throws IOException {
+	public PatientList load(String name) throws IOException {
 		String sql = "Select * from \"Clinic\".patient";
 
 		ArrayList<Object[]> results;
@@ -76,9 +76,12 @@ public class PatientDatabase implements PatientPersistence {
 	@Override
 	public synchronized void save(Patient patient) throws IOException {
 		{
+			java.sql.Date sqlDate = new java.sql.Date(patient.getDob().getTime());
+			String firstName = patient.getFirstName().substring(0, 1).toUpperCase()
+					+ patient.getFirstName().substring(1);
 
 			try {
-				String sql = "INSERT INTO \"Clinic\".patient (firstname, lastname, patientid, dob, telnumber,email, gender)"
+				String sql = "INSERT INTO \"Clinic\".patient (firstname, lastname, dob, telnumber,email, gender)"
 						+ "VALUES (? , ? , ? , ? , ? , ?);";
 				db.update(sql, patient.getFirstName(), patient.getLastName(),
 						 patient.getDob(),patient.getTelNumber(),patient.getEmail(), patient.getGender());

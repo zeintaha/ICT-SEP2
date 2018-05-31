@@ -21,12 +21,11 @@ public class PatientModelManager implements PatientModel {
 
 		
 			this.persistence = new PatientDatabase();
-			this.list = persistence.load();
 	}
 	
 	@Override
-	public void callLoad() throws IOException {
-		this.list = persistence.load();
+	public void callLoad(String name) throws IOException {
+		this.list = persistence.load(name);
 	}
 //	@Override
 //	public PatientList getAll() {
@@ -35,7 +34,12 @@ public class PatientModelManager implements PatientModel {
 //
 	@Override
 	public void addPatient(String[] patientData) {
-		
+		System.out.println(" printing the array");
+		for (int i = 0; i < patientData.length; i++) {
+			System.out.println(patientData[i]);
+			
+		}
+		System.out.println(" done ");
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		Date dob = null;
 		try {
@@ -48,9 +52,9 @@ public class PatientModelManager implements PatientModel {
 		String firstName = patientData[0];
 		String lastName = patientData[1];
 		
-		String telNumber = patientData[4];
-		String email = patientData[5];
-		String gender = patientData[6];
+		String telNumber = patientData[3];
+		String email = patientData[4];
+		String gender = patientData[5];
 		System.out.println(" hi we are creating the object ");
 		patient = new Patient(id, firstName, lastName, dob, telNumber, email, gender);
 		System.out.println(" object has been created ");		

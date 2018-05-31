@@ -7,7 +7,7 @@ import controller.patient.SearchPatientController;
 import domain.mediator.patient.PatientModel;
 import domain.mediator.patient.PatientModelManager;
 
-public class MainPatientSearch {
+public class MainSearchPatient {
 	 public static void main(String args[])
 	         throws IOException, ClassNotFoundException
 	   {
