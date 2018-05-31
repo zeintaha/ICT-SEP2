@@ -40,36 +40,25 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 	@Override
 	public void addOneEmployee(String[] employeeData) {
 		
-//		for (int i = 0; i < employeeData.length; i++) {
-//			System.out.println(employeeData[i]);
-//		}
+	
 		
-//		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-//		Date dob = null;
-//		 if (dob != null) {
-//			 dob = employeeData[2];
-//		 }
-//			
-//		Date startDate = null;
-//		if (startDate != null) {
-//			startDate = employeeData[2].toString();
-//			 }
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+		format.parseObject(employeeData[2]);
+		
+		
+		
+			Date dob =format.parseObject(employeeData[2]);
+	
+			
+		Date startDate = null;
+		if (startDate != null) {
+			startDate = employeeData[2].toString();
+			 }
 		
 		int id = 0;
 		String firstName = employeeData[0];
 		String lastName = employeeData[1];
-//		try {
-//			dob = format.parse(employeeData[2]);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//			startDate = format.parse(employeeData[3]);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		
 		String telNumber = employeeData[4];
 		String email = employeeData[5];
 		String gender = employeeData[6];
