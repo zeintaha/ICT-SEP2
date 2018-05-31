@@ -1,16 +1,17 @@
 package domain.mediator.staff;
 
 import java.io.IOException;
-
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
-import domain.model.staff.*;
+import domain.model.staff.Doctor;
+import domain.model.staff.Employee;
+import domain.model.staff.EmployeeFactory;
+import domain.model.staff.EmployeeList;
+import domain.model.staff.Manager;
+import domain.model.staff.Secretary;
+import domain.model.staff.Type;
 import utility.persistence.MyDatabase;
 
 public class StaffDatabase {
@@ -25,8 +26,8 @@ public class StaffDatabase {
 		this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
 	}
 
-	public EmployeeList load() throws IOException {
-		String sql = "SELECT * FROM \"Clinic\".employee;";
+	public EmployeeList load(String name) throws IOException {
+		String sql = "SELECT * FROM \"Clinic\".employee WHERE firstname = '" + name + "';";
 		ArrayList<Object[]> results;
 		EmployeeList employees = new EmployeeList();
 		int id = 0;
@@ -48,7 +49,11 @@ public class StaffDatabase {
 				Object[] row = results.get(i);
 				id = Integer.parseInt(row[0].toString());
 
-				firstname = row[1].toString();
+				// firstname = row[1].toString();
+
+				firstname = row[1].toString().substring(0, 1).toUpperCase()
+						+ row[1].toString().substring(1).toLowerCase();
+				System.out.println(" FROM THE DATABASE ADAPTER" + firstname);
 				lastname = row[2].toString();
 
 				dob = (Date) row[3];
@@ -62,10 +67,6 @@ public class StaffDatabase {
 				Type employeeType = Type.valueOf(row[8].toString());
 				username = row[9].toString();
 				employeepassword = row[10].toString();
-
-				// if (row[7] != null) {
-				// type = row[7].toString();
-				// }
 
 				Employee employee = EmployeeFactory.create(id, firstname, lastname, dob, startdate, telnumber, email,
 						gender, employeeType, username, employeepassword);
@@ -93,25 +94,19 @@ public class StaffDatabase {
 
 				type = "Manager";
 			}
-			
-			
-			
-//			DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-//			String dateOfBirth = format.format(employee.getDob());
+
 			java.sql.Date sqlDate = new java.sql.Date(employee.getDob().getTime());
 			java.sql.Date sqlStartDate = new java.sql.Date(employee.getStartDate().getTime());
-			
-			
-//			String startDate =  format.format(employee.getStartDate());
+			String firstName = employee.getFirstName().substring(0, 1).toUpperCase()
+					+ employee.getFirstName().substring(1);
 
 			try {
 
-				String sql = "INSERT INTO \"Clinic\".employee (firstname, lastname, dob, startdate, telnumber, email, gender,employeetype,username )"
-						+ "VALUES (? , ? , ? , ? , ? , ?, ? , ?,?);";
+				String sql = "INSERT INTO \"Clinic\".employee (firstname, lastname, dob, startdate, telnumber, email, gender,employeetype,username,employeepassword )"
+						+ "VALUES (? , ? , ? , ? , ? , ?, ? , ?,?,?);";
 
-				db.update(sql, employee.getFirstName(), employee.getLastName(), sqlDate,sqlStartDate,
-						employee.getTelNumber(), employee.getEamil(), employee.getGender(), type,
-						employee.getUserName());
+				db.update(sql, firstName, employee.getLastName(), sqlDate, sqlStartDate, employee.getTelNumber(),
+						employee.getEamil(), employee.getGender(), type, employee.getUserName(),employee.getPassword());
 
 			} catch (SQLException e) {
 				e.printStackTrace();

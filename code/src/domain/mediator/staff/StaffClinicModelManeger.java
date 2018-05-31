@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -26,8 +24,8 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 
 	}
 
-	public void callLoad() throws IOException {
-		this.list = persistence.load();
+	public void callLoad(String name) throws IOException {
+		this.list = persistence.load(name);
 	}
 
 	public EmployeeList getAll() {

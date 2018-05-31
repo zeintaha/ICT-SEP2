@@ -1,9 +1,7 @@
 package controller.employee.manager;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
-
 
 import domain.mediator.staff.StaffClinicModel;
 import domain.mediator.staff.StaffClinicModelManeger;
@@ -21,7 +19,7 @@ public class SearchEmployeeController
    {
 	   
       staffClinicModel = new StaffClinicModelManeger();
-      staffClinicModel.callLoad();
+     
  
       this.searchEmployee = searchEmployee;
       
@@ -31,8 +29,16 @@ public class SearchEmployeeController
 
    public void executes()
    {
-      String name = ((SearchEmployeeGUI) searchEmployee).get();
-      
+	   String name = ((SearchEmployeeGUI) searchEmployee).get().substring(0, 1)
+	           .toUpperCase()
+	           + ((SearchEmployeeGUI) searchEmployee).get().substring(1)
+	                 .toLowerCase();
+      try {
+		staffClinicModel.callLoad(name);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       ArrayList<Employee> employees = new ArrayList<Employee>();
       employees = staffClinicModel.getEmployeeByname(name);
       System.out.println(employees.toString());

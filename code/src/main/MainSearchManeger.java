@@ -1,7 +1,6 @@
 package main;
 
 import java.io.IOException;
-import java.text.ParseException;
 
 import controller.employee.manager.SearchEmployeeController;
 import domain.mediator.staff.StaffClinicModel;
