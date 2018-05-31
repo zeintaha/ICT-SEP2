@@ -44,10 +44,16 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 //			System.out.println(employeeData[i]);
 //		}
 		
-		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-		
-		Date dob = null;	
-		Date startDate = null;
+//		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+//		Date dob = null;
+//		 if (dob != null) {
+//			 dob = employeeData[2];
+//		 }
+//			
+//		Date startDate = null;
+//		if (startDate != null) {
+//			startDate = employeeData[2].toString();
+//			 }
 		
 		int id = 0;
 		String firstName = employeeData[0];
