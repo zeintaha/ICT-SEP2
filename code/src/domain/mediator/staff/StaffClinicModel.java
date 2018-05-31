@@ -16,6 +16,7 @@ public interface StaffClinicModel
 
    public String[] reachType();
    public void callLoad(String name) throws IOException ;
+   public ArrayList<Employee> getAllEmployeesFromTheList();
    
  
 

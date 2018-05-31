@@ -35,14 +35,16 @@ public class SearchEmployeeController
 	                 .toLowerCase();
       try {
 		staffClinicModel.callLoad(name);
+		
+		System.out.println(staffClinicModel.toString());
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-      ArrayList<Employee> employees = new ArrayList<Employee>();
-      employees = staffClinicModel.getEmployeeByname(name);
-      System.out.println(employees.toString());
-    searchEmployee.showTable(employees);
+  
+ 
+     
+    searchEmployee.showTable(staffClinicModel.getAllEmployeesFromTheList());
    }
 
 }

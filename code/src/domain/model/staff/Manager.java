@@ -10,9 +10,9 @@ public class Manager extends Employee {
 	}
 	@Override
 	public String toString() {
-		return "FirstName" + getFirstName() + "LastName" + getLastName() 
-				+ ", getDob()=" + getDob() + ", StartDate()=" + getStartDate() + ", tTelNumber" + getTelNumber()
-				+ ", Eamil" + getEamil() + ",Gender" + getGender() + ", Email=" + getEmail()
-				+ "Name :" + getUserName() + "Password()=" + getPassword()  + "type " + getClass().getSimpleName() + "]";
+		return "FirstName is : " + getFirstName() + "LastName is : " + getLastName() 
+				+ "Dob is : " + getDob() + ", StartDate is : " + getStartDate() + ", tTelNumber is : " + getTelNumber()
+				+ ", Eamil is : " + getEamil() + ",Gender is : " + getGender() 
+				+ " username is :" + getUserName() + "Password is : " + getPassword()  + "type is " + getClass().getSimpleName() + "]";
 	}
 }

@@ -16,7 +16,7 @@ public class EmployeeFactory {
 			employee = new Manager(id,  firstName,  lastName,  dob,  startDate,  telNumber,  email,
 					 gender,  userName,  password);
 
-		} else if (employeeType.equals(Type.Secratary)) {
+		} else if (employeeType.equals(Type.Secretary)) {
 			employee = new Secretary(id,  firstName,  lastName,  dob,  startDate,  telNumber,  email,
 					 gender,  userName,  password);
 		}

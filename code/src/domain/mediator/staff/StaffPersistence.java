@@ -11,4 +11,5 @@ public interface StaffPersistence
    public EmployeeList load();
    public boolean save(Employee employee) throws IOException;
    public void remove(Employee employee);
+   
 }

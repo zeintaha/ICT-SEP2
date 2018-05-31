@@ -123,9 +123,10 @@ abstract public class Employee {
 
 
 	public String toString() {
-		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", id=" + id + ", dob=" + dob
-				+ ", startDate=" + startDate + ", telNumber=" + telNumber + ", eamil=" + email + ", gender=" + gender
-				+ ", type=" + "]";
+		return "firstName is :" + firstName + ", lastName is: " + lastName + " dob is : " + dob
+				+ ", startDate is : " + startDate + ", telNumber is : " + telNumber + ", eamil is : " + email +
+				", gender is : " + gender
+				;
 	}
 
 }

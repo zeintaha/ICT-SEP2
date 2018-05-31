@@ -28,10 +28,7 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		this.list = persistence.load(name);
 	}
 
-	public EmployeeList getAll() {
-		// TODO Auto-generated method stub
-		return list;
-	}
+	
 
 	public String[] reachType() {
 		return Type.enumsToStringArray();
@@ -105,6 +102,7 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 
 	@Override
 	public ArrayList<Employee> getEmployeeByname(String name) {
+		
 		Employee employee = list.getEmployeeByName(name);
 
 		ArrayList<Employee> employees = new ArrayList<Employee>();
@@ -112,8 +110,16 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 			employees.add(employee);
 		}
 
+		for (int i = 0; i < employees.size(); i++) {
+			System.out.println(" hi from the model getname method ");
+			System.out.println(employees.get(i).toString());
+		}
 		return employees;
 	}
+	 public ArrayList<Employee> getAllEmployeesFromTheList(){
+		 
+		 return list.getAll();
+	 }
 	
 
 }

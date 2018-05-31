@@ -49,11 +49,11 @@ public class StaffDatabase {
 				Object[] row = results.get(i);
 				id = Integer.parseInt(row[0].toString());
 
-				// firstname = row[1].toString();
+//				 firstname = row[1].toString();
 
 				firstname = row[1].toString().substring(0, 1).toUpperCase()
 						+ row[1].toString().substring(1).toLowerCase();
-				System.out.println(" FROM THE DATABASE ADAPTER" + firstname);
+				
 				lastname = row[2].toString();
 
 				dob = (Date) row[3];
