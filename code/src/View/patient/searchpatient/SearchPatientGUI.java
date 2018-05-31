@@ -16,38 +16,33 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import controller.patient.PatientController;
+import controller.patient.SearchPatientController;
 import domain.model.patient.Patient;
 
 public class SearchPatientGUI extends JFrame implements SearchPatientView {
-	private PatientController patientController;
+	private SearchPatientController searchPatientController;
 	private JPanel contentPane;
 	private JTextField textName;
-	private JButton buttonSearch;
 	private JTable table;
-	private JScrollPane scrollPane;
 	private SearchPatientButtonHandler listener;
+	
+	private JScrollPane scrollPane;
 	private JPanel panel;
 
 	public SearchPatientGUI() {
-		initializeComponents();
-		addComponentsToFrame();
-		createComponents();
-	}
-
-	private void initializeComponents() {
+		
 		setTitle("Search Patient");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 300);
+		
+		setBounds(100, 100, 700, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
+		
 		scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
-	}
 
-	private void addComponentsToFrame() {
 		table = new JTable();
 		table.setFillsViewportHeight(true);
 		table.setColumnSelectionAllowed(true);
@@ -62,24 +57,22 @@ public class SearchPatientGUI extends JFrame implements SearchPatientView {
 		contentPane.add(panel, BorderLayout.NORTH);
 
 		JLabel lbl = new JLabel("Patient Name");
-		contentPane.add(lbl);
+		panel.add(lbl);
 
 		textName = new JTextField();
-		contentPane.add(textName);
+		panel.add(textName);
 		textName.setColumns(10);
 
-	}
 
-	private void createComponents() {
-		buttonSearch = new JButton("Search");
-		contentPane.add(buttonSearch);
+		
 	}
 
 	@Override
-	public void start(PatientController patientController) {
-
-		this.patientController = patientController;
-//		this.listener = new SearchPatientButtonHandler(this.patientController);
+	public void start(SearchPatientController patientController) {
+		JButton buttonSearch = new JButton("Search");
+		panel.add(buttonSearch);
+		this.searchPatientController = patientController;
+this.listener = new SearchPatientButtonHandler(this.searchPatientController);
 		if (!(buttonSearch == null)) {
 
 			buttonSearch.addActionListener(listener);

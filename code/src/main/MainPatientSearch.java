@@ -3,18 +3,18 @@ package main;
 import java.io.IOException;
 
 import view.patient.searchpatient.*;
-import controller.patient.PatientController;
+import controller.patient.SearchPatientController;
 import domain.mediator.patient.PatientModel;
 import domain.mediator.patient.PatientModelManager;
 
-public class MainPatient {
+public class MainPatientSearch {
 	 public static void main(String args[])
 	         throws IOException, ClassNotFoundException
 	   {
 	      PatientModel model = new PatientModelManager();
 	      SearchPatientGUI view = new SearchPatientGUI();
-	      PatientController controller = new PatientController(model, view);
-	      view.start(controller);
+	      SearchPatientController searchPatientController = new SearchPatientController(model, view);
+	      view.start(searchPatientController);
 	   }
 
 }

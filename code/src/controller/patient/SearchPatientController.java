@@ -8,7 +8,7 @@ import domain.model.staff.Employee;
 import view.manager.searchemployee.SearchEmployeeGUI;
 import view.patient.searchpatient.SearchPatientGUI;
 import view.patient.searchpatient.SearchPatientView;
-public class PatientController {
+public class SearchPatientController {
 
 	   private PatientModel patientModel;
 	  
@@ -16,9 +16,8 @@ public class PatientController {
 	  
 	  
 	   
-	   public PatientController(PatientModel patientModel, SearchPatientView searchPatient) throws ClassNotFoundException, IOException {
+	   public SearchPatientController(PatientModel patientModel, SearchPatientView searchPatient) throws ClassNotFoundException, IOException {
 		   this.patientModel = patientModel;
-	      patientModel.callLoad();
 	      this.searchPatient=searchPatient;
 	      
 	     
