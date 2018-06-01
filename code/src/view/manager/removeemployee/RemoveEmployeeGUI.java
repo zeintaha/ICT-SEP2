@@ -187,13 +187,9 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 	}
 
 	public int getSelectedItemFromBox() {
-		int id = 0;
-		if((int) cmbSelectEmployee.getSelectedItem() > 0) {
+		int id = 0;   
 		id = (int) cmbSelectEmployee.getSelectedItem();
-		}
-		else {
-			id = 0;
-		}
+
 		return id;
 	}
 

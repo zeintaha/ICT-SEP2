@@ -6,9 +6,9 @@ CREATE TABLE Patient
 	patientId       Serial,
     firstName       VARCHAR (20),
     lastName        VARCHAR (20),
-	email			VARCHAR (40),
     dob			    DATE,
 	telNumber		VARCHAR (20),
+email			VARCHAR (40),	
 	gender			VarChar (10),
 		
     PRIMARY KEY (patientId));
