@@ -105,9 +105,10 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 	@Override
 	public void remove(int id) {
 		Employee employee = list.getEmployeeById(id);
+		if(employee != null) {
 		list.removeEmployee(employee);
 		persistence.remove(employee);
-		
+		}
 		
 		
 		

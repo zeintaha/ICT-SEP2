@@ -82,7 +82,10 @@ public class SearchEmployeeGUI extends JFrame implements SearchEmployeeView {
 
 	public String get() {
 		String name = txtName.getText();
+		if (name.length()>0) {
 		return name;
+		}
+		else return " ";
 	}
 
 	public void showTable(ArrayList<Employee> employees) {

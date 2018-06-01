@@ -32,26 +32,8 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 	private JTextField txtSearch;
 	private JPanel panel_2;
 	private RemoveEmployeeButtonHandler listener;
-
-	/**
-	 * Launch the application.
-	 */
-	// public static void main(String[] args) {
-	// EventQueue.invokeLater(new Runnable() {
-	// public void run() {
-	// try {
-	// RemoveEmployeeGUI frame = new RemoveEmployeeGUI();
-	// frame.setVisible(true);
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// }
-	// });
-	// }
-
-	/**
-	 * Create the frame.
-	 */
+	
+	
 	public RemoveEmployeeGUI() {
 		setTitle("Remove Employee");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +45,7 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 706, 45);
-
+ 
 		JLabel lblSeach = new JLabel("Search Employee Name");
 		panel.add(lblSeach);
 
