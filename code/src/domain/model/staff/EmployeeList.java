@@ -58,4 +58,15 @@ public class EmployeeList {
 	public int getNumerOfEmployees() {
 		return employees.size();
 	}
+	public Employee getEmployeeById(int id ) {
+		Employee employee = null;
+		for (int i = 0; i < employees.size(); i++) {
+			if (employees.get(i).getId()== id) {
+				employee= employees.get(i);
+			}
+			
+		}
+		return employee ;
+		
+	}
 }

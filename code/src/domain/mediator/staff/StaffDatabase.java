@@ -14,7 +14,7 @@ import domain.model.staff.Secretary;
 import domain.model.staff.Type;
 import utility.persistence.MyDatabase;
 
-public class StaffDatabase {
+public class StaffDatabase implements StaffPersistence {
 
 	private MyDatabase db;
 	private final String DRIVER = "org.postgresql.Driver";
@@ -49,11 +49,9 @@ public class StaffDatabase {
 				Object[] row = results.get(i);
 				id = Integer.parseInt(row[0].toString());
 
-//				 firstname = row[1].toString();
-
 				firstname = row[1].toString().substring(0, 1).toUpperCase()
 						+ row[1].toString().substring(1).toLowerCase();
-				
+
 				lastname = row[2].toString();
 
 				dob = (Date) row[3];
@@ -81,7 +79,7 @@ public class StaffDatabase {
 		return employees;
 	}
 
-	public synchronized void save(Employee employee) throws IOException {
+	public void save(Employee employee) throws IOException {
 		{
 
 			String type = "";
@@ -106,11 +104,24 @@ public class StaffDatabase {
 						+ "VALUES (? , ? , ? , ? , ? , ?, ? , ?,?,?);";
 
 				db.update(sql, firstName, employee.getLastName(), sqlDate, sqlStartDate, employee.getTelNumber(),
-						employee.getEamil(), employee.getGender(), type, employee.getUserName(),employee.getPassword());
+						employee.getEamil(), employee.getGender(), type, employee.getUserName(),
+						employee.getPassword());
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+
+	}
+
+	public void remove(Employee employee) {
+		int id = employee.getId();
+		String sql = "delete FROM \"Clinic\".employee WHERE employeeid = ?;";
+		try {
+			db.update(sql, id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

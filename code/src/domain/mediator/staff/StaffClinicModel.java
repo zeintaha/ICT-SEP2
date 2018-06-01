@@ -13,7 +13,7 @@ public interface StaffClinicModel
    public void addOneEmployee(String[] employeeData);
 
    public ArrayList<Employee> getEmployeeByname(String name);
-
+public void remove(int id);
    public String[] reachType();
    public void callLoad(String name) throws IOException ;
    public ArrayList<Employee> getAllEmployeesFromTheList();

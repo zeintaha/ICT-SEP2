@@ -8,8 +8,8 @@ import domain.model.staff.EmployeeList;
 
 public interface StaffPersistence
 {
-   public EmployeeList load();
-   public boolean save(Employee employee) throws IOException;
+   public EmployeeList load(String name) throws IOException;
+   public void save(Employee employee) throws IOException;
    public void remove(Employee employee);
    
 }

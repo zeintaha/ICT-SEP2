@@ -101,6 +101,17 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		 
 		 return list.getAll();
 	 }
+
+	@Override
+	public void remove(int id) {
+		Employee employee = list.getEmployeeById(id);
+		list.removeEmployee(employee);
+		persistence.remove(employee);
+		
+		
+		
+		
+	}
 	
 
 }
