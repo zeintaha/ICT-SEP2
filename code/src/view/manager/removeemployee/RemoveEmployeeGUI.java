@@ -17,6 +17,7 @@ import javax.swing.table.TableModel;
 
 import controller.employee.manager.RemoveEmlployeeController;
 import domain.model.staff.Employee;
+import java.awt.GridLayout;
 
 public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 	private JComboBox cmbSelectEmployee;
@@ -41,7 +42,6 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 706, 45);
@@ -52,36 +52,34 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 		txtSearchEmployeeName = new JTextField();
 		panel.add(txtSearchEmployeeName);
 		txtSearchEmployeeName.setColumns(10);
+		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
+		
+				panel_2 = new JPanel();
+				contentPane.add(panel_2);
+				
+						JLabel lblSearchEmployee = new JLabel("Search Employee");
+						panel_2.add(lblSearchEmployee);
+						
+								txtSearch = new JTextField();
+								panel_2.add(txtSearch);
+								txtSearch.setColumns(10);
 
 		this.panel_1 = new JPanel();
-		panel_1.setBounds(20, 103, 706, 58);
 		contentPane.add(panel_1);
 
-		JLabel lblSelect = new JLabel("Select Employee");
+		JLabel lblSelect = new JLabel("Select Employee Id");
 		panel_1.add(lblSelect);
 
 		cmbSelectEmployee = new JComboBox();
 		panel_1.add(cmbSelectEmployee);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 172, 706, 151);
 
 		tblRemove = new JTable();
 		tblRemove.setBounds(29, 151, 546, 71);
 
 		scrollPane.setViewportView(tblRemove);
 		contentPane.add(scrollPane);
-
-		panel_2 = new JPanel();
-		panel_2.setBounds(10, 11, 706, 65);
-		contentPane.add(panel_2);
-
-		JLabel lblSearchEmployee = new JLabel("Search Employee");
-		panel_2.add(lblSearchEmployee);
-
-		txtSearch = new JTextField();
-		panel_2.add(txtSearch);
-		txtSearch.setColumns(10);
 
 	}
 
