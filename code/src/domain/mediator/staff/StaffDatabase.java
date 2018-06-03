@@ -78,6 +78,38 @@ public class StaffDatabase implements StaffPersistence {
 
 		return employees;
 	}
+	
+	  public ArrayList<Employee> load() {
+
+	      String sql = "SELECT * FROM \"Clinic\".employee;";
+
+	      ArrayList<Object[]> results;
+	      ArrayList<Employee> employees = new ArrayList<Employee>();
+	      String username = "";
+	      String employeepassword = "";
+
+	      try {
+	         results = db.query(sql);
+
+	         for (int i = 0; i < results.size(); i++) {
+	            Object[] row = results.get(i);
+	            username = row[9].toString();
+	            employeepassword = row[10].toString();
+	            Type employeeType = Type.valueOf(row[8].toString());
+
+	            Employee employee = EmployeeFactory.create(0, "", "", null, null, "", "", "", employeeType, username,
+	                  employeepassword);
+	            
+
+	            employees.add(employee);
+
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+
+	      return employees;
+	   }
 
 	public void save(Employee employee) throws IOException {
 		{

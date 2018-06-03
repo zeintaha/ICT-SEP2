@@ -2,6 +2,7 @@ package domain.model.patient;
 
 import java.util.ArrayList;
 
+
 public class PatientList {
 	ArrayList<Patient> patients;
 
@@ -28,6 +29,18 @@ public class PatientList {
 		System.out.println(" we can not find the patient with the name : " + name + "!! ");
 		return null;
 	}
+	
+	public Patient getPatientById(int id ) {
+		Patient patient = null;
+		for (int i = 0; i < patients.size(); i++) {
+			if (patients.get(i).getId()== id) {
+				patient= patients.get(i);
+			}
+			
+		}
+		return patient;
+		
+	}
 
 	public Patient editPatient(String oldName, String newName) {
 
@@ -43,5 +56,9 @@ public class PatientList {
 
 	public int getNumberOfPatient() {
 		return patients.size();
+	}
+	
+	public ArrayList<Patient> getAll(){
+		return patients;
 	}
 }

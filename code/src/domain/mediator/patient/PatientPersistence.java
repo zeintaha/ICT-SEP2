@@ -6,7 +6,7 @@ import domain.model.patient.PatientList;
 
 public interface PatientPersistence
 {
-   public PatientList load() throws IOException;
+   public PatientList load(String name) throws IOException;
    public void save(Patient patient) throws IOException;
-//   public void remove(Patient patient) throws IOException;
+   public void remove(Patient patient) throws IOException;
 }

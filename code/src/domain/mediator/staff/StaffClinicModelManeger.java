@@ -66,7 +66,7 @@ public class StaffClinicModelManeger implements StaffClinicModel {
 		String email = employeeData[5];
 		String gender = employeeData[6];
 		Type employeeType = Type.valueOf(employeeData[7]);
-		String username = employeeData[0];
+		String username = employeeData[0].toString().substring(0, 1).toLowerCase()+ employeeData[1].toString().toLowerCase();
 		String password = "123456";
 		
 		

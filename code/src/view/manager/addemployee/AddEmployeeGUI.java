@@ -50,11 +50,11 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		contentPane.setLayout(null);
 
 		JLabel lblSelectEmployeeType = new JLabel("Select Employee Type");
-		lblSelectEmployeeType.setBounds(5, 5, 207, 45);
+		lblSelectEmployeeType.setBounds(5, 0, 207, 25);
 		contentPane.add(lblSelectEmployeeType);
 
 		label = new JLabel("");
-		label.setBounds(217, 5, 212, 45);
+		label.setBounds(180, 36, 212, 24);
 		contentPane.add(label);
 
 		JLabel lblFirstName = new JLabel("First Name");
@@ -62,7 +62,7 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		contentPane.add(lblFirstName);
 
 		txtFirstName = new JTextField();
-		txtFirstName.setBounds(217, 55, 212, 45);
+		txtFirstName.setBounds(180, 71, 212, 24);
 		contentPane.add(txtFirstName);
 		txtFirstName.setColumns(10);
 
@@ -71,16 +71,16 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		contentPane.add(lblLastName);
 
 		txtLastName = new JTextField();
-		txtLastName.setBounds(217, 105, 212, 45);
+		txtLastName.setBounds(180, 119, 212, 24);
 		contentPane.add(txtLastName);
 		txtLastName.setColumns(10);
 
-		JLabel lblDateOfBirth = new JLabel("Date of Birth");
+		JLabel lblDateOfBirth = new JLabel("Date of Birth (yyyy-mm-dd)");
 		lblDateOfBirth.setBounds(5, 155, 207, 45);
 		contentPane.add(lblDateOfBirth);
 
 		txtDOB = new JTextField();
-		txtDOB.setBounds(217, 155, 212, 45);
+		txtDOB.setBounds(180, 167, 212, 24);
 		contentPane.add(txtDOB);
 		txtDOB.setColumns(10);
 
@@ -89,7 +89,7 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		contentPane.add(lblTelephoneNo);
 
 		txtTel = new JTextField();
-		txtTel.setBounds(217, 205, 212, 45);
+		txtTel.setBounds(180, 215, 212, 24);
 		contentPane.add(txtTel);
 		txtTel.setColumns(10);
 
@@ -98,7 +98,7 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		contentPane.add(lblEmail);
 
 		txtEmail = new JTextField();
-		txtEmail.setBounds(217, 255, 212, 45);
+		txtEmail.setBounds(180, 263, 212, 24);
 		contentPane.add(txtEmail);
 		txtEmail.setColumns(10);
 
@@ -107,16 +107,16 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		contentPane.add(lblGener);
 
 		txtGender = new JTextField();
-		txtGender.setBounds(217, 305, 212, 45);
+		txtGender.setBounds(180, 311, 212, 24);
 		contentPane.add(txtGender);
 		txtGender.setColumns(10);
 
-		JLabel lblStartDate = new JLabel("Start Date");
+		JLabel lblStartDate = new JLabel("Start Date (yyyy-mm-dd)");
 		lblStartDate.setBounds(5, 355, 207, 45);
 		contentPane.add(lblStartDate);
 
 		txtStartDate = new JTextField();
-		txtStartDate.setBounds(217, 355, 212, 45);
+		txtStartDate.setBounds(180, 359, 212, 24);
 		contentPane.add(txtStartDate);
 		txtStartDate.setColumns(10);
 
@@ -125,7 +125,7 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 		contentPane.add(label_1);
 
 		btnAdd = new JButton("Add");
-		btnAdd.setBounds(217, 405, 212, 50);
+		btnAdd.setBounds(325, 405, 67, 24);
 		contentPane.add(btnAdd);
 	}
 

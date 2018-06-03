@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import domain.model.patient.Patient;
 import domain.model.patient.PatientList;
+import domain.model.staff.Employee;
 import domain.model.staff.EmployeeFactory;
 
 public class PatientModelManager implements PatientModel {
@@ -21,18 +22,13 @@ public class PatientModelManager implements PatientModel {
 
 		
 			this.persistence = new PatientDatabase();
-			this.list = persistence.load();
 	}
 	
 	@Override
-	public void callLoad() throws IOException {
-		this.list = persistence.load();
+	public void callLoad(String name) throws IOException {
+		this.list = persistence.load(name);
 	}
-//	@Override
-//	public PatientList getAll() {
-//		return list;
-//	}
-//
+	
 	@Override
 	public void addPatient(String[] patientData) {
 		
@@ -41,42 +37,24 @@ public class PatientModelManager implements PatientModel {
 		try {
 			dob = format.parse(patientData[2]);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		int id = 0;
 		String firstName = patientData[0];
 		String lastName = patientData[1];
 		
-		String telNumber = patientData[4];
-		String email = patientData[5];
-		String gender = patientData[6];
-		System.out.println(" hi we are creating the object ");
+		String telNumber = patientData[3];
+		String email = patientData[4];
+		String gender = patientData[5];
 		patient = new Patient(id, firstName, lastName, dob, telNumber, email, gender);
-		System.out.println(" object has been created ");		
-		System.out.println("we are here object details"  + patient);
-
 		try {
 			persistence.save(patient);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	
 	}
-
-//	@Override
-//	public void removePatient(Patient patient) throws IOException {
-//		list.removePatient(patient);
-////		persistence.remove(patient);
-//	}
-//
-//	@Override
-//	public int getNumberOfPatients() {
-//		return list.getNumberOfPatient();
-//	}
-
 	@Override
 	public ArrayList<Patient> getPatientByName(String name) {
 		Patient patient=  list.getPatientByName(name);
@@ -88,4 +66,25 @@ public class PatientModelManager implements PatientModel {
 		return patients;
 		
 	}
+
+
+	@Override
+	public ArrayList<Patient> getAllPatientsFromTheList() {
+		return list.getAll();
+	}
+	
+	@Override
+	public void remove(int id) {
+		Patient patient = list.getPatientById(id);
+		if(patient != null) {
+		list.removePatient(patient);
+		try {
+			persistence.remove(patient);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		
+}
 }
