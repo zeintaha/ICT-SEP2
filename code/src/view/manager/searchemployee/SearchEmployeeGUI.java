@@ -1,25 +1,23 @@
 package view.manager.searchemployee;
 
 import java.awt.BorderLayout;
-
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import controller.employee.manager.SearchEmployeeController;
 import domain.model.staff.Employee;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
 
 public class SearchEmployeeGUI extends JFrame implements SearchEmployeeView {
 	private SearchEmployeeController searchEmployeeController;

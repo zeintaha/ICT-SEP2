@@ -1,171 +1,191 @@
 package view.secretary.appointment.addappointment;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-public class AddAppointmentGUI extends JFrame
-{
+import controller.appointment.addappointment.AddApointmnentController;
+import domain.model.patient.Patient;
+import domain.model.staff.Employee;
 
-   private JPanel contentPane;
-   private JTextField txtSearchPatientName;
-   private JTextField textField;
-   private JTextField textField_1;
-   private JTextField textField_2;
-   private JTextField textField_3;
-   private JTextField textField_4;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
-   /**
-    * Launch the application.
-    */
-   public static void main(String[] args)
-   {
-      EventQueue.invokeLater(new Runnable()
-      {
-         public void run()
-         {
-            try
-            {
-               AddAppointmentGUI frame = new AddAppointmentGUI();
-               frame.setVisible(true);
-            }
-            catch (Exception e)
-            {
-               e.printStackTrace();
-            }
-         }
-      });
-   }
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Date;
 
-   /**
-    * Create the frame.
-    */
-   public AddAppointmentGUI()
-   {
-      setTitle("Add Appointment");
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      setBounds(100, 100, 596, 346);
-      contentPane = new JPanel();
-      contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-      setContentPane(contentPane);
-      contentPane.setLayout(null);
-      
-      txtSearchPatientName = new JTextField();
-      txtSearchPatientName.setBounds(146, 11, 86, 20);
-      contentPane.add(txtSearchPatientName);
-      txtSearchPatientName.setColumns(10);
-      
-      JLabel lblNewLabel = new JLabel("Search Patient Name");
-      lblNewLabel.setBounds(10, 14, 131, 14);
-      contentPane.add(lblNewLabel);
-      
-      JButton btnSearch = new JButton("Search");
-      btnSearch.setBounds(242, 10, 86, 23);
-      contentPane.add(btnSearch);
-      
-      JComboBox cmbSelectPatientId = new JComboBox();
-      cmbSelectPatientId.setBounds(469, 11, 86, 20);
-      contentPane.add(cmbSelectPatientId);
-      
-      JLabel lblSelectPatientId = new JLabel("Select Patient ID");
-      lblSelectPatientId.setBounds(364, 14, 106, 14);
-      contentPane.add(lblSelectPatientId);
-      
-      textField = new JTextField();
-      textField.setBounds(20, 69, 86, 20);
-      contentPane.add(textField);
-      textField.setColumns(10);
-      
-      textField_1 = new JTextField();
-      textField_1.setBounds(131, 69, 86, 20);
-      contentPane.add(textField_1);
-      textField_1.setColumns(10);
-      
-      textField_2 = new JTextField();
-      textField_2.setBounds(242, 69, 86, 20);
-      contentPane.add(textField_2);
-      textField_2.setColumns(10);
-      
-      textField_3 = new JTextField();
-      textField_3.setBounds(353, 69, 86, 20);
-      contentPane.add(textField_3);
-      textField_3.setColumns(10);
-      
-      textField_4 = new JTextField();
-      textField_4.setBounds(464, 69, 86, 20);
-      contentPane.add(textField_4);
-      textField_4.setColumns(10);
-      
-      JLabel lblFirstName = new JLabel("First Name");
-      lblFirstName.setBounds(20, 49, 73, 14);
-      contentPane.add(lblFirstName);
-      
-      JLabel lblLastName = new JLabel("Last Name");
-      lblLastName.setBounds(131, 49, 73, 14);
-      contentPane.add(lblLastName);
-      
-      JLabel lblDateOfBirth = new JLabel("Date of Birth");
-      lblDateOfBirth.setBounds(242, 49, 73, 14);
-      contentPane.add(lblDateOfBirth);
-      
-      JLabel lblGende = new JLabel("Gender");
-      lblGende.setBounds(357, 49, 73, 14);
-      contentPane.add(lblGende);
-      
-      JLabel lblTelphoneNo = new JLabel("Telephone no.");
-      lblTelphoneNo.setBounds(464, 49, 91, 14);
-      contentPane.add(lblTelphoneNo);
-      
-      JComboBox cmbSelectYear = new JComboBox();
-      cmbSelectYear.setBounds(39, 132, 96, 20);
-      contentPane.add(cmbSelectYear);
-      
-      JLabel lblSelectAppointmentDay = new JLabel("Select Year");
-      lblSelectAppointmentDay.setBounds(39, 107, 79, 14);
-      contentPane.add(lblSelectAppointmentDay);
-      
-      JComboBox cmbSelectMonth = new JComboBox();
-      cmbSelectMonth.setBounds(174, 132, 96, 20);
-      contentPane.add(cmbSelectMonth);
-      
-      JLabel lblSelectTime = new JLabel("Select Month");
-      lblSelectTime.setBounds(174, 107, 79, 14);
-      contentPane.add(lblSelectTime);
-      
-      JTextArea textArea = new JTextArea();
-      textArea.setBounds(20, 182, 535, 67);
-      contentPane.add(textArea);
-      
-      JLabel lblBrif = new JLabel("Brief");
-      lblBrif.setBounds(20, 163, 535, 14);
-      contentPane.add(lblBrif);
-      
-      JButton btnAdd = new JButton("Add");
-      btnAdd.setBounds(466, 273, 89, 23);
-      contentPane.add(btnAdd);
-      
-      JComboBox cmbSelectDay = new JComboBox();
-      cmbSelectDay.setBounds(309, 132, 96, 20);
-      contentPane.add(cmbSelectDay);
-      
-      JLabel lblSelectDay = new JLabel("Select Day");
-      lblSelectDay.setBounds(309, 107, 79, 14);
-      contentPane.add(lblSelectDay);
-      
-      JComboBox cmbSelectTime = new JComboBox();
-      cmbSelectTime.setBounds(444, 132, 96, 20);
-      contentPane.add(cmbSelectTime);
-      
-      JLabel lblSelectTime_1 = new JLabel("Select Available Time");
-      lblSelectTime_1.setBounds(444, 107, 106, 14);
-      contentPane.add(lblSelectTime_1);
-   }
+public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
+	private AddApointmnentController addApointmnentController;
+	private JPanel contentPane;
+	private JTextField txtSearchPatientName;
+	private JLabel lblNewLabel;
+	private JButton btnSearch;
+	private JComboBox cmbSelectPatientId;
+	private JLabel lblSelectPatientId;
+	private JComboBox cmbSelectYear;
+	private JComboBox cmbSelectMonth;
+	private JTextArea textArea;
+	private JButton btnAdd;
+	private JComboBox cmbSelectDay;
+	private JComboBox cmbSelectTime;
+	private AddAppointmentButtonHandler listener;
+	private JTable table;
+
+	/**
+	 * Create the frame.
+	 */
+	public AddAppointmentGUI() {
+		setTitle("Add Appointment");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 596, 346);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		txtSearchPatientName = new JTextField();
+		txtSearchPatientName.setBounds(146, 11, 86, 20);
+		contentPane.add(txtSearchPatientName);
+		txtSearchPatientName.setColumns(10);
+
+		this.lblNewLabel = new JLabel("Search Patient Name");
+		lblNewLabel.setBounds(10, 14, 131, 14);
+		contentPane.add(lblNewLabel);
+
+		this.cmbSelectPatientId = new JComboBox();
+		cmbSelectPatientId.setBounds(469, 11, 86, 20);
+		contentPane.add(cmbSelectPatientId);
+
+		this.lblSelectPatientId = new JLabel("Select Patient ID");
+		lblSelectPatientId.setBounds(364, 14, 106, 14);
+		contentPane.add(lblSelectPatientId);
+
+		this.cmbSelectYear = new JComboBox();
+		cmbSelectYear.setBounds(34, 173, 96, 20);
+		contentPane.add(cmbSelectYear);
+
+		JLabel lblSelectAppointmentDay = new JLabel("Select Year");
+		lblSelectAppointmentDay.setBounds(34, 148, 79, 14);
+		contentPane.add(lblSelectAppointmentDay);
+
+		this.cmbSelectMonth = new JComboBox();
+		cmbSelectMonth.setBounds(169, 173, 96, 20);
+		contentPane.add(cmbSelectMonth);
+
+		JLabel lblSelectTime = new JLabel("Select Month");
+		lblSelectTime.setBounds(169, 148, 79, 14);
+		contentPane.add(lblSelectTime);
+
+		this.textArea = new JTextArea();
+		textArea.setBounds(10, 229, 535, 67);
+		contentPane.add(textArea);
+
+		JLabel lblBrif = new JLabel("Brief");
+		lblBrif.setBounds(23, 204, 33, 14);
+		contentPane.add(lblBrif);
+
+		this.cmbSelectDay = new JComboBox();
+		cmbSelectDay.setBounds(304, 173, 96, 20);
+		contentPane.add(cmbSelectDay);
+
+		JLabel lblSelectDay = new JLabel("Select Day");
+		lblSelectDay.setBounds(304, 148, 79, 14);
+		contentPane.add(lblSelectDay);
+
+		this.cmbSelectTime = new JComboBox();
+		cmbSelectTime.setBounds(439, 173, 96, 20);
+		contentPane.add(cmbSelectTime);
+
+		JLabel lblSelectTime_1 = new JLabel("Select Available Time");
+		lblSelectTime_1.setBounds(439, 148, 106, 14);
+		contentPane.add(lblSelectTime_1);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 141, 555, -97);
+		contentPane.add(scrollPane);
+
+		table = new JTable();
+		contentPane.add(table);
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBounds(2, 55, 553, 93);
+	}
+
+	public void start(AddApointmnentController addApointmnentController) {
+		this.btnAdd = new JButton("Add");
+		btnAdd.setBounds(466, 273, 89, 23);
+		contentPane.add(btnAdd);
+		this.addApointmnentController = addApointmnentController;
+		this.listener = new AddAppointmentButtonHandler(this.addApointmnentController);
+		if (!(btnSearch == null)) {
+
+			btnSearch.addActionListener(listener);
+		}
+
+		// now the next button
+
+		this.btnSearch = new JButton("Search");
+		btnSearch.setBounds(242, 10, 86, 23);
+		contentPane.add(btnSearch);
+
+		this.setVisible(true);
+
+	}
+	// getting the value from the search txt field
+
+	public String getSearchTxtValue() {
+		String name = txtSearchPatientName.getText();
+		return name;
+	}
+
+	@Override
+	public void setComboboxValue(int[] ides) {
+		for (int i = 0; i < ides.length; i++) {
+			cmbSelectPatientId.addItem(ides[i]);
+		}
+	}
+
+	public int getSelectedItemFromBox() {
+		int id = 0;
+		id = (int) cmbSelectPatientId.getSelectedItem();
+
+		return id;
+	}
+
+	// show table details
+
+	public void showTable(ArrayList<Patient> patients) {
+
+		String[] columnNames = { "id", "First Name", "Last Name", "dob", "Tel Number", "Eamil", "Gender" };
+
+		String[][] tableArray = new String[patients.size()][10];
+
+		for (int i = 0; i < patients.size(); i++) {
+
+			String id = String.valueOf(patients.get(i).getId());
+
+			Date dob = patients.get(i).getDob();
+			String dateDob = null;
+			if (!(dob == null)) {
+				dateDob = dob.toString();
+			}
+
+			tableArray[i] = new String[] { id, patients.get(i).getFirstName(), patients.get(i).getLastName(), dateDob,
+					patients.get(i).getTelNumber(), patients.get(i).getEmail(), patients.get(i).getGender() };
+
+		}
+
+		TableModel tableModel = new DefaultTableModel(tableArray, columnNames);
+
+		table.setModel(tableModel);
+
+	}
 }
