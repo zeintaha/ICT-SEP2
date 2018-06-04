@@ -124,20 +124,20 @@ public class AddAppointmentGUI extends JFrame
       lblTelphoneNo.setBounds(464, 49, 91, 14);
       contentPane.add(lblTelphoneNo);
       
-      JComboBox comboBox = new JComboBox();
-      comboBox.setBounds(99, 119, 96, 20);
-      contentPane.add(comboBox);
+      JComboBox cmbSelectYear = new JComboBox();
+      cmbSelectYear.setBounds(39, 132, 96, 20);
+      contentPane.add(cmbSelectYear);
       
-      JLabel lblSelectAppointmentDay = new JLabel("Select day");
-      lblSelectAppointmentDay.setBounds(10, 122, 120, 14);
+      JLabel lblSelectAppointmentDay = new JLabel("Select Year");
+      lblSelectAppointmentDay.setBounds(39, 107, 79, 14);
       contentPane.add(lblSelectAppointmentDay);
       
-      JComboBox comboBox_1 = new JComboBox();
-      comboBox_1.setBounds(360, 119, 96, 20);
-      contentPane.add(comboBox_1);
+      JComboBox cmbSelectMonth = new JComboBox();
+      cmbSelectMonth.setBounds(174, 132, 96, 20);
+      contentPane.add(cmbSelectMonth);
       
-      JLabel lblSelectTime = new JLabel("Select time");
-      lblSelectTime.setBounds(271, 119, 79, 14);
+      JLabel lblSelectTime = new JLabel("Select Month");
+      lblSelectTime.setBounds(174, 107, 79, 14);
       contentPane.add(lblSelectTime);
       
       JTextArea textArea = new JTextArea();
@@ -151,5 +151,21 @@ public class AddAppointmentGUI extends JFrame
       JButton btnAdd = new JButton("Add");
       btnAdd.setBounds(466, 273, 89, 23);
       contentPane.add(btnAdd);
+      
+      JComboBox cmbSelectDay = new JComboBox();
+      cmbSelectDay.setBounds(309, 132, 96, 20);
+      contentPane.add(cmbSelectDay);
+      
+      JLabel lblSelectDay = new JLabel("Select Day");
+      lblSelectDay.setBounds(309, 107, 79, 14);
+      contentPane.add(lblSelectDay);
+      
+      JComboBox cmbSelectTime = new JComboBox();
+      cmbSelectTime.setBounds(444, 132, 96, 20);
+      contentPane.add(cmbSelectTime);
+      
+      JLabel lblSelectTime_1 = new JLabel("Select Available Time");
+      lblSelectTime_1.setBounds(444, 107, 106, 14);
+      contentPane.add(lblSelectTime_1);
    }
 }
