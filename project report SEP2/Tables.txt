@@ -2,16 +2,22 @@ create schema "Clinic";
 set search_path = 'Clinic';
 
 CREATE TABLE Patient
+
 (
-	patientId       Serial,
-    firstName       VARCHAR (20),
-    lastName        VARCHAR (20),
-    dob			    DATE,
-	telNumber		VARCHAR (20),
-email			VARCHAR (40),	
-	gender			VarChar (10),
-		
-    PRIMARY KEY (patientId));
+   
+patientId       Serial,
+
+firstName       VARCHAR (20),
+
+lastName        VARCHAR (20),
+
+dob                DATE,
+telNumber        VARCHAR (20),
+
+email            VARCHAR (40),
+gender            VarChar (10),
+
+PRIMARY KEY (patientId));
 	
 	
 CREATE TABLE Employee
@@ -63,7 +69,7 @@ select * from doctor;
 Create table RequestRenewal
 (
 	requestRenewalId	Serial,
-	patientId			Serial,
+	patientId			int,
 	dateOfRequest		DATE,	
 	dateOfDecision		DATE,
 	
@@ -75,7 +81,7 @@ Create table RequestRenewal
 Create table Appointment
 (
 	appointmentId		Serial,
-	patientId			Serial,
+	patientId			int
 	dateOfAppointment	DATE,
 	time				DATE,	
 	
@@ -98,8 +104,8 @@ Create table Medicine
 Create table RecordsOfRequestForRenewal
 (
 	recordsOfRequestForRenewalId		Serial,
-	requestRenewalId					Serial,
-	medicineId							Serial,
+	requestRenewalId					int,
+	medicineId							int,
 	approved							CHAR (4),
 	quantity							DATE,	
 	dailyDosage							DATE,
@@ -119,7 +125,7 @@ Create table MedicalRecord
 Create table MedicalCase
 (
 	caseId				Serial,
-	medicalRecodId		Serial,
+	medicalRecodId		int,
 	caseTitle			VarChar (20),
 	caseBody			VarChar (20),
 	date				DATE,
@@ -131,7 +137,7 @@ Create table MedicalCase
 Create table Prescription
 (
 	prescriptionId		Serial,
-	caseId				Serial,
+	caseId				int,
 	date				DATE,
 
 	
@@ -142,7 +148,7 @@ Create table Prescription
 Create table PrescriptionRecord
 (
 	prescriptionRecordId	Serial,
-	medicineId				Serial,
+	medicineId				int,
 	dailyDose				VarChar (2),
 
 	
