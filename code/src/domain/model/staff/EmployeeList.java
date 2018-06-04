@@ -7,10 +7,8 @@ public class EmployeeList {
 
 	public EmployeeList() {
 		this.employees = new ArrayList<Employee>();
-		
-	}
 
-	
+	}
 
 	public void addEmployee(Employee employee) {
 		employees.add(employee);
@@ -31,8 +29,6 @@ public class EmployeeList {
 		System.out.println(" we can not find the employee wiht the name : " + name + "!! ");
 		return null;
 	}
-
-	
 
 	public Employee editEmployee(String oldName, String newName) {
 		Employee employee = getEmployeeByName(oldName);
@@ -58,15 +54,16 @@ public class EmployeeList {
 	public int getNumerOfEmployees() {
 		return employees.size();
 	}
-	public Employee getEmployeeById(int id ) {
+
+	public Employee getEmployeeById(int id) {
 		Employee employee = null;
 		for (int i = 0; i < employees.size(); i++) {
-			if (employees.get(i).getId()== id) {
-				employee= employees.get(i);
+			if (employees.get(i).getId() == id) {
+				employee = employees.get(i);
 			}
-			
+
 		}
-		return employee ;
-		
+		return employee;
+
 	}
 }

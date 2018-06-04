@@ -5,27 +5,17 @@ import java.util.Date;
 import domain.model.patient.Patient;
 
 public class Appointment {
-	private int AppointmentId;
+
 	private Date dateOfAppointment;
 	private Date time;
 	private String brief;
 	private Patient patient;
 
-	public Appointment(int appointmentId, Date dateOfAppointment, Date time, String brief, Patient patient) {
-		super();
-		AppointmentId = appointmentId;
+	public Appointment(Date dateOfAppointment, Date time, String brief, Patient patient) {
 		this.dateOfAppointment = dateOfAppointment;
 		this.time = time;
 		this.brief = brief;
 		this.patient = patient;
-	}
-
-	public int getAppointmentId() {
-		return AppointmentId;
-	}
-
-	public void setAppointmentId(int appointmentId) {
-		AppointmentId = appointmentId;
 	}
 
 	public Date getDateOfAppointment() {
@@ -62,8 +52,8 @@ public class Appointment {
 
 	@Override
 	public String toString() {
-		return "Appointment [AppointmentId=" + AppointmentId + ", dateOfAppointment=" + dateOfAppointment + ", time="
-				+ time + ", brief=" + brief + ", patient=" + patient + "]";
+		return " dateOfAppointment=" + dateOfAppointment + ", time=" + time + ", brief=" + brief + ", patient="
+				+ patient + "]";
 	}
 
 }
