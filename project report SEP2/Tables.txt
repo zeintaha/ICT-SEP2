@@ -80,15 +80,23 @@ Create table RequestRenewal
 
 Create table Appointment
 (
-	appointmentId		Serial,
-	patientId			int
-	dateOfAppointment	DATE,
-	time				DATE,	
+	appointmentid			Serial,
+	patientid			int,
+	datetimeofappointmentid	int,
+
+	PRIMARY KEY	(appointmentid), 
+	FOREIGN KEY (patientid) REFERENCES patient(patientid),
+	FOREIGN KEY (datetimeofappointmentid) REFERENCES datetime(datetimeid));
+
 	
+Create table datetime
+(
+	datetimeid		Serial,
+	datetime		timestamp,
 	
+
+	PRIMARY KEY	(DateTimeID));
 	
-	PRIMARY KEY	(appointmentId), 
-	FOREIGN KEY (patientID) REFERENCES Patient(patientID));
 	
 	
 Create table Medicine
