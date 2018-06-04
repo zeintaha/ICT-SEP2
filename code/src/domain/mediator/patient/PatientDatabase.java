@@ -53,7 +53,7 @@ public class PatientDatabase implements PatientPersistence {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+System.out.println(" hi from the database ");
 		return patients;
 	}
 

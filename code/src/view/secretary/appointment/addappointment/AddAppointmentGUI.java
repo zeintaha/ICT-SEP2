@@ -1,5 +1,9 @@
 package view.secretary.appointment.addappointment;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -10,21 +14,15 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import controller.appointment.addappointment.AddApointmnentController;
-import domain.model.patient.Patient;
-import domain.model.staff.Employee;
-
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Date;
+import controller.appointment.addappointment.PatientAppoitmentController;
+import domain.model.patient.Patient;
 
 public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
-	private AddApointmnentController addApointmnentController;
+	private PatientAppoitmentController patientAppoitmentController;
 	private JPanel contentPane;
 	private JTextField txtSearchPatientName;
 	private JLabel lblNewLabel;
@@ -119,22 +117,26 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		table.setBounds(2, 55, 553, 93);
 	}
 
-	public void start(AddApointmnentController addApointmnentController) {
+	public void start(PatientAppoitmentController patientAppoitmentController) {
 		this.btnAdd = new JButton("Add");
 		btnAdd.setBounds(466, 273, 89, 23);
 		contentPane.add(btnAdd);
-		this.addApointmnentController = addApointmnentController;
-		this.listener = new AddAppointmentButtonHandler(this.addApointmnentController);
-		if (!(btnSearch == null)) {
-
-			btnSearch.addActionListener(listener);
-		}
+		this.patientAppoitmentController = patientAppoitmentController;
+		this.listener = new AddAppointmentButtonHandler(this.patientAppoitmentController);
+//
+//		if (!(btnSearch == null)) {
+//
+//			btnSearch.addActionListener(listener);
+//		}
 
 		// now the next button
 
 		this.btnSearch = new JButton("Search");
 		btnSearch.setBounds(242, 10, 86, 23);
 		contentPane.add(btnSearch);
+
+			btnSearch.addActionListener(listener);
+		
 
 		this.setVisible(true);
 

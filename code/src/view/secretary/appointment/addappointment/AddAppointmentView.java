@@ -1,9 +1,9 @@
 	package view.secretary.appointment.addappointment;
 
-import controller.appointment.addappointment.AddApointmnentController;
+import controller.appointment.addappointment.PatientAppoitmentController;
 
 public interface AddAppointmentView {
-	public void start(AddApointmnentController addApointmnentController);
+	public void start(PatientAppoitmentController patientAppoitmentController);
 	public String getSearchTxtValue();
 
 	public  int getSelectedItemFromBox();

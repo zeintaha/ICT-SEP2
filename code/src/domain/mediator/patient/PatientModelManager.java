@@ -70,7 +70,10 @@ public class PatientModelManager implements PatientModel {
 
 	@Override
 	public ArrayList<Patient> getAllPatientsFromTheList() {
+		
+		
 		return list.getAll();
+	
 	}
 	
 	@Override
