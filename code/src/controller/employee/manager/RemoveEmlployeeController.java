@@ -3,7 +3,7 @@ package controller.employee.manager;
 import java.io.IOException;
 
 import domain.mediator.staff.StaffClinicModel;
-import domain.mediator.staff.StaffClinicModelManeger;
+import domain.mediator.staff.StaffClinicModelManager;
 import view.manager.removeemployee.RemoveEmployeeGUI;
 import view.manager.searchemployee.SearchEmployeeGUI;
 
@@ -15,7 +15,7 @@ public class RemoveEmlployeeController {
 	public RemoveEmlployeeController(StaffClinicModel staffClinicModel, RemoveEmployeeGUI removeEmployeeGUI)
 			throws ClassNotFoundException, IOException {
 
-		this.staffClinicModel = new StaffClinicModelManeger();
+		this.staffClinicModel = new StaffClinicModelManager();
 		this.removeEmployeeGUI = removeEmployeeGUI;
 	}
 

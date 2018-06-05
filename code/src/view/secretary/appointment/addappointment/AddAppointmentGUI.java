@@ -18,11 +18,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import controller.appointment.addappointment.PatientAppoitmentController;
+import controller.appointment.addappointment.SearchPatientController;
 import domain.model.patient.Patient;
 
 public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
-	private PatientAppoitmentController patientAppoitmentController;
+	private SearchPatientController searchPatientController;
 	private JPanel contentPane;
 	private JTextField txtSearchPatientName;
 	private JLabel lblNewLabel;
@@ -44,7 +44,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 	public AddAppointmentGUI() {
 		setTitle("Add Appointment");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 596, 346);
+		setBounds(100, 100, 744, 379);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,7 +84,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		contentPane.add(lblSelectTime);
 
 		this.textArea = new JTextArea();
-		textArea.setBounds(10, 229, 535, 67);
+		textArea.setBounds(10, 229, 708, 67);
 		contentPane.add(textArea);
 
 		JLabel lblBrif = new JLabel("Brief");
@@ -114,20 +114,25 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		table = new JTable();
 		contentPane.add(table);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBounds(2, 55, 553, 93);
-	}
-
-	public void start(PatientAppoitmentController patientAppoitmentController) {
+		table.setBounds(2, 55, 716, 93);
+		this.btnAdd = new JButton("Add");
+		btnAdd.setBounds(596, 172, 89, 23);
+		contentPane.add(btnAdd);
 		this.btnAdd = new JButton("Add");
 		btnAdd.setBounds(466, 273, 89, 23);
 		contentPane.add(btnAdd);
-		this.patientAppoitmentController = patientAppoitmentController;
-		this.listener = new AddAppointmentButtonHandler(this.patientAppoitmentController);
-//
-//		if (!(btnSearch == null)) {
-//
-//			btnSearch.addActionListener(listener);
-//		}
+	}
+
+	public void start(SearchPatientController searchPatientController) {
+		
+		this.searchPatientController = searchPatientController;
+		this.listener = new AddAppointmentButtonHandler(this.searchPatientController);
+		
+		if (this.btnSearch != null) {
+
+			btnSearch.addActionListener(listener);
+		}
+
 
 		// now the next button
 
@@ -147,7 +152,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		String name = txtSearchPatientName.getText();
 		return name;
 	}
-
+//  void method which takes integer array to set the ides for the selected patients in the Combobox. 
 	@Override
 	public void setComboboxValue(int[] ides) {
 		for (int i = 0; i < ides.length; i++) {
@@ -168,7 +173,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 
 		String[] columnNames = { "id", "First Name", "Last Name", "dob", "Tel Number", "Eamil", "Gender" };
 
-		String[][] tableArray = new String[patients.size()][10];
+		String[][] tableArray = new String[patients.size()][7];
 
 		for (int i = 0; i < patients.size(); i++) {
 
@@ -176,7 +181,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 
 			Date dob = patients.get(i).getDob();
 			String dateDob = null;
-			if (!(dob == null)) {
+			if (dob != null) {
 				dateDob = dob.toString();
 			}
 
@@ -190,4 +195,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		table.setModel(tableModel);
 
 	}
+	
+
+	
 }

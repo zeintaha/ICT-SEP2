@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import view.secretary.appointment.addappointment.AddAppointmentGUI;
-import view.secretary.appointment.editappointment.EditAppointmentGUI;
+import view.secretary.appointment.removeappointment.RemoveAppointmentGUI;
 import view.secretary.patient.addpatient.AddPatientGUI;
 import view.secretary.patient.editpatient.EditPatientGUI;
 import view.secretary.patient.removepatient.RemovePatientGUI;
@@ -128,7 +128,7 @@ public class ManageSecretaryGUI extends JFrame {
             gui.setVisible(true);
          }
 			else if (e.getSource() == btnEditAppointment) {
-            EditAppointmentGUI gui= new EditAppointmentGUI();
+            RemoveAppointmentGUI gui= new RemoveAppointmentGUI();
 //            gui.setVisible(true);
          }
 			else if (e.getSource() == btnRemovePatient) {

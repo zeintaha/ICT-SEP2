@@ -15,7 +15,7 @@ public class AddEmployeeController {
 
 	public AddEmployeeController(StaffClinicModel staffClinicModel, AddEmployeeView view)
 			throws ClassNotFoundException, IOException {
-		super();
+		
 		this.staffClinicModel = staffClinicModel;
 		this.view = view;
 	}

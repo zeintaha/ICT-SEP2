@@ -3,21 +3,23 @@ package view.secretary.appointment.addappointment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.appointment.addappointment.PatientAppoitmentController;
+import controller.appointment.addappointment.SearchPatientController;
+
+
 
 public class AddAppointmentButtonHandler implements ActionListener {
-	private PatientAppoitmentController patientAppoitmentController;
+	private SearchPatientController searchPatientController;
 
-	public AddAppointmentButtonHandler(PatientAppoitmentController patientAppoitmentController) {
-		this.patientAppoitmentController = patientAppoitmentController;
-		
+	public AddAppointmentButtonHandler(SearchPatientController searchPatientController) {
+		this.searchPatientController = searchPatientController;
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
-		patientAppoitmentController.executes();
-		
+
+		searchPatientController.executes();
+
 	}
 
 }

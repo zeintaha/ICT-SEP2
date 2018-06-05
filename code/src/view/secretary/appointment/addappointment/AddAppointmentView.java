@@ -1,12 +1,19 @@
-	package view.secretary.appointment.addappointment;
+package view.secretary.appointment.addappointment;
 
-import controller.appointment.addappointment.PatientAppoitmentController;
+import java.util.ArrayList;
+
+import controller.appointment.addappointment.SearchPatientController;
+import domain.model.patient.Patient;
 
 public interface AddAppointmentView {
-	public void start(PatientAppoitmentController patientAppoitmentController);
+	public void start(SearchPatientController searchPatientController);
+
 	public String getSearchTxtValue();
 
-	public  int getSelectedItemFromBox();
+	public void showTable(ArrayList<Patient> patients);
+
+	public int getSelectedItemFromBox();
+
 	public void setComboboxValue(int[] ides);
 
 }

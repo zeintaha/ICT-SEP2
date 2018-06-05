@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import domain.mediator.staff.StaffClinicModel;
-import domain.mediator.staff.StaffClinicModelManeger;
+import domain.mediator.staff.StaffClinicModelManager;
 import domain.model.staff.Employee;
 import view.manager.searchemployee.SearchEmployeeGUI;
 import view.manager.searchemployee.SearchEmployeeView;
@@ -18,7 +18,7 @@ public class SearchEmployeeController
          throws ClassNotFoundException, IOException
    {
 	   
-      staffClinicModel = new StaffClinicModelManeger();
+      staffClinicModel = new StaffClinicModelManager();
      
  
       this.searchEmployee = searchEmployee;

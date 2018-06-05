@@ -13,13 +13,13 @@ import domain.model.staff.EmployeeFactory;
 import domain.model.staff.EmployeeList;
 import domain.model.staff.Type;
 
-public class StaffClinicModelManeger implements StaffClinicModel {
+public class StaffClinicModelManager implements StaffClinicModel {
 
 	private EmployeeList list;
 	private StaffDatabase persistence;
 	private Employee employee;
 
-	public StaffClinicModelManeger() throws IOException, ClassNotFoundException {
+	public StaffClinicModelManager() throws IOException, ClassNotFoundException {
 		this.persistence = new StaffDatabase();
 
 	}
