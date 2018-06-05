@@ -1,34 +1,44 @@
 package controller.employee.manager;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
-import domain.mediator.staff.StaffClinicModel;
-import domain.model.staff.Employee;
-import domain.model.staff.EmployeeFactory;
-import domain.model.staff.Type;
-
+import clients.Client;
 import view.manager.addemployee.AddEmployeeView;
 
 public class AddEmployeeController {
-	private StaffClinicModel staffClinicModel;
+	private Client clientStaff;
 	private AddEmployeeView view;
 
-	public AddEmployeeController(StaffClinicModel staffClinicModel, AddEmployeeView view)
+	public AddEmployeeController(Client staffClinicModel, AddEmployeeView view)
 			throws ClassNotFoundException, IOException {
 		
-		this.staffClinicModel = staffClinicModel;
+		this.clientStaff = staffClinicModel;
 		this.view = view;
 	}
 
-	public String[] setComboboxValue() {
-		return staffClinicModel.reachType();
+	public String[] setComboboxValue() throws RemoteException {
+		return clientStaff.reachType();
 	}
 
-	public void executes() {
-		String[] data = view.getTextFieldValues();
+	public void executes() throws RemoteException {
+      String[] data = view.getTextFieldValues();
 
-		staffClinicModel.addOneEmployee(data);
+      clientStaff.addOneEmployee(data);
 
+      boolean error = false;
+      for (int i = 0; i < data.length; i++) {
+          if (data[i].isEmpty()) {
+              view.showError();
+              error = true;
+              break;
+          }
+      }
+      if (error == false) {
+         clientStaff.addOneEmployee(data);
+          view.showConfirmation();
+          view.cleanInput();
+      }
 
-	}
+  }
 }

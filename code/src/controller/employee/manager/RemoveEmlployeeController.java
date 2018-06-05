@@ -1,25 +1,27 @@
 package controller.employee.manager;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
-import domain.mediator.staff.StaffClinicModel;
-import domain.mediator.staff.StaffClinicModelManager;
+import clients.Client;
+import domain.mediator.staff.RemoteStaffClinicModel;
+import domain.mediator.staff.ServerStaffClinicModelManager;
 import view.manager.removeemployee.RemoveEmployeeGUI;
 import view.manager.searchemployee.SearchEmployeeGUI;
 
 public class RemoveEmlployeeController {
 
-	private StaffClinicModel staffClinicModel;
+	private Client clientStaff;
 	private RemoveEmployeeGUI removeEmployeeGUI;
 
-	public RemoveEmlployeeController(StaffClinicModel staffClinicModel, RemoveEmployeeGUI removeEmployeeGUI)
+	public RemoveEmlployeeController(Client clientStaff, RemoveEmployeeGUI removeEmployeeGUI)
 			throws ClassNotFoundException, IOException {
 
-		this.staffClinicModel = new StaffClinicModelManager();
+		this.clientStaff = new Client();
 		this.removeEmployeeGUI = removeEmployeeGUI;
 	}
 
-	public void executes(String what) {
+	public void executes(String what) throws RemoteException {
 		switch (what) {
 		case "Search":
 			String name = "";
@@ -30,17 +32,17 @@ public class RemoveEmlployeeController {
 			}
 			removeEmployeeGUI.enableRemoveButton(true);
 	try {
-		staffClinicModel.callLoad(name);
+	   clientStaff.callLoad(name);
 
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 
-	removeEmployeeGUI.showTable(staffClinicModel.getAllEmployeesFromTheList());
-	int[] ides =  new int[staffClinicModel.getAllEmployeesFromTheList().size()];
+	removeEmployeeGUI.showTable(clientStaff.getAllEmployeesFromTheList());
+	int[] ides =  new int[clientStaff.getAllEmployeesFromTheList().size()];
 	for (int i = 0; i < ides.length; i++) {
-		ides[i] = staffClinicModel.getAllEmployeesFromTheList().get(i).getId();
+		ides[i] = clientStaff.getAllEmployeesFromTheList().get(i).getId();
 		
 	}
 	
@@ -51,14 +53,9 @@ public class RemoveEmlployeeController {
 		case "Remove":
 
 			int id = removeEmployeeGUI.getSelectedItemFromBox();
-			staffClinicModel.remove(id);
-			removeEmployeeGUI.showTable(staffClinicModel.getAllEmployeesFromTheList());
-			
-			
-			
-			
-			
-			
+			clientStaff.removeStaff(id);
+			removeEmployeeGUI.showTable(clientStaff.getAllEmployeesFromTheList());
+
 			
 			break;
 

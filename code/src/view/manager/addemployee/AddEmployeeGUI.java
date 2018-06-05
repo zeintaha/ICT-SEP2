@@ -1,11 +1,13 @@
 package view.manager.addemployee;
 
 import java.awt.Color;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -132,7 +134,15 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 	@Override
 	public void start(AddEmployeeController controller) {
 		this.addEmployeeController = controller;
-		cmbEmployeeType = new JComboBox(controller.setComboboxValue());
+		try
+      {
+         cmbEmployeeType = new JComboBox(controller.setComboboxValue());
+      }
+      catch (RemoteException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
 		cmbEmployeeType.setBounds(229, 5, 184, 20);
 
 		contentPane.add(cmbEmployeeType);
@@ -162,4 +172,18 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 
 		return employeeData;
 	}
+	
+	public void showError() {
+      
+      JOptionPane.showMessageDialog(contentPane, "please fill all the fields before adding.");
+  }
+
+  public void showConfirmation() {
+      
+      JOptionPane.showMessageDialog(contentPane, "Aa new employee has been added succefully.");
+  }
+  public void cleanInput() {
+      txtFirstName.setText("");
+      
+  }
 }

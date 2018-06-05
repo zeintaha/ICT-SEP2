@@ -2,6 +2,7 @@ package view.manager.searchemployee;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 
@@ -28,7 +29,15 @@ public class SearchEmployeeButtonHandler implements ActionListener
       if (!(e.getSource() instanceof JButton))
          return;
      
-      searchEmployeeController.executes();
+      try
+      {
+         searchEmployeeController.executes();
+      }
+      catch (RemoteException e1)
+      {
+         // TODO Auto-generated catch block
+         e1.printStackTrace();
+      }
    }
 
 }

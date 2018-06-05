@@ -2,6 +2,7 @@ package view.secretary.patient.searchpatient;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 
@@ -22,7 +23,15 @@ public class SearchPatientButtonHandler implements ActionListener
 	   if (!(e.getSource() instanceof JButton))
 	         return;
 	      System.out.println("I´m here");
-	      searchPatientController.executes();
+	      try
+         {
+            searchPatientController.executes();
+         }
+         catch (RemoteException e1)
+         {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+         }
    }
 
 }

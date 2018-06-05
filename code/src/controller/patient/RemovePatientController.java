@@ -1,21 +1,22 @@
 package controller.patient;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
-import domain.mediator.patient.PatientModel;
-import domain.mediator.patient.PatientModelManager;
+import domain.mediator.patient.RemotePatientModel;
+import domain.mediator.patient.ServerPatientModelManager;
 import view.secretary.patient.removepatient.RemovePatientGUI;
 
 public class RemovePatientController {
-private PatientModel patientModel;
+private RemotePatientModel patientModel;
 private RemovePatientGUI removePatientGUI;
-public RemovePatientController(PatientModel patientModel, RemovePatientGUI removePatientGUI) 
+public RemovePatientController(RemotePatientModel patientModel, RemovePatientGUI removePatientGUI) 
 		 throws ClassNotFoundException, IOException
 {
-	this.patientModel = new PatientModelManager();
+	this.patientModel = new ServerPatientModelManager();
 	this.removePatientGUI = removePatientGUI;
 }
-public void executes(String what)
+public void executes(String what) throws RemoteException
 {
 	switch (what) {
 	case "Search":

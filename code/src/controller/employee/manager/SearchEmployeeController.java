@@ -1,50 +1,53 @@
 package controller.employee.manager;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.rmi.RemoteException;
 
-import domain.mediator.staff.StaffClinicModel;
-import domain.mediator.staff.StaffClinicModelManager;
-import domain.model.staff.Employee;
+import clients.Client;
 import view.manager.searchemployee.SearchEmployeeGUI;
 import view.manager.searchemployee.SearchEmployeeView;
+import view.secretary.appointment.addappointment.AddAppointmentGUI;
 
 public class SearchEmployeeController
 {
-   private StaffClinicModel staffClinicModel;
+   private Client clientStaff;
    private SearchEmployeeView searchEmployee;
 
-   public SearchEmployeeController(StaffClinicModel model,SearchEmployeeView searchEmployee)
+   public SearchEmployeeController(Client clientStaff,
+         SearchEmployeeView searchEmployee)
          throws ClassNotFoundException, IOException
    {
-	   
-      staffClinicModel = new StaffClinicModelManager();
-     
- 
+
+      this.clientStaff = new Client();
+
       this.searchEmployee = searchEmployee;
-      
+
    }
 
-  
-
-   public void executes()
+   public void executes() throws RemoteException
    {
-	   String name = ((SearchEmployeeGUI) searchEmployee).get().substring(0, 1)
-	           .toUpperCase()
-	           + ((SearchEmployeeGUI) searchEmployee).get().substring(1)
-	                 .toLowerCase();
-      try {
-		staffClinicModel.callLoad(name);
-		
-		
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-  
- 
-     
-    searchEmployee.showTable(staffClinicModel.getAllEmployeesFromTheList());
+      String name = ((SearchEmployeeGUI) searchEmployee).get();
+            if ( name.length()>1) {
+               
+               
+               name= name.substring(0, 1)
+           .toUpperCase()
+           + ((SearchEmployeeGUI) searchEmployee).get().substring(1)
+                 .toLowerCase();
+           }
+      
+      try
+      {
+         clientStaff.callLoad(name);
+
+      }
+      catch (IOException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+
+      searchEmployee.showTable(clientStaff.getAllEmployeesFromTheList());
    }
 
 }

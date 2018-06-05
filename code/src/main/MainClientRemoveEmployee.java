@@ -2,14 +2,13 @@ package main;
 
 import java.io.IOException;
 
+import clients.Client;
 import controller.employee.manager.RemoveEmlployeeController;
-import domain.mediator.staff.StaffClinicModel;
-import domain.mediator.staff.StaffClinicModelManager;
 import view.manager.removeemployee.RemoveEmployeeGUI;
 
-public class MainRemoveEmployee {
+public class MainClientRemoveEmployee {
 	public static void main(String args[]) throws IOException, ClassNotFoundException {
-		StaffClinicModel model = new StaffClinicModelManager();		
+	   Client model = new Client();		
 		RemoveEmployeeGUI view = new RemoveEmployeeGUI();
 		RemoveEmlployeeController removeEmlployeeController = new RemoveEmlployeeController(model,view);
 		view.start(removeEmlployeeController);

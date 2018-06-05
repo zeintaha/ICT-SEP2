@@ -1,8 +1,9 @@
 package domain.model.staff;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Doctor extends Employee {
+public class Doctor extends Employee implements Serializable{
 
 	public Doctor(int id, String firstname, String lastname, Date dob, Date startdate, String telnumber,
 			String email, String gender,  String username, String employeepassword) {

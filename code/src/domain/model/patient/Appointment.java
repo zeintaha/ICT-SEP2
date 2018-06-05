@@ -1,10 +1,11 @@
 package domain.model.patient;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import domain.model.patient.Patient;
 
-public class Appointment {
+public class Appointment implements Serializable {
 
 	private Date dateOfAppointment;
 	private Date time;

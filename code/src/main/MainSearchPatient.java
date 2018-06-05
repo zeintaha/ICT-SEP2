@@ -5,14 +5,14 @@ import java.io.IOException;
 import controller.patient.SearchPatientController;
 
 import view.secretary.patient.searchpatient.SearchPatientGUI;
-import domain.mediator.patient.PatientModel;
-import domain.mediator.patient.PatientModelManager;
+import domain.mediator.patient.RemotePatientModel;
+import domain.mediator.patient.ServerPatientModelManager;
 
 public class MainSearchPatient {
 	 public static void main(String args[])
 	         throws IOException, ClassNotFoundException
 	   {
-	      PatientModel model = new PatientModelManager();
+	      RemotePatientModel model = new ServerPatientModelManager();
 	      SearchPatientGUI view = new SearchPatientGUI();
 	      SearchPatientController controller = new SearchPatientController(model, view);
 	      view.start(controller);

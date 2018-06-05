@@ -2,14 +2,13 @@ package main;
 
 import java.io.IOException;
 
+import clients.Client;
 import controller.employee.manager.SearchEmployeeController;
-import domain.mediator.staff.StaffClinicModel;
-import domain.mediator.staff.StaffClinicModelManager;
 import view.manager.searchemployee.SearchEmployeeGUI;
 
-public class MainSearchManeger {
+public class MainClientSearchEmployee {
 	public static void main(String args[]) throws IOException, ClassNotFoundException {
-		StaffClinicModel model = new StaffClinicModelManager();		
+		Client model = new Client();		
 		SearchEmployeeGUI view = new SearchEmployeeGUI();
 		SearchEmployeeController searchEmployeeController = new SearchEmployeeController(model,view);
 		view.start(searchEmployeeController);

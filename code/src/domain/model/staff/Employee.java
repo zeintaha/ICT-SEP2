@@ -1,8 +1,9 @@
 package domain.model.staff;
 
+import java.io.Serializable;
 import java.util.Date;
 
-abstract public class Employee {
+abstract public class Employee implements Serializable{
 
 	private int id;
 	private String firstName;

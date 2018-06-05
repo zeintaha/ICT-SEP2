@@ -1,9 +1,10 @@
 package domain.model.patient;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class PatientList {
+public class PatientList implements Serializable{
 	ArrayList<Patient> patients;
 
 	public PatientList() {

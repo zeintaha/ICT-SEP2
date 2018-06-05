@@ -1,8 +1,9 @@
 package domain.model.staff;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Manager extends Employee {
+public class Manager extends Employee implements Serializable{
 
 	public Manager(int id, String firstname, String lastname, Date dob, Date startdate, String telnumber,
 			String email, String gender, String username, String employeepassword) {

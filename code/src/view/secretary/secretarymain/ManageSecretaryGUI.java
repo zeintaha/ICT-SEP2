@@ -3,12 +3,15 @@ package view.secretary.secretarymain;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import clients.Client;
+import controller.patient.AddPatientController;
 import view.secretary.appointment.addappointment.AddAppointmentGUI;
 import view.secretary.appointment.removeappointment.RemoveAppointmentGUI;
 import view.secretary.patient.addpatient.AddPatientGUI;
@@ -116,8 +119,29 @@ public class ManageSecretaryGUI extends JFrame {
 	public class MyButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btnAddPatient) {
-				AddPatientGUI gui= new AddPatientGUI();
-				gui.setVisible(true);
+			   
+	         Client model = new Client();
+	         AddPatientGUI view = new AddPatientGUI();
+	         view.setVisible(true);
+	         AddPatientController controller = null;
+            try
+            {
+               controller = new AddPatientController(model, view);
+            }
+            catch (ClassNotFoundException e1)
+            {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }
+            catch (IOException e1)
+            {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }
+	         view.start(controller);
+			   
+				
+				
 			}
 			else if (e.getSource() == btnAddAppointment) {
             AddAppointmentGUI gui= new AddAppointmentGUI();

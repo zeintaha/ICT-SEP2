@@ -1,8 +1,9 @@
 package domain.model.patient;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Patient {
+public class Patient implements Serializable {
 	private int id;
    private String firstName;
    private String lastName;

@@ -28,7 +28,7 @@ import domain.model.staff.Secretary;
 import view.manager.manageemployee.ManageEmployeeGUI;
 import view.secretary.secretarymain.ManageSecretaryGUI;
 
-public class LoginGUI extends JFrame {
+public class MainClientLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtUsername;
@@ -49,7 +49,7 @@ public class LoginGUI extends JFrame {
 			
 			public void run() {
 				try {
-					LoginGUI frame = new LoginGUI();
+					MainClientLogin frame = new MainClientLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +64,7 @@ public class LoginGUI extends JFrame {
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public LoginGUI() throws ClassNotFoundException, IOException {
+	public MainClientLogin() throws ClassNotFoundException, IOException {
 
 		this.persistence = new StaffDatabase();
 		this.list = persistence.load();
@@ -103,7 +103,7 @@ public class LoginGUI extends JFrame {
 	private class MyButtonListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("HI Again");
+	
 
 			String guiUsername = txtUsername.getText();
 			String guiPassword = txtPassword.getText();

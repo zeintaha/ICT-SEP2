@@ -2,6 +2,7 @@ package view.manager.addemployee;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 
@@ -32,7 +33,15 @@ public class AddEmployeeButtonHandler implements ActionListener
       if (!(e.getSource() instanceof JButton))
          return;
       
-      addEmployeeController.executes();
+      try
+      {
+         addEmployeeController.executes();
+      }
+      catch (RemoteException e1)
+      {
+         // TODO Auto-generated catch block
+         e1.printStackTrace();
+      }
 
     
       
