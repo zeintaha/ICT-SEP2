@@ -32,7 +32,7 @@ public class RemoveEmlployeeController {
 			}
 			removeEmployeeGUI.enableRemoveButton(true);
 	try {
-	   clientStaff.callLoad(name);
+	   clientStaff.callLoadStaff(name);
 
 	} catch (IOException e) {
 		// TODO Auto-generated catch block

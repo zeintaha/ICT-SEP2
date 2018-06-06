@@ -28,7 +28,7 @@ public void executes(String what) throws RemoteException
 				}
 				removePatientGUI.enableRemoveButton(true);
 		try {
-			client.callLoad(name);
+			client.callLoadPatient(name);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

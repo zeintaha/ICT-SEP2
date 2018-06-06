@@ -61,9 +61,14 @@ public class Client
       return StaffServer.reachType();
    }
 
-   public void callLoad(String name) throws IOException, RemoteException
+   public void callLoadStaff(String name) throws IOException, RemoteException
    {
       StaffServer.callLoad(name);
+   }
+   
+   public void callLoadPateint(String name) throws IOException, RemoteException
+   {
+      PatientServer.callLoad(name);
    }
 
    public ArrayList<Employee> getAllEmployeesFromTheList()

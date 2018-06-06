@@ -38,7 +38,7 @@ public class SearchEmployeeController
       
       try
       {
-         clientStaff.callLoad(name);
+         clientStaff.callLoadStaff(name);
 
       }
       catch (IOException e)

@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import clients.Client;
 import controller.patient.AddPatientController;
+import controller.patient.RemovePatientController;
 import controller.patient.SearchPatientController;
 import view.secretary.appointment.addappointment.AddAppointmentGUI;
 import view.secretary.appointment.removeappointment.RemoveAppointmentGUI;
@@ -169,8 +170,22 @@ public class ManageSecretaryGUI extends JFrame
          }
          else if (e.getSource() == btnRemovePatient)
          {
-            RemovePatientGUI gui = new RemovePatientGUI();
-            gui.setVisible(true);
+            
+            
+            Client model = new Client();
+            RemovePatientGUI view = new RemovePatientGUI();
+            RemovePatientController controller = null;
+            try
+            {
+               controller = new RemovePatientController(model, view);
+            }
+            catch (ClassNotFoundException | IOException e1)
+            {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }
+            view.start(controller);
+            view.setVisible(true);
          }
          // else if (e.getSource() == btnRemoveAppointment) {
          // RemoveAppointmentGUI gui= new RemoveAppointmentGUI();
