@@ -55,6 +55,7 @@ Create table Appointment
 	appointmentid			Serial,
 	patientid			int,
 	datetimeofappointmentid	int,
+	brief		varchar(1000),
 
 	PRIMARY KEY	(appointmentid), 
 	FOREIGN KEY (patientid) REFERENCES patient(patientid),
