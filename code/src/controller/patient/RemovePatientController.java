@@ -3,17 +3,18 @@ package controller.patient;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
+import clients.Client;
 import domain.mediator.patient.RemotePatientModel;
 import domain.mediator.patient.ServerPatientModelManager;
 import view.secretary.patient.removepatient.RemovePatientGUI;
 
 public class RemovePatientController {
-private RemotePatientModel patientModel;
+private Client client;
 private RemovePatientGUI removePatientGUI;
-public RemovePatientController(RemotePatientModel patientModel, RemovePatientGUI removePatientGUI) 
+public RemovePatientController(Client patientModel, RemovePatientGUI removePatientGUI) 
 		 throws ClassNotFoundException, IOException
 {
-	this.patientModel = new ServerPatientModelManager();
+	this.client = new Client();
 	this.removePatientGUI = removePatientGUI;
 }
 public void executes(String what) throws RemoteException
@@ -27,17 +28,17 @@ public void executes(String what) throws RemoteException
 				}
 				removePatientGUI.enableRemoveButton(true);
 		try {
-			patientModel.callLoad(name);
+			client.callLoad(name);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		removePatientGUI.showTable(patientModel.getAllPatientsFromTheList());
-		int[] ides =  new int[patientModel.getAllPatientsFromTheList().size()];
+		removePatientGUI.showTable(client.getAllPatientsFromTheList());
+		int[] ides =  new int[client.getAllPatientsFromTheList().size()];
 		for (int i = 0; i < ides.length; i++) {
-			ides[i] = patientModel.getAllPatientsFromTheList().get(i).getId();
+			ides[i] = client.getAllPatientsFromTheList().get(i).getId();
 			
 		}
 		
@@ -48,8 +49,8 @@ public void executes(String what) throws RemoteException
 			case "Remove":
 
 				int id = removePatientGUI.getSelectedItemFromBox();
-				patientModel.remove(id);
-				removePatientGUI.showTable(patientModel.getAllPatientsFromTheList());
+				client.removePatient(id);
+				removePatientGUI.showTable(client.getAllPatientsFromTheList());
 				
 				break;
 

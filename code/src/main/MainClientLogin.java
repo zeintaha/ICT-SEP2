@@ -28,116 +28,151 @@ import domain.model.staff.Secretary;
 import view.manager.manageemployee.ManageEmployeeGUI;
 import view.secretary.secretarymain.ManageSecretaryGUI;
 
-public class MainClientLogin extends JFrame {
+public class MainClientLogin extends JFrame
+{
 
-	private JPanel contentPane;
-	private JTextField txtUsername;
-	private JPasswordField txtPassword;
-	private JButton btnLogin;
-	private MyButtonListener listener;
+   private JPanel contentPane;
+   private JTextField txtUsername;
+   private JPasswordField txtPassword;
+   private JButton btnLogin;
+   private MyButtonListener listener;
 
-	private ArrayList<Employee> list;
-	private StaffDatabase persistence;
-	private Employee employee;
-	
+   private ArrayList<Employee> list;
+   private StaffDatabase persistence;
+   private Employee employee;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			
-			public void run() {
-				try {
-					MainClientLogin frame = new MainClientLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+   /**
+    * Launch the application.
+    */
+   public static void main(String[] args)
+   {
+      EventQueue.invokeLater(new Runnable()
+      {
 
-	/**
-	 * Create the frame.
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws IOException
-	 */
-	public MainClientLogin() throws ClassNotFoundException, IOException {
+         public void run()
+         {
+            try
+            {
+               MainClientLogin frame = new MainClientLogin();
+               frame.setVisible(true);
+            }
+            catch (Exception e)
+            {
+               e.printStackTrace();
+            }
+         }
+      });
+   }
 
-		this.persistence = new StaffDatabase();
-		this.list = persistence.load();
-		listener = new MyButtonListener();
-		setTitle("Login");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+   /**
+    * Create the frame.
+    * 
+    * @throws ClassNotFoundException
+    * @throws IOException
+    */
+   public MainClientLogin() throws ClassNotFoundException, IOException
+   {
 
-		txtUsername = new JTextField();
-		txtUsername.setBounds(210, 48, 137, 22);
-		contentPane.add(txtUsername);
-		txtUsername.setColumns(10);
+      this.persistence = new StaffDatabase();
+      this.list = persistence.load();
+      listener = new MyButtonListener();
+      setTitle("Login");
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setBounds(100, 100, 450, 300);
+      contentPane = new JPanel();
+      contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+      setContentPane(contentPane);
+      contentPane.setLayout(null);
 
-		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setBounds(82, 51, 83, 16);
-		contentPane.add(lblUsername);
+      txtUsername = new JTextField();
+      txtUsername.setBounds(210, 48, 137, 22);
+      contentPane.add(txtUsername);
+      txtUsername.setColumns(10);
 
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(82, 107, 83, 16);
-		contentPane.add(lblPassword);
+      JLabel lblUsername = new JLabel("Username");
+      lblUsername.setBounds(82, 51, 83, 16);
+      contentPane.add(lblUsername);
 
-		txtPassword = new JPasswordField();
-		txtPassword.setBounds(210, 104, 137, 22);
-		contentPane.add(txtPassword);
+      JLabel lblPassword = new JLabel("Password");
+      lblPassword.setBounds(82, 107, 83, 16);
+      contentPane.add(lblPassword);
 
-		btnLogin = new JButton("Login");
-		btnLogin.setBounds(289, 201, 97, 25);
-		contentPane.add(btnLogin);
-		btnLogin.addActionListener(listener);
-	}
+      txtPassword = new JPasswordField();
+      txtPassword.setBounds(210, 104, 137, 22);
+      contentPane.add(txtPassword);
 
-	private class MyButtonListener implements ActionListener {
+      btnLogin = new JButton("Login");
+      btnLogin.setBounds(289, 201, 97, 25);
+      contentPane.add(btnLogin);
+      btnLogin.addActionListener(listener);
+   }
 
-		public void actionPerformed(ActionEvent e) {
-	
+   private class MyButtonListener implements ActionListener
+   {
 
-			String guiUsername = txtUsername.getText();
-			String guiPassword = txtPassword.getText();
+      public void actionPerformed(ActionEvent e)
+      {
 
-			String dbUsername = "";
-			String dbPassword = "";
+         String guiUsername = txtUsername.getText();
+         String guiPassword = txtPassword.getText();
 
-			for (int i = 0; i < list.size(); i++) {
-				employee = list.get(i);
-				dbUsername = list.get(i).getUserName();
-				dbPassword = list.get(i).getPassword();
+         String dbUsername = "";
+         String dbPassword = "";
+         boolean flag = false;
 
+         for (int i = 0; i < list.size(); i++)
+         {
+            employee = list.get(i);
+            dbUsername = list.get(i).getUserName();
+            dbPassword = list.get(i).getPassword();
 
-				if (guiUsername.equals(dbUsername) && guiPassword.equals(dbPassword)) {
-					if (employee instanceof Doctor) {
+            if (guiUsername.equals(dbUsername)
+                  && guiPassword.equals(dbPassword))
+            {
+               if (employee instanceof Doctor)
+               {
+                  flag = true;
+                  break;
+               }
+               else if (employee instanceof Manager)
+               {
 
-					} else if (employee instanceof Manager) {
+                  ManageEmployeeGUI gui = new ManageEmployeeGUI();
+                  gui.setVisible(true);
+                  JOptionPane.showMessageDialog(rootPane,
+                        "You are logged in as a manager",
+                        "Welcom " + dbUsername, 1);
+                  setVisible(false);
 
-						
-						ManageEmployeeGUI gui = new ManageEmployeeGUI();
-						gui.setVisible(true);
-						JOptionPane.showMessageDialog(rootPane, "You are logged in as a manager", "Welcom " + dbUsername  , 1);
-						setVisible(false);
-						
-					} else if (employee instanceof Secretary) {
+                  flag = true;
 
-						ManageSecretaryGUI gui = new ManageSecretaryGUI();
-						gui.setVisible(true);
-						JOptionPane.showMessageDialog(rootPane, "You are logged in as a secretary", "Welcom " + dbUsername  , 1);
-						setVisible(false);
-					}
+                  break;
 
-				}
-			}
-		}
-	}
+               }
+               else if (employee instanceof Secretary)
+               {
+
+                  ManageSecretaryGUI gui = new ManageSecretaryGUI();
+                  gui.setVisible(true);
+                  JOptionPane.showMessageDialog(rootPane,
+                        "You are logged in as a secretary",
+                        "Welcom " + dbUsername, 1);
+                  setVisible(false);
+
+                  flag = true;
+                  break;
+               }
+
+            }
+
+         }
+         if (flag == false)
+         {
+            JOptionPane.showMessageDialog(rootPane,
+                  "Invalid Username or Password ", "Authentication failed",
+                  JOptionPane.ERROR_MESSAGE);
+         }
+
+      }
+   }
 }

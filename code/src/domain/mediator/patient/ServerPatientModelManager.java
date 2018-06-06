@@ -25,6 +25,7 @@ public class ServerPatientModelManager extends UnicastRemoteObject
    {
 
       this.persistence = new PatientDatabase();
+      list = new PatientList();
 
       Registry reg = LocateRegistry.createRegistry(1098);
       reg.rebind("PatientServer", this);

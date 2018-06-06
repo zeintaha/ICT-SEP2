@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import clients.Client;
 import domain.mediator.patient.RemotePatientModel;
 import domain.mediator.patient.ServerPatientModelManager;
 import domain.model.patient.Patient;
@@ -11,13 +12,13 @@ import view.secretary.patient.searchpatient.SearchPatientGUI;
 import view.secretary.patient.searchpatient.SearchPatientView;
 public class SearchPatientController {
 
-	   private RemotePatientModel patientModel;
+	   private Client client;
 	   private SearchPatientView searchPatient;
 	     
-	   public SearchPatientController(RemotePatientModel patientModel, SearchPatientView searchPatient) 
+	   public SearchPatientController(Client client, SearchPatientView searchPatient) 
 			   throws ClassNotFoundException, IOException 
 	   {
-		   this.patientModel = new ServerPatientModelManager();
+		   this.client = new Client();
 	      this.searchPatient=searchPatient;
 	      
 	     
@@ -30,13 +31,13 @@ public class SearchPatientController {
 		                 .toLowerCase();
 		      
 		   try {
-			patientModel.callLoad(name);
+		      client.callLoad(name);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		   
-		      searchPatient.showTable(patientModel.getAllPatientsFromTheList());
+		      searchPatient.showTable(client.getAllPatientsFromTheList());
 
 	}
 }

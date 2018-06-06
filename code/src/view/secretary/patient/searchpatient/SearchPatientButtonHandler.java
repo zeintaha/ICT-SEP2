@@ -22,7 +22,7 @@ public class SearchPatientButtonHandler implements ActionListener
    {
 	   if (!(e.getSource() instanceof JButton))
 	         return;
-	      System.out.println("I´m here");
+	     
 	      try
          {
             searchPatientController.executes();
