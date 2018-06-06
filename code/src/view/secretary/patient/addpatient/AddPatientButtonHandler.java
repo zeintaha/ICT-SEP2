@@ -33,6 +33,7 @@ public class AddPatientButtonHandler implements ActionListener
          return;
       try
       {
+        
          addPatientController.executes();
       }
       catch (RemoteException e1)

@@ -21,7 +21,26 @@ public class AddPatientController
    public void executes() throws RemoteException
    {
       String[] data = view.getTextFieldValues();
-      client.addPatient(data);
+      
+      boolean error = false;
+      
+      for (int i = 0; i < data.length; i++)
+      {
+         if (data[i].isEmpty())
+         {
+            view.showError();
+            error = true;
+            break;
+         }
+      }
+      
+      if (error == false)
+      {
+         client.addPatient(data);
+         view.showConfirmation();
+         view.cleanInput();
+      }
+
    }
 
 }

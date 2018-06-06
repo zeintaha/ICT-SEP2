@@ -60,10 +60,17 @@ public class PatientDatabase implements PatientPersistence {
 	@Override
 	public void save(Patient patient) throws IOException {
 		{
-			java.sql.Date sqlDate = new java.sql.Date(patient.getDob().getTime());
+			java.sql.Date sqlDate = null;
+			if(patient.getDob() != null) {
+			   sqlDate= new java.sql.Date(patient.getDob().getTime());
+			}
 
-			String firstName = patient.getFirstName().substring(0, 1).toUpperCase()
-					+ patient.getFirstName().substring(1);
+			String firstName = patient.getFirstName();
+			if(firstName != null && firstName.length()>1) {
+			   firstName =  firstName.substring(0, 1).toUpperCase()
+	               + patient.getFirstName().substring(1);
+			}
+			     
 
 			try {
 				String sql = "INSERT INTO \"Clinic\".patient (firstname, lastname, dob, telnumber,email, gender)"

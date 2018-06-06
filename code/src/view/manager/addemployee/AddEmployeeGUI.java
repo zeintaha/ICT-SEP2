@@ -180,10 +180,16 @@ public class AddEmployeeGUI extends JFrame implements AddEmployeeView
 
   public void showConfirmation() {
       
-      JOptionPane.showMessageDialog(contentPane, "Aa new employee has been added succefully.");
+      JOptionPane.showMessageDialog(contentPane, "a new employee has been added succefully.");
   }
   public void cleanInput() {
-      txtFirstName.setText("");
+     txtFirstName.setText("");
+     txtLastName.setText("");
+     txtDOB.setText("");
+     txtTel.setText("");
+     txtEmail.setText("");
+     txtGender.setText("");
+     txtStartDate.setText("");
       
   }
 }

@@ -43,15 +43,31 @@ public class ServerPatientModelManager extends UnicastRemoteObject
    {
 
       DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+//      Date dob = null;
+//      try
+//      {
+//         
+//         dob = format.parse(patientData[2]);
+//      }
+//      catch (ParseException e)
+//      {
+//         e.printStackTrace();
+//      }
+      
       Date dob = null;
-      try
-      {
-         dob = format.parse(patientData[2]);
+      if(patient.getDob() != null) {
+         System.out.println("hello FROM server");
+         try
+         {
+            dob = format.parse(patientData[2]);
+         }
+         catch (ParseException e)
+         {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+         }
       }
-      catch (ParseException e)
-      {
-         e.printStackTrace();
-      }
+      
       int id = 0;
       String firstName = patientData[0];
       String lastName = patientData[1];
