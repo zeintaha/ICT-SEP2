@@ -36,35 +36,7 @@ CREATE TABLE Employee
     
     
    PRIMARY KEY (employeeId));
-............CREATE TABLE Secretary
-(
-	secretaryId       CHAR (4),
-    firstName       VARCHAR (20),
-    lastName        VARCHAR (20),
-    dob			    DATE,
-	telNumber		VARCHAR (20),
-	email			VARCHAR (40),
-	gender			char (1),
-	startDate		DATE,
-		
-    PRIMARY KEY (secretaryId));...................
-	
-select * from doctor;
 
-
-.........CREATE TABLE Doctor
-(
-	doctorId        CHAR (4),
-    firstName       VARCHAR (20),
-    lastName        VARCHAR (20),
-    dob			    DATE,
-	telNumber		VARCHAR (20),
-	email			VARCHAR (40),
-	gender			VarChar (10),
-	startDate		DATE,
-		
-    PRIMARY KEY (doctorId));...............
-	
 
 Create table RequestRenewal
 (
@@ -123,22 +95,18 @@ Create table RecordsOfRequestForRenewal
 	FOREIGN KEY (requestRenewalId) REFERENCES RequestRenewal(requestRenewalId),
 	FOREIGN KEY (medicineId) REFERENCES Medicine(medicineId));	
 
-Create table MedicalRecord
-(
-	medicalRecodId		Serial,
-	
-	Primary key (medicalRecodId));
 
 
 Create table MedicalCase
 (
 	caseId				Serial,
-	medicalRecodId		int,
+	patientId       		int,
 	caseTitle			VarChar (20),
 	caseBody			VarChar (20),
 	date				DATE,
 	Primary key (caseId),
-	Foreign key (medicalRecodId) References MedicalRecord (medicalRecodId));
+	Foreign key (patientId) References Patient
+ (patientId));
 
 
 
@@ -147,8 +115,6 @@ Create table Prescription
 	prescriptionId		Serial,
 	caseId				int,
 	date				DATE,
-
-	
 	Primary key (prescriptionId),
 	Foreign key (caseId) References MedicalCase (caseId));
 	
