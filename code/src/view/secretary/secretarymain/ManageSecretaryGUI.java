@@ -38,28 +38,6 @@ public class ManageSecretaryGUI extends JFrame
    private JButton btnListAppointment;
 
    /**
-    * Launch the application.
-    */
-   public static void main(String[] args)
-   {
-      EventQueue.invokeLater(new Runnable()
-      {
-         public void run()
-         {
-            try
-            {
-               ManageSecretaryGUI frame = new ManageSecretaryGUI();
-               frame.setVisible(true);
-            }
-            catch (Exception e)
-            {
-               e.printStackTrace();
-            }
-         }
-      });
-   }
-
-   /**
     * Create the frame.
     */
    public ManageSecretaryGUI()
@@ -113,13 +91,13 @@ public class ManageSecretaryGUI extends JFrame
       contentPane.add(btnSearchAppointment);
       btnSearchAppointment.addActionListener(listener);
 
-      btnRequestMedicineRenewed = new JButton("Request For Medicine Renewed");
-      btnRequestMedicineRenewed.setBounds(170, 250, 250, 25);
+      btnRequestMedicineRenewed = new JButton("Renew Medicine");
+      btnRequestMedicineRenewed.setBounds(87, 250, 162, 25);
       contentPane.add(btnRequestMedicineRenewed);
       btnRequestMedicineRenewed.addActionListener(listener);
 
-      btnListAppointment = new JButton("List Of Appointment");
-      btnListAppointment.setBounds(300, 250, 250, 25);
+      btnListAppointment = new JButton("List Of Appointments");
+      btnListAppointment.setBounds(347, 250, 162, 25);
       contentPane.add(btnListAppointment);
       btnListAppointment.addActionListener(listener);
 
