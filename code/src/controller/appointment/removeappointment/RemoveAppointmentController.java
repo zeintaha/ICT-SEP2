@@ -24,13 +24,13 @@ public class RemoveAppointmentController {
 
 	public void executeGetAllAppointments() throws RemoteException {
 		ArrayList<Appointment> ides = new ArrayList<Appointment>();
-		ides = client.getAll();
-		int[] idesComboBox = new int[client.getAll().size()];
+		ides = client.getAllBookedAppointments();
+		int[] idesComboBox = new int[client.getAllBookedAppointments().size()];
 		for (int i = 0; i < ides.size(); i++) {
 
 			idesComboBox[i] = ides.get(i).getDateOfAppointmentId();
 		}
-		view.showTable(client.getAll());
+		view.showTable(client.getAllBookedAppointments());
 		
 		view.setComboboxValue(idesComboBox);
 		if(idesComboBox.length>0) {

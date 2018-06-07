@@ -30,8 +30,8 @@ public class ServerStaffClinicModelManager extends UnicastRemoteObject implement
 	
 	}
 
-	public void callLoad(String name) throws IOException {
-		this.list = persistence.load(name);
+	public void LoadFromDB(String name) throws IOException {
+		this.list = persistence.loadEmployeesByName(name);
 	}
 
 	public String[] reachType() {
@@ -110,7 +110,7 @@ public class ServerStaffClinicModelManager extends UnicastRemoteObject implement
 	}
 
 	@Override
-	public void remove(int id) {
+	public void removePatientById(int id) {
 		Employee employee = list.getEmployeeById(id);
 		if (employee != null) {
 			list.removeEmployee(employee);

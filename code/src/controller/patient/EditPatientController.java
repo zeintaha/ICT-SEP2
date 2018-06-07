@@ -5,23 +5,21 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 
 import clients.Client;
-import domain.mediator.staff.StaffDatabase;
 import domain.model.patient.Patient;
-import view.manager.editemployee.EditEmployeeView;
-import view.secretary.patient.editpatient.EditPatientGUI;
+import view.secretary.patient.editpatient.EditPatientView;
 
 public class EditPatientController {
 	private Client client;
 
-	private EditPatientGUI editPatientGUI;
+	private EditPatientView editPatientView;
 
-	private StaffDatabase persistence;
+	
 
-	public EditPatientController(Client client, EditPatientGUI editPatientGUI)
+	public EditPatientController(Client client, EditPatientView editPatientView)
 			throws ClassNotFoundException, IOException {
 
 		this.client = client;
-		this.editPatientGUI = editPatientGUI;
+		this.editPatientView = editPatientView;
 	}
 
 	public void executes(String what) throws RemoteException {
@@ -31,11 +29,11 @@ public class EditPatientController {
 		case "Search":
 
 			String name = " ";
-			name = editPatientGUI.getSearchTxtValue();
+			name = editPatientView.getSearchTxtValue();
 			if (name.length() > 1) {
 
 				name = name.substring(0, 1).toUpperCase()
-						+ ((EditPatientGUI) editPatientGUI).getSearchTxtValue().substring(1).toLowerCase();
+						+ editPatientView.getSearchTxtValue().substring(1).toLowerCase();
 			}
 				try {
 					client.callLoadPateint(name);
@@ -51,34 +49,34 @@ public class EditPatientController {
 
 			}
 
-			editPatientGUI.setComboboxValue(ides);
+			editPatientView.setComboboxValue(ides);
 
 			break;
 
 		case "pickcmbBox":
-			int id = editPatientGUI.getSelectedValueCmbox();
-			Patient pat = client.getPatientById(id);
+			int id = editPatientView.getSelectedValueCmbox();
+			Patient pat = client.getPatientByIdFromList(id);
 
-			editPatientGUI.setFirstName(pat.getFirstName());
-			editPatientGUI.setLastName(pat.getLastName());
-			editPatientGUI.setDOB(pat.getDob());
-			editPatientGUI.setTel(pat.getTelNumber());
-			editPatientGUI.setEmail(pat.getEmail());
-			editPatientGUI.setGender(pat.getGender());
+			editPatientView.setFirstName(pat.getFirstName());
+			editPatientView.setLastName(pat.getLastName());
+			editPatientView.setDOB(pat.getDob());
+			editPatientView.setTel(pat.getTelNumber());
+			editPatientView.setEmail(pat.getEmail());
+			editPatientView.setGender(pat.getGender());
 
 			System.out.println("ComboBox");
 
 			break;
 
 		case "Save":
-			int id1 = editPatientGUI.getSelectedValueCmbox();
-			String firstName = editPatientGUI.getFirstName();
-			String lastName = editPatientGUI.getLastName();
-			String telNumber = editPatientGUI.getTel();
-			String email = editPatientGUI.getEmail();
-			String gender = editPatientGUI.getGender();
+			int id1 = editPatientView.getSelectedValueCmbox();
+			String firstName = editPatientView.getFirstName();
+			String lastName = editPatientView.getLastName();
+			String telNumber = editPatientView.getTel();
+			String email = editPatientView.getEmail();
+			String gender = editPatientView.getGender();
 
-			String dob = editPatientGUI.getDate();
+			String dob = editPatientView.getDate();
 
 			SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd-yyyy");
 			java.util.Date date1 = null;
@@ -90,7 +88,7 @@ public class EditPatientController {
 			}
 			java.sql.Date sqlDOB = new java.sql.Date(date1.getTime());
 
-			Patient pat2 = client.getPatientById(id1);
+			Patient pat2 = client.getPatientByIdFromList(id1);
 
 			pat2.setFirstName(firstName);
 			pat2.setLastName(lastName);

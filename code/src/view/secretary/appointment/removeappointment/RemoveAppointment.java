@@ -8,13 +8,14 @@ import domain.model.patient.AppointmentList;
 
 public interface RemoveAppointment {
 
-    public void setComboboxValue(int[] ides);
+	public void setComboboxValue(int[] ides);
 
-    public void showTable(ArrayList<Appointment> appointments);
+	public void showTable(ArrayList<Appointment> appointments);
 
-    void start(RemoveAppointmentController removeAppointmentController);
+	void start(RemoveAppointmentController removeAppointmentController);
 
-    public int getSelectedItemFromBox();
-    public void enableRemoveButton(boolean enable);
+	public int getSelectedItemFromBox();
+
+	public void enableRemoveButton(boolean enable);
 
 }

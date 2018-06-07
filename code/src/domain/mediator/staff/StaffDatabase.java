@@ -22,7 +22,7 @@ public class StaffDatabase implements StaffPersistence {
     public StaffDatabase() throws ClassNotFoundException {
         this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
     }
-    public EmployeeList load(String name) throws IOException {
+    public EmployeeList loadEmployeesByName(String name) throws IOException {
         String sql = "SELECT * FROM \"Clinic\".employee WHERE firstname = '" + name + "';";
         ArrayList<Object[]> results;
         EmployeeList employees = new EmployeeList();

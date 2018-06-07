@@ -26,7 +26,11 @@ import view.secretary.secretarymain.ManageSecretaryGUI;
 public class MainClientLogin extends JFrame
 {
 
-   private JPanel contentPane;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private JPanel contentPane;
    private JTextField txtUsername;
    private JPasswordField txtPassword;
    private JButton btnLogin;

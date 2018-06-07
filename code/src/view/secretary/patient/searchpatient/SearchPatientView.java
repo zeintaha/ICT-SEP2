@@ -12,5 +12,5 @@ public interface SearchPatientView
 
    public void start(SearchPatientController controller);
 
-   public String get();
+   public String getNameValue();
 }

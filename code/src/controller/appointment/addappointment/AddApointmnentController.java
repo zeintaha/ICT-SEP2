@@ -73,8 +73,8 @@ public class AddApointmnentController {
 		String brief = addAppointmentGUI.getTextAreaValue();
 		Date appointmentDate = addAppointmentGUI.getSelectedDate();
 		int patientId = addAppointmentGUI.getSelectedPatientId();
-		int id = client.getDateId(appointmentDate);
-		client.AddAppointment(appointmentDate, brief, patientId, id);
+		int id = client.getThisDateId(appointmentDate);
+		client.AddAppointmentToDBAndToList(appointmentDate, brief, patientId, id);
 		addAppointmentGUI.showConfirmation();
 	}
 

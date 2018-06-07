@@ -1,6 +1,6 @@
 package view.secretary.patient.removepatient;
 
-
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -18,9 +18,8 @@ import javax.swing.table.TableModel;
 
 import controller.patient.RemovePatientController;
 import domain.model.patient.Patient;
-import java.awt.GridLayout;
 
-public class RemovePatientGUI extends JFrame implements RemovePatientView{
+public class RemovePatientGUI extends JFrame implements RemovePatientView {
 	private JComboBox cmbSelectPatient;
 	private JPanel contentPane;
 	private JTextField txtSearchPatientName;
@@ -95,7 +94,6 @@ public class RemovePatientGUI extends JFrame implements RemovePatientView{
 
 		}
 
-		// now adding the remove one -----------------------------------------
 		this.btnRemovePatient = new JButton("Remove");
 		btnRemovePatient.setEnabled(false);
 		this.panel_1.add(btnRemovePatient);
@@ -111,7 +109,6 @@ public class RemovePatientGUI extends JFrame implements RemovePatientView{
 	public void enableRemoveButton(boolean enable) {
 		btnRemovePatient.setEnabled(enable);
 	}
-
 
 	public void showTable(ArrayList<Patient> patients) {
 

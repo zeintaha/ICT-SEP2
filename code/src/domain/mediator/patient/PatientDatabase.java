@@ -23,7 +23,7 @@ public class PatientDatabase implements PatientPersistence {
 	}
 
 	@Override
-	public PatientList load(String name) throws IOException {
+	public PatientList loadPatietByName(String name) throws IOException {
 		String sql = "Select * from \"Clinic\".patient WHERE firstname = '" + name + "';";
 
 		ArrayList<Object[]> results;
@@ -58,7 +58,7 @@ public class PatientDatabase implements PatientPersistence {
 	}
 
 	@Override
-	public void save(Patient patient) throws IOException {
+	public void savePatient(Patient patient) throws IOException {
 		{
 			java.sql.Date sqlDate = null;
 			if(patient.getDob() != null) {
@@ -85,7 +85,7 @@ public class PatientDatabase implements PatientPersistence {
 	}
 
 	@Override
-	public synchronized void remove(Patient patient) throws IOException {
+	public synchronized void removePatient(Patient patient) throws IOException {
 		{
 			int id = patient.getId();
 

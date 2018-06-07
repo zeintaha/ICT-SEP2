@@ -24,9 +24,9 @@ public class SearchPatientGUI extends JFrame implements SearchPatientView {
 	private JPanel contentPane;
 	private JTextField textName;
 	private JTable table;
-	
+
 	private SearchPatientButtonHandler listener;
-	
+
 	private JScrollPane scrollPane;
 	private JPanel panel;
 
@@ -40,7 +40,7 @@ public class SearchPatientGUI extends JFrame implements SearchPatientView {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
-		
+
 		table = new JTable();
 		table.setFillsViewportHeight(true);
 		table.setColumnSelectionAllowed(true);
@@ -64,7 +64,8 @@ public class SearchPatientGUI extends JFrame implements SearchPatientView {
 	}
 
 	@Override
-	public void start(SearchPatientController controller) {JButton buttonSearch = new JButton("Search");
+	public void start(SearchPatientController controller) {
+		JButton buttonSearch = new JButton("Search");
 		panel.add(buttonSearch);
 		this.searchPatientController = controller;
 		this.listener = new SearchPatientButtonHandler(this.searchPatientController);
@@ -76,17 +77,17 @@ public class SearchPatientGUI extends JFrame implements SearchPatientView {
 	}
 
 	@Override
-	public String get() {
+	public String getNameValue() {
 		String name = textName.getText();
-		if (name.length()>0) {
+		if (name.length() > 0) {
 			return name;
-			}
-			else return " ";
+		} else
+			return " ";
 	}
-	
+
 	@Override
 	public void showTable(ArrayList<Patient> patients) {
-		String[] columnNames = { "id", "First Name", "Last Name",  "dob", "Tel Number", "Eamil", "Gender"};
+		String[] columnNames = { "id", "First Name", "Last Name", "dob", "Tel Number", "Eamil", "Gender" };
 
 		String[][] tableArray = new String[patients.size()][10];
 
@@ -100,9 +101,8 @@ public class SearchPatientGUI extends JFrame implements SearchPatientView {
 				dateDob = dob.toString();
 			}
 
-
-			tableArray[i] = new String[] {id, patients.get(i).getFirstName(), patients.get(i).getLastName(), dateDob, patients.get(i).getTelNumber(), patients.get(i).getEmail(),
-					patients.get(i).getGender()};
+			tableArray[i] = new String[] { id, patients.get(i).getFirstName(), patients.get(i).getLastName(), dateDob,
+					patients.get(i).getTelNumber(), patients.get(i).getEmail(), patients.get(i).getGender() };
 
 		}
 

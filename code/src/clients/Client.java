@@ -67,7 +67,7 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
    public void removeStaff(int id) throws RemoteException
    {
 
-      StaffServer.remove(id);
+      StaffServer.removePatientById(id);
    }
 
    public String[] reachType() throws RemoteException
@@ -77,12 +77,12 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
 
    public void callLoadStaff(String name) throws IOException, RemoteException
    {
-      StaffServer.callLoad(name);
+      StaffServer.LoadFromDB(name);
    }
 
    public void callLoadPateint(String name) throws IOException, RemoteException
    {
-      PatientServer.callLoad(name);
+      PatientServer.LoadFromDB(name);
    }
 
    public ArrayList<Employee> getAllEmployeesFromTheList()
@@ -99,7 +99,7 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
 
    public void removePatient(int id) throws RemoteException
    {
-      PatientServer.remove(id);
+      PatientServer.removePatientById(id);
    }
 
    public ArrayList<Patient> getPatientByName(String name)
@@ -110,7 +110,7 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
 
    public void callLoadPatient(String name) throws IOException, RemoteException
    {
-      PatientServer.callLoad(name);
+      PatientServer.LoadFromDB(name);
    }
 
    public ArrayList<Patient> getAllPatientsFromTheList() throws RemoteException
@@ -119,10 +119,10 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
    }
 
    @Override
-   public ArrayList<Appointment> getAll() throws RemoteException
+   public ArrayList<Appointment> getAllBookedAppointments() throws RemoteException
    {
 
-      return AppointmentServer.getAll();
+      return AppointmentServer.getAllBookedAppointments();
    }
 
    @Override
@@ -133,10 +133,10 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
    }
 
    @Override
-   public void AddAppointment(Date date, String brief, int patientId,
+   public void AddAppointmentToDBAndToList(Date date, String brief, int patientId,
          int dateId) throws RemoteException
    {
-      AppointmentServer.AddAppointment(date, brief, patientId, dateId);
+      AppointmentServer.AddAppointmentToDBAndToList(date, brief, patientId, dateId);
 
    }
 
@@ -147,29 +147,22 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
 
    }
 
+
    @Override
-   public ArrayList<Appointment> getAppotmenttByDate(Date date)
-         throws RemoteException
+   public int getThisDateId(Date date) throws RemoteException
    {
 
-      return AppointmentServer.getAppotmenttByDate(date);
+      return AppointmentServer.getThisDateId(date);
    }
 
    @Override
-   public int getDateId(Date date) throws RemoteException
-   {
-
-      return AppointmentServer.getDateId(date);
-   }
-
-   @Override
-   public void remove(int id) throws RemoteException
+   public void removePatientById(int id) throws RemoteException
    {
 
    }
 
    @Override
-   public void callLoad(String name) throws IOException, RemoteException
+   public void LoadFromDB(String name) throws IOException, RemoteException
    {
 
    }
@@ -196,10 +189,10 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
    }
 
    @Override
-   public Patient getPatientById(int id) throws RemoteException
+   public Patient getPatientByIdFromList(int id) throws RemoteException
    {
       // TODO Auto-generated method stub
-      return PatientServer.getPatientById(id);
+      return PatientServer.getPatientByIdFromList(id);
    }
 
 

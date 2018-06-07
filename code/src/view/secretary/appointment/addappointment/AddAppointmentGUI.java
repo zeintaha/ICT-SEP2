@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import controller.appointment.addappointment.AddApointmnentController;
-
 import domain.model.patient.Patient;
 
 public class AddAppointmentGUI extends JFrame implements AddAppointmentView {

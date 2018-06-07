@@ -9,18 +9,18 @@ import view.secretary.patient.addpatient.AddPatientView;
 public class AddPatientController
 {
    private Client client;
-   private AddPatientView view;
+   private AddPatientView addPatientView;
 
-   public AddPatientController(Client client, AddPatientView view)
+   public AddPatientController(Client client, AddPatientView addPatientView)
          throws ClassNotFoundException, IOException
    {
       this.client = client;
-      this.view = view;
+      this.addPatientView = addPatientView;
    }
 
    public void executes() throws RemoteException
    {
-      String[] data = view.getTextFieldValues();
+      String[] data = addPatientView.getTextFieldValues();
       
       boolean error = false;
       
@@ -28,7 +28,7 @@ public class AddPatientController
       {
          if (data[i].isEmpty())
          {
-            view.showError();
+            addPatientView.showError();
             error = true;
             break;
          }
@@ -37,8 +37,8 @@ public class AddPatientController
       if (error == false)
       {
          client.addPatient(data);
-         view.showConfirmation();
-         view.cleanInput();
+         addPatientView.showConfirmation();
+         addPatientView.cleanInput();
       }
 
    }

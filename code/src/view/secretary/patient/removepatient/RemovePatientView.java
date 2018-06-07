@@ -12,4 +12,7 @@ public interface RemovePatientView {
 	public void start(RemovePatientController removePatientController);
 
 	public String getSearchTxtValue();
+	public void enableRemoveButton(boolean enable);
+	public void setComboboxValue(int[] ides);
+	public int getSelectedItemFromBox();
 }

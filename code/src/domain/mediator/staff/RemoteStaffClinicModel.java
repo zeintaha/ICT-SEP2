@@ -15,11 +15,11 @@ public interface RemoteStaffClinicModel extends Remote
    public ArrayList<Employee> getEmployeeByname(String name)
          throws RemoteException;
 
-   public void remove(int id) throws RemoteException;
+   public void removePatientById(int id) throws RemoteException;
 
    public String[] reachType() throws RemoteException;
 
-   public void callLoad(String name) throws IOException, RemoteException;
+   public void LoadFromDB(String name) throws IOException, RemoteException;
 
    public ArrayList<Employee> getAllEmployeesFromTheList()
          throws RemoteException;
