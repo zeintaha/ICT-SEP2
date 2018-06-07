@@ -1,6 +1,5 @@
 package view.secretary.secretarymain;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -14,6 +13,7 @@ import clients.Client;
 import controller.appointment.addappointment.AddApointmnentController;
 import controller.appointment.removeappointment.RemoveAppointmentController;
 import controller.patient.AddPatientController;
+import controller.patient.EditPatientController;
 import controller.patient.RemovePatientController;
 import controller.patient.SearchPatientController;
 import view.secretary.appointment.addappointment.AddAppointmentGUI;
@@ -152,14 +152,9 @@ public class ManageSecretaryGUI extends JFrame
 
             view.setVisible(true);
          }
-         else if (e.getSource() == btnEditPatient)
-         {
-            EditPatientGUI gui = new EditPatientGUI();
-            gui.setVisible(true);
-         }
          else if (e.getSource() == btnEditAppointment)
          {
-            RemoveAppointmentGUI gui = new RemoveAppointmentGUI();
+            RemoveAppointmentGUI  gui = new RemoveAppointmentGUI();
             // gui.setVisible(true);
          }
          else if (e.getSource() == btnRemovePatient)
@@ -213,20 +208,24 @@ public class ManageSecretaryGUI extends JFrame
 
             view.setVisible(true);
          }
-         // else if (e.getSource() == btnSearchAppointment) {
-         // SearchAppointmentGUI gui= new SearchAppointmentGUI();
-         // gui.setVisible(true);
-         // }
-         // else if (e.getSource() == btnRequestMedicineRenewed) {
-         // RequestMedicineRenewedGUI gui= new RequestMedicineRenewedGUI();
-         // gui.setVisible(true);
-         // }
-         // else if (e.getSource() == btnListAppointment) {
-         // ListAppointmentGUI gui= new ListAppointmentGUI();
-         // gui.setVisible(true);
-         // }
+         else if (e.getSource() == btnEditPatient)
+         {
 
+            Client model = new Client();    
+            EditPatientGUI view = new EditPatientGUI();
+            EditPatientController conto = null;
+            try
+            {
+               conto = new EditPatientController(model,view);
+            }
+            catch (ClassNotFoundException | IOException e1)
+            {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }
+            view.start(conto);
+            view.setVisible(true);
       }
 
-   }
+      }}
 }

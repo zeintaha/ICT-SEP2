@@ -19,4 +19,8 @@ public interface RemotePatientModel extends Remote
    public void callLoad(String name) throws IOException, RemoteException;
 
    public ArrayList<Patient> getAllPatientsFromTheList() throws RemoteException;
+   
+   public void updatePatient(Patient patient) throws RemoteException;
+   public Patient getPatientById(int id) throws RemoteException;
+
 }

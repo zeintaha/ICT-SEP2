@@ -100,4 +100,22 @@ public class PatientDatabase implements PatientPersistence {
 		}
 	}
 
+   @Override
+   public void updatePatient(Patient patient) throws IOException
+   {
+      try
+      {
+
+         String sql = "UPDATE \"Clinic\".patient  SET firstname = ? , lastname = ?, dob = ?,  telnumber = ?, email = ?, gender = ?   where patientid = '" + patient.getId() + "';";
+        
+         db.update(sql, patient.getFirstName(), patient.getLastName(), patient.getDob(), patient.getTelNumber(), patient.getEmail(), patient.getGender());
+
+      }
+      catch (SQLException e)
+      {
+         e.printStackTrace();
+      }
+      
+   }
+
 }

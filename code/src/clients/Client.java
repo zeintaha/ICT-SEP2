@@ -188,4 +188,18 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
 
    }
 
+   @Override
+   public void updatePatient(Patient patient) throws RemoteException
+   {
+      PatientServer.updatePatient(patient);
+      
+   }
+
+   @Override
+   public Patient getPatientById(int id) throws RemoteException
+   {
+      // TODO Auto-generated method stub
+      return PatientServer.getPatientById(id);
+   }
+
 }
