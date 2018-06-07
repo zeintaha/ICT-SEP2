@@ -1,6 +1,7 @@
 package domain.mediator.patient;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import clients.Client;
 import domain.model.patient.Patient;
 import domain.model.patient.PatientList;
 
@@ -120,5 +122,28 @@ public class ServerPatientModelManager extends UnicastRemoteObject
          }
       }
 
+   }
+
+   @Override
+   public void updatePatient(Patient patient) 
+   {
+      try
+      {
+         persistence.updatePatient(patient);
+      }
+      catch (IOException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+      
+   }
+
+   @Override
+   public Patient getPatientById(int id) throws RemoteException
+   {
+      return list.getPatientById(id);
+    
+      
    }
 }

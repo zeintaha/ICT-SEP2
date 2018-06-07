@@ -1,17 +1,23 @@
 package view.secretary.patient.editpatient;
 
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class EditPatientGUI extends JFrame
+import clients.Client;
+import controller.patient.EditPatientController;
+
+import domain.model.staff.Employee;
+
+public class EditPatientGUI extends JFrame implements EditPatientView
 {
 
    private JPanel contentPane;
@@ -22,29 +28,19 @@ public class EditPatientGUI extends JFrame
    private JTextField txtTel;
    private JTextField txtEmail;
    private JTextField txtGender;
+   
+   private JButton btnSave;
+   private JButton btnSearch;
 
-   /**
-    * Launch the application.
-    */
-   public static void main(String[] args)
-   {
-      EventQueue.invokeLater(new Runnable()
-      {
-         public void run()
-         {
-            try
-            {
-               EditPatientGUI frame = new EditPatientGUI();
-               frame.setVisible(true);
-            }
-            catch (Exception e)
-            {
-               e.printStackTrace();
-            }
-         }
-      });
-   }
+   private JComboBox cmbSelectPatientId;
+   
+   private Employee emp;
 
+ 
+   private Client client;
+   private EditPatientController editePatientController;
+   private EditPatientButtonHandler listener;
+   
    /**
     * Create the frame.
     */
@@ -63,9 +59,14 @@ public class EditPatientGUI extends JFrame
       contentPane.add(txtSearchPatientName);
       txtSearchPatientName.setColumns(10);
       
-      JComboBox cmbSelectPatient = new JComboBox();
-      cmbSelectPatient.setBounds(220, 82, 117, 22);
-      contentPane.add(cmbSelectPatient);
+      
+      cmbSelectPatientId = new JComboBox();
+      cmbSelectPatientId.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent arg0) {
+         }
+      });
+      cmbSelectPatientId.setBounds(220, 82, 117, 22);
+      contentPane.add(cmbSelectPatientId);
       
       txtFirstName = new JTextField();
       txtFirstName.setBounds(221, 149, 116, 22);
@@ -129,12 +130,184 @@ public class EditPatientGUI extends JFrame
       lblGender.setBounds(64, 407, 146, 16);
       contentPane.add(lblGender);
       
-      JButton btnSave = new JButton("Save");
+      btnSave = new JButton("Save");
       btnSave.setBounds(305, 517, 97, 25);
       contentPane.add(btnSave);
       
-      JSeparator separator = new JSeparator();
-      separator.setBounds(28, 128, 374, 2);
-      contentPane.add(separator);
+      btnSearch = new JButton("Search");
+      btnSearch.setBounds(337, 29, 97, 25);
+      contentPane.add(btnSearch);
    }
+   public void start(EditPatientController controller)
+   {
+
+      this.editePatientController = controller;
+      contentPane.add(btnSearch);
+      this.listener = new EditPatientButtonHandler(
+            this.editePatientController);
+      if (this.btnSearch != null)
+      {
+         btnSearch.addActionListener(listener);
+
+      }
+
+      // now adding the Save one -----------------------------------------
+
+      this.editePatientController = controller;
+      contentPane.add(btnSave);
+      btnSave.setEnabled(true);
+      this.contentPane.add(btnSave);
+
+      if (!(btnSave == null))
+      {
+         btnSave.addActionListener(listener);
+
+      }
+
+      // ----------------------------------------------------------------------------------------------------------------
+      // getting the values from the controller
+
+      cmbSelectPatientId.addActionListener(listener);
+
+      // ---------------------------------------------------------------------------------------------------------------------
+      setVisible(true);
+
+   }
+
+   public String getSearchTxtValue()
+   {
+
+ 
+       
+            String   name = txtSearchPatientName.getText();
+      System.out.println(" hi from the gui");
+      return name;
+   }
+
+   public String getFirstName()
+   {
+      String name = " ";
+      if (txtFirstName.getText() != null)
+      {
+         name = txtFirstName.getText();
+      }
+      return name;
+
+   }
+
+   public String getLastName()
+   {
+      String name = " ";
+      if (txtLastName.getText() != null)
+      {
+         name = txtLastName.getText();
+      }
+      return name;
+   }
+
+   public String getTel()
+   {
+      String name = " ";
+      if (txtTel.getText() != null)
+      {
+         name = txtTel.getText();
+      }
+      return name;
+   }
+
+   public String getEmail()
+   {
+
+      String name = " ";
+      if (txtEmail.getText() != null)
+      {
+         name = txtEmail.getText();
+      }
+      return name;
+   }
+
+   public String getGender()
+   {
+      String name = " ";
+      if (txtGender.getText() != null)
+      {
+         name = txtGender.getText();
+      }
+      return name;
+   }
+
+   public String getDate()
+   {
+
+      String name = " ";
+      if (txtDOB.getText() != null)
+      {
+         name = txtDOB.getText();
+      }
+      return name;
+
+   }
+
+//   public String getStartDate()
+//   {
+//      String name = " ";
+//      if (txtStartDate.getText() != null)
+//      {
+//         name = txtStartDate.getText();
+//      }
+//      return name;
+//   }
+
+   public void setComboboxValue(int[] ides)
+   {
+      for (int i = 0; i < ides.length; i++)
+      {
+         cmbSelectPatientId.addItem(ides[i]);
+      }
+   }
+
+   public int getSelectedValueCmbox()
+   {
+
+      return (int) cmbSelectPatientId.getSelectedItem();
+
+   }
+
+   public void setFirstName(String firstName)
+   {
+      txtFirstName.setText(firstName);
+   }
+
+   public void setLastName(String lastName)
+   {
+      txtLastName.setText(lastName);
+   }
+
+   public void setDOB(Date date)
+   {
+      String what = date.toString();
+      // date.toString();
+      txtDOB.setText(what);
+   }
+
+   public String getName()
+   {
+      return txtFirstName.getText();
+   }
+
+   public void setTel(String tel)
+   {
+      txtTel.setText(tel);
+   }
+
+   public void setEmail(String email)
+   {
+      txtEmail.setText(email);
+   }
+
+   public void setGender(String gender)
+   {
+      txtGender.setText(gender);
+   }
+ 
 }
