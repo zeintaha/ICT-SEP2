@@ -11,6 +11,6 @@ public interface SearchEmployeeView
   
    public void showTable(ArrayList<Employee> employees);
    public void start(SearchEmployeeController searchEmployeeController);
-   public String get();
+   public String getNameValue();
    
 }

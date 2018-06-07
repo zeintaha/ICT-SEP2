@@ -6,48 +6,37 @@ import java.rmi.RemoteException;
 import clients.Client;
 import view.manager.searchemployee.SearchEmployeeGUI;
 import view.manager.searchemployee.SearchEmployeeView;
-import view.secretary.appointment.addappointment.AddAppointmentGUI;
 
-public class SearchEmployeeController
-{
-   private Client clientStaff;
-   private SearchEmployeeView searchEmployee;
+public class SearchEmployeeController {
+	private Client client;
+	private SearchEmployeeView searchEmployeeview;
 
-   public SearchEmployeeController(Client clientStaff,
-         SearchEmployeeView searchEmployee)
-         throws ClassNotFoundException, IOException
-   {
+	public SearchEmployeeController(Client client, SearchEmployeeView searchEmployeeview)
+			throws ClassNotFoundException, IOException {
 
-      this.clientStaff = new Client();
+		this.client = client;
 
-      this.searchEmployee = searchEmployee;
+		this.searchEmployeeview = searchEmployeeview;
 
-   }
+	}
 
-   public void executes() throws RemoteException
-   {
-      String name = ((SearchEmployeeGUI) searchEmployee).get();
-            if ( name.length()>1) {
-               
-               
-               name= name.substring(0, 1)
-           .toUpperCase()
-           + ((SearchEmployeeGUI) searchEmployee).get().substring(1)
-                 .toLowerCase();
-           }
-      
-      try
-      {
-         clientStaff.callLoadStaff(name);
+	public void executes() throws RemoteException {
+		String name = ((SearchEmployeeGUI) searchEmployeeview).getNameValue();
+		if (name.length() > 1) {
 
-      }
-      catch (IOException e)
-      {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
+			name = name.substring(0, 1).toUpperCase()
+					+ ((SearchEmployeeGUI) searchEmployeeview).getNameValue().substring(1).toLowerCase();
+		}
 
-      searchEmployee.showTable(clientStaff.getAllEmployeesFromTheList());
-   }
+		try {
+			client.callLoadStaff(name);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		searchEmployeeview.showTable(client.getAllEmployeesFromTheList());
+	}
 
 }

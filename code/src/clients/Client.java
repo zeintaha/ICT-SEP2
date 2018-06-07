@@ -52,9 +52,9 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
       }
    }
 
-   public void addOneEmployee(String[] employeeData) throws RemoteException
+   public void addEmployee(String[] employeeData) throws RemoteException
    {
-      StaffServer.addOneEmployee(employeeData);
+      StaffServer.addEmployee(employeeData);
    }
 
    public ArrayList<Employee> getEmployeeByname(String name)
@@ -201,5 +201,7 @@ public class Client implements RemoteStaffClinicModel, RemotePatientModel,
       // TODO Auto-generated method stub
       return PatientServer.getPatientById(id);
    }
+
+
 
 }

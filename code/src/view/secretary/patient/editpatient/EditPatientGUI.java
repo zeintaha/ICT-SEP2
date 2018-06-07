@@ -140,7 +140,7 @@ public class EditPatientGUI extends JFrame implements EditPatientView
    }
    public void start(EditPatientController controller)
    {
-
+	   enableRemoveButton(false);
       this.editePatientController = controller;
       contentPane.add(btnSearch);
       this.listener = new EditPatientButtonHandler(
@@ -155,7 +155,7 @@ public class EditPatientGUI extends JFrame implements EditPatientView
 
       this.editePatientController = controller;
       contentPane.add(btnSave);
-      btnSave.setEnabled(true);
+  
       this.contentPane.add(btnSave);
 
       if (!(btnSave == null))
@@ -263,6 +263,7 @@ public class EditPatientGUI extends JFrame implements EditPatientView
       for (int i = 0; i < ides.length; i++)
       {
          cmbSelectPatientId.addItem(ides[i]);
+         enableRemoveButton(true);
       }
    }
 
@@ -309,5 +310,8 @@ public class EditPatientGUI extends JFrame implements EditPatientView
    {
       txtGender.setText(gender);
    }
+   public void enableRemoveButton(boolean enable) {
+	   btnSave.setEnabled(enable);
+	}
  
 }

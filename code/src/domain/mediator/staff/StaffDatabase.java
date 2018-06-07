@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+
 import domain.model.staff.Doctor;
 import domain.model.staff.Employee;
 import domain.model.staff.EmployeeFactory;
@@ -11,6 +12,7 @@ import domain.model.staff.Manager;
 import domain.model.staff.Secretary;
 import domain.model.staff.Type;
 import utility.persistence.MyDatabase;
+
 public class StaffDatabase implements StaffPersistence {
     private MyDatabase db;
     private final String DRIVER = "org.postgresql.Driver";
@@ -64,7 +66,13 @@ public class StaffDatabase implements StaffPersistence {
         return employees;
     }
     
-      public ArrayList<Employee> load() {
+    
+    
+    
+    
+    
+    
+      public ArrayList<Employee> loadLogIn() {
           String sql = "SELECT * FROM \"Clinic\".employee;";
           ArrayList<Object[]> results;
           ArrayList<Employee> employees = new ArrayList<Employee>();

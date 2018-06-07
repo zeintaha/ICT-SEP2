@@ -11,4 +11,8 @@ public interface RemoveEmployeeView {
 	   public void showTable(ArrayList<Employee> employees);
 	   public void start(RemoveEmlployeeController removeEmlployeeController);
 	   public String getSearchTxtValue();
+	   public void enableRemoveButton(boolean enable);
+	   public void setComboboxValue(int[] ides);
+	   public int getSelectedItemFromBox();
+	  
 }

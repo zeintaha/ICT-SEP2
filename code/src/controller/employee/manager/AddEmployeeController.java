@@ -7,18 +7,18 @@ import clients.Client;
 import view.manager.addemployee.AddEmployeeView;
 
 public class AddEmployeeController {
-	private Client clientStaff;
+	private Client client;
 	private AddEmployeeView view;
 
-	public AddEmployeeController(Client staffClinicModel, AddEmployeeView view)
+	public AddEmployeeController(Client client, AddEmployeeView view)
 			throws ClassNotFoundException, IOException {
 		
-		this.clientStaff = staffClinicModel;
+		this.client = client;
 		this.view = view;
 	}
 
 	public String[] setComboboxValue() throws RemoteException {
-		return clientStaff.reachType();
+		return client.reachType();
 	}
 
 	public void executes() throws RemoteException {
@@ -34,7 +34,7 @@ public class AddEmployeeController {
           }
       }
       if (error == false) {
-         clientStaff.addOneEmployee(data);
+         client.addEmployee(data);
           view.showConfirmation();
           view.cleanInput();
       }

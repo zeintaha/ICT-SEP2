@@ -69,7 +69,7 @@ public class MainClientLogin extends JFrame
    {
 
       this.persistence = new StaffDatabase();
-      this.list = persistence.load();
+      this.list = persistence.loadLogIn();
       listener = new MyButtonListener();
       setTitle("Login");
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

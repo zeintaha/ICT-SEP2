@@ -1,5 +1,6 @@
 package view.manager.removeemployee;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +18,6 @@ import javax.swing.table.TableModel;
 
 import controller.employee.manager.RemoveEmlployeeController;
 import domain.model.staff.Employee;
-import java.awt.GridLayout;
 
 public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 	private JComboBox cmbSelectEmployee;
@@ -33,8 +33,7 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 	private JTextField txtSearch;
 	private JPanel panel_2;
 	private RemoveEmployeeButtonHandler listener;
-	
-	
+
 	public RemoveEmployeeGUI() {
 		setTitle("Remove Employee");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -45,7 +44,7 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 706, 45);
- 
+
 		JLabel lblSeach = new JLabel("Search Employee Name");
 		panel.add(lblSeach);
 
@@ -53,16 +52,16 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 		panel.add(txtSearchEmployeeName);
 		txtSearchEmployeeName.setColumns(10);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
-		
-				panel_2 = new JPanel();
-				contentPane.add(panel_2);
-				
-						JLabel lblSearchEmployee = new JLabel("Search Employee");
-						panel_2.add(lblSearchEmployee);
-						
-								txtSearch = new JTextField();
-								panel_2.add(txtSearch);
-								txtSearch.setColumns(10);
+
+		panel_2 = new JPanel();
+		contentPane.add(panel_2);
+
+		JLabel lblSearchEmployee = new JLabel("Search Employee");
+		panel_2.add(lblSearchEmployee);
+
+		txtSearch = new JTextField();
+		panel_2.add(txtSearch);
+		txtSearch.setColumns(10);
 
 		this.panel_1 = new JPanel();
 		contentPane.add(panel_1);
@@ -84,15 +83,15 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 	}
 
 	public void start(RemoveEmlployeeController removeEmlployeeController) {
-		
+
 		this.btnSearch = new JButton("Search");
-	
+
 		panel_2.add(btnSearch);
 		this.removeEmlployeeController = removeEmlployeeController;
 		this.listener = new RemoveEmployeeButtonHandler(this.removeEmlployeeController);
 		if (!(btnSearch == null)) {
 			btnSearch.addActionListener(listener);
-		
+
 		}
 
 		// now adding the remove one -----------------------------------------
@@ -116,13 +115,6 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 		String name = txtSearch.getText();
 		return name;
 	}
-
-	// public String removeEmployeeTxtValue() {
-	//// this is the value of the combobox
-	// String name ="" ;
-	// //txtName.getText();
-	// return name;
-	// }
 
 	public void showTable(ArrayList<Employee> employees) {
 
@@ -167,7 +159,7 @@ public class RemoveEmployeeGUI extends JFrame implements RemoveEmployeeView {
 	}
 
 	public int getSelectedItemFromBox() {
-		int id = 0;   
+		int id = 0;
 		id = (int) cmbSelectEmployee.getSelectedItem();
 
 		return id;

@@ -3,7 +3,7 @@ package domain.model.staff;
 import java.io.Serializable;
 import java.util.Date;
 
-abstract public class Employee implements Serializable{
+abstract public class Employee implements Serializable {
 
 	private int id;
 	private String firstName;
@@ -16,9 +16,8 @@ abstract public class Employee implements Serializable{
 	private String userName;
 	private String password;
 
-
 	public Employee(int id, String firstName, String lastName, Date dob, Date startDate, String telNumber, String email,
-			String gender,  String userName, String password) {
+			String gender, String userName, String password) {
 
 		this.id = id;
 		this.firstName = firstName;
@@ -95,7 +94,7 @@ abstract public class Employee implements Serializable{
 	public String getGender() {
 		return gender;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -103,8 +102,6 @@ abstract public class Employee implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getUserName() {
 		return userName;
@@ -122,12 +119,9 @@ abstract public class Employee implements Serializable{
 		this.password = password;
 	}
 
-
 	public String toString() {
-		return "firstName is :" + firstName + ", lastName is: " + lastName + " dob is : " + dob
-				+ ", startDate is : " + startDate + ", telNumber is : " + telNumber + ", eamil is : " + email +
-				", gender is : " + gender
-				;
+		return "firstName is :" + firstName + ", lastName is: " + lastName + " dob is : " + dob + ", startDate is : "
+				+ startDate + ", telNumber is : " + telNumber + ", eamil is : " + email + ", gender is : " + gender;
 	}
 
 }

@@ -3,7 +3,7 @@ package domain.model.staff;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class EmployeeList implements Serializable{
+public class EmployeeList implements Serializable {
 	ArrayList<Employee> employees;
 
 	public EmployeeList() {
@@ -27,34 +27,18 @@ public class EmployeeList implements Serializable{
 				return employees.get(i);
 			}
 		}
-		System.out.println(" we can not find the employee wiht the name : " + name + "!! ");
+
 		return null;
 	}
 
-	public Employee editEmployee(String oldName, String newName) {
-		Employee employee = getEmployeeByName(oldName);
 
-		employee.setFirstName(newName);
 
-		return employee;
-
-	}
-
-	public Employee searchEmployeeByName(String name) {
-		Employee employee = getEmployeeByName(name);
-
-		return employee;
-
-	}
-
-	public ArrayList<Employee> getAll() {
+	public ArrayList<Employee> getAllEmployees() {
 
 		return employees;
 	}
 
-	public int getNumerOfEmployees() {
-		return employees.size();
-	}
+
 
 	public Employee getEmployeeById(int id) {
 		Employee employee = null;

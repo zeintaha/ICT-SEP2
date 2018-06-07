@@ -1,7 +1,7 @@
 package domain.model.staff;
 
 public enum Type {
-	Doctor,Secretary,Manager;
+	Doctor, Secretary, Manager;
 
 	public static String[] enumsToStringArray() {
 		String[] results = new String[Type.values().length];

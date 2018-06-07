@@ -10,7 +10,7 @@ import domain.model.staff.Employee;
 public interface RemoteStaffClinicModel extends Remote
 {
 
-   public void addOneEmployee(String[] employeeData) throws RemoteException;
+   public void addEmployee(String[] employeeData) throws RemoteException;
 
    public ArrayList<Employee> getEmployeeByname(String name)
          throws RemoteException;
