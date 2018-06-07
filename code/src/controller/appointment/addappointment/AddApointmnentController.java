@@ -9,95 +9,64 @@ import view.secretary.appointment.addappointment.AddAppointmentGUI;
 
 public class AddApointmnentController {
 
-   private Client client;
-    private AddAppointmentGUI addAppointmentGUI;
-  
+	private Client client;
+	private AddAppointmentGUI addAppointmentGUI;
 
-    public AddApointmnentController(Client client, AddAppointmentGUI addAppointmentGUI)
-            throws ClassNotFoundException, IOException {
-      
-        this.addAppointmentGUI = addAppointmentGUI;
-        this.client = client;
-      
+	public AddApointmnentController(Client client, AddAppointmentGUI addAppointmentGUI)
+			throws ClassNotFoundException, IOException {
 
-    }
+		this.addAppointmentGUI = addAppointmentGUI;
+		this.client = client;
 
-    public void executeSearch() throws RemoteException {
+	}
 
-       String name = ((AddAppointmentGUI) addAppointmentGUI).getSearchTxtValue();
-       
-       boolean error = false;
-       
-           if (name.isEmpty()) {
-               addAppointmentGUI.showError();
-               error = true;
-               
-           
-       }
-       if (error == false) {
-           addAppointmentGUI.enableRemoveButton(true);
-           if (name.length() > 1) {
+	public void executeSearch() throws RemoteException {
 
-               name = name.substring(0, 1).toUpperCase()
-                       + ((AddAppointmentGUI) addAppointmentGUI).getSearchTxtValue().substring(1).toLowerCase();
-           }
+		String name = ((AddAppointmentGUI) addAppointmentGUI).getSearchTxtValue();
 
-           try {
-              client.callLoadPateint(name);
-           } catch (IOException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-           }
+		boolean error = false;
 
-           addAppointmentGUI.showTable(client.getAllPatientsFromTheList());
-           
-           
-           
-//
-//           int[] ides = new int[client.getAllPatientsFromTheList().size()];
-//           for (int i = 0; i < ides.length; i++) {
-//               ides[i] = client.getAllPatientsFromTheList().get(i).getId();
-//
-//           }
-//
-//           addAppointmentGUI.setComboboxValue(ides);
+		if (name.isEmpty()) {
+			addAppointmentGUI.showError();
+			error = true;
 
-           setPatientIdComboBoxValue();
-       
-           
-//           Date[] freeAppointments = new Date[client.getAllFreeAppointment().getNumberOfAppointment()];
-//
-//           for (int i = 0; i < freeAppointments.length; i++) {
-//               
-//               freeAppointments[i] = client.getAllFreeAppointment().getAppointmentByIndex(i)
-//                       .getDateOfAppointment();
-//               
-//           }
-//               addAppointmentGUI.fillComboBoxFreeAppointments(freeAppointments);
-           
-           fillComboBoxForFreeAppointment();
-       }
-        
-    }
+		}
+		if (error == false) {
+			addAppointmentGUI.enableRemoveButton(true);
+			if (name.length() > 1) {
 
-    public void executeAdd() throws RemoteException {
-        String brief = addAppointmentGUI.getTextAreaValue();
-        Date appointmentDate = addAppointmentGUI.getSelectedDate();
-        int patientId = addAppointmentGUI.getSelectedPatientId();
-        int id = client.getDateId(appointmentDate);
-        
-        client.AddAppointment(appointmentDate,brief,patientId,id);
-       
-        
-        addAppointmentGUI.showConfirmation();
-        
-        
+				name = name.substring(0, 1).toUpperCase()
+						+ ((AddAppointmentGUI) addAppointmentGUI).getSearchTxtValue().substring(1).toLowerCase();
+			}
 
-    }
-    
-    
+			try {
+				client.callLoadPateint(name);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-public void setPatientIdComboBoxValue() throws RemoteException {
+			addAppointmentGUI.showTable(client.getAllPatientsFromTheList());
+			setPatientIdComboBoxValue();
+
+			fillComboBoxForFreeAppointment();
+		}
+
+	}
+
+	public void executeAdd() throws RemoteException {
+		String brief = addAppointmentGUI.getTextAreaValue();
+		Date appointmentDate = addAppointmentGUI.getSelectedDate();
+		int patientId = addAppointmentGUI.getSelectedPatientId();
+		int id = client.getDateId(appointmentDate);
+
+		client.AddAppointment(appointmentDate, brief, patientId, id);
+
+		addAppointmentGUI.showConfirmation();
+
+	}
+
+	public void setPatientIdComboBoxValue() throws RemoteException {
 		int[] ides = new int[client.getAllPatientsFromTheList().size()];
 		for (int i = 0; i < ides.length; i++) {
 
@@ -107,11 +76,6 @@ public void setPatientIdComboBoxValue() throws RemoteException {
 
 		addAppointmentGUI.setComboboxValue(ides);
 	}
-
-
-
-
-
 
 	public void fillComboBoxForFreeAppointment() throws RemoteException {
 
@@ -125,9 +89,5 @@ public void setPatientIdComboBoxValue() throws RemoteException {
 		addAppointmentGUI.fillComboBoxFreeAppointments(freeAppointments);
 
 	}
-    
-    
-    
-    
-    
+
 }
