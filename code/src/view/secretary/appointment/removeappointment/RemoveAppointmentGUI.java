@@ -29,7 +29,7 @@ public class RemoveAppointmentGUI extends JFrame implements RemoveAppointment {
      * Create the frame.
      */
     public RemoveAppointmentGUI() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 651, 343);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,6 +68,7 @@ public class RemoveAppointmentGUI extends JFrame implements RemoveAppointment {
     }
     @Override
     public void start(RemoveAppointmentController removeAppointmentController) {
+    	this.btnRemove.setEnabled(false);
         this.removeAppointmentController = removeAppointmentController;
         this.listener = new RemoveAppointmentButtonHandler(this.removeAppointmentController);
         if (this.btnLstAllAppointment != null) {
@@ -106,6 +107,7 @@ public class RemoveAppointmentGUI extends JFrame implements RemoveAppointment {
     }
      @Override
      public void setComboboxValue(int[] ides) {
+    	 comboBox.removeAllItems();
      for (int i = 0; i < ides.length; i++) {
      comboBox.addItem(ides[i]);
      }
@@ -118,4 +120,8 @@ public class RemoveAppointmentGUI extends JFrame implements RemoveAppointment {
     
      return id;
      }
+     
+     public void enableRemoveButton(boolean enable) {
+    	 btnRemove.setEnabled(enable);
+ 	}
 }

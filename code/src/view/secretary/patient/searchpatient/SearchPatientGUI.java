@@ -32,7 +32,7 @@ public class SearchPatientGUI extends JFrame implements SearchPatientView {
 
 	public SearchPatientGUI() {
 		setTitle("Search Patient");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

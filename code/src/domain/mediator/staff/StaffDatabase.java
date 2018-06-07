@@ -16,7 +16,7 @@ public class StaffDatabase implements StaffPersistence {
     private final String DRIVER = "org.postgresql.Driver";
     private final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private final String USER = "postgres";
-    private final String PASSWORD = "123456";
+    private final String PASSWORD = "0940";
     public StaffDatabase() throws ClassNotFoundException {
         this.db = new MyDatabase(DRIVER, URL, USER, PASSWORD);
     }

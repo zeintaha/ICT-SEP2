@@ -32,7 +32,7 @@ public class SearchEmployeeGUI extends JFrame implements SearchEmployeeView {
 	public SearchEmployeeGUI() {
 
 		setTitle("Search Employee");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		setBounds(100, 100, 1000, 400);
 		contentPane = new JPanel();

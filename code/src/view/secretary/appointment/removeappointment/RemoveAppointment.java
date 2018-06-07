@@ -15,5 +15,6 @@ public interface RemoveAppointment {
     void start(RemoveAppointmentController removeAppointmentController);
 
     public int getSelectedItemFromBox();
+    public void enableRemoveButton(boolean enable);
 
 }

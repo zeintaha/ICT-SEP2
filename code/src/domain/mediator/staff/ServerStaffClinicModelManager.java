@@ -128,8 +128,9 @@ public class ServerStaffClinicModelManager extends UnicastRemoteObject
 
    public ArrayList<Employee> getAllEmployeesFromTheList()
    {
+	   return list.getAll();
 
-      return list.getAll();
+    		 
    }
 
    @Override

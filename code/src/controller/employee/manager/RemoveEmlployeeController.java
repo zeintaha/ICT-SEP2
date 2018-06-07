@@ -18,7 +18,14 @@ public class RemoveEmlployeeController {
 		this.removeEmployeeGUI = removeEmployeeGUI;
 	}
 
+	
+	
+	
+	
+	
+	
 	public void executes(String what) throws RemoteException {
+		
 		switch (what) {
 		case "Search":
 			String name = "";
@@ -27,7 +34,7 @@ public class RemoveEmlployeeController {
 			name= ((RemoveEmployeeGUI) removeEmployeeGUI).getSearchTxtValue().substring(0, 1).toUpperCase()
 			+ ((RemoveEmployeeGUI) removeEmployeeGUI).getSearchTxtValue().substring(1).toLowerCase();
 			}
-			removeEmployeeGUI.enableRemoveButton(true);
+			
 	try {
 	   clientStaff.callLoadStaff(name);
 
@@ -42,14 +49,20 @@ public class RemoveEmlployeeController {
 		ides[i] = clientStaff.getAllEmployeesFromTheList().get(i).getId();
 		
 	}
+	if(ides.length>0) {
+		removeEmployeeGUI.enableRemoveButton(true);
+	}
 	
 	removeEmployeeGUI.setComboboxValue(ides);
 
+	
 
 			break;
 		case "Remove":
 
 			int id = removeEmployeeGUI.getSelectedItemFromBox();
+			
+			
 			clientStaff.removeStaff(id);
 			removeEmployeeGUI.showTable(clientStaff.getAllEmployeesFromTheList());
 

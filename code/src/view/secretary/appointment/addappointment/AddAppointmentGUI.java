@@ -42,7 +42,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 	 */
 	public AddAppointmentGUI() {
 		setTitle("Add Appointment");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 744, 379);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

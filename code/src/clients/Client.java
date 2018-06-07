@@ -80,7 +80,8 @@ public class Client implements RemoteStaffClinicModel,RemotePatientModel,RemoteA
    public ArrayList<Employee> getAllEmployeesFromTheList()
          throws RemoteException
    {
-      return StaffServer.getAllEmployeesFromTheList();
+	 return  StaffServer.getAllEmployeesFromTheList();
+   
    }
    
    public void addPatient(String[] patientData) throws RemoteException
