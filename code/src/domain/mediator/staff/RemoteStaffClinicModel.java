@@ -23,5 +23,8 @@ public interface RemoteStaffClinicModel extends Remote
 
    public ArrayList<Employee> getAllEmployeesFromTheList()
          throws RemoteException;
+   
+   public Employee getEmployeeById(int id) throws RemoteException;
+   public void updateEmployee(Employee employee)  throws RemoteException;
 
 }

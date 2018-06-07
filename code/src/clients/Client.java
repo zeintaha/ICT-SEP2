@@ -1,4 +1,5 @@
 package clients;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -10,12 +11,14 @@ import java.util.Date;
 import domain.mediator.appointment.RemoteAppointmentModel;
 import domain.mediator.patient.RemotePatientModel;
 import domain.mediator.staff.RemoteStaffClinicModel;
+import domain.mediator.staff.ServerStaffClinicModelManager;
 import domain.model.patient.Appointment;
 import domain.model.patient.AppointmentList;
 import domain.model.patient.Patient;
 import domain.model.staff.Employee;
 
-public class Client implements RemoteStaffClinicModel,RemotePatientModel,RemoteAppointmentModel
+public class Client implements RemoteStaffClinicModel, RemotePatientModel,
+      RemoteAppointmentModel
 {
    private RemoteStaffClinicModel StaffServer;
    private RemotePatientModel PatientServer;
@@ -25,9 +28,12 @@ public class Client implements RemoteStaffClinicModel,RemotePatientModel,RemoteA
    {
       try
       {
-         this.StaffServer = (RemoteStaffClinicModel)Naming.lookup("rmi://localhost:1099/StaffServer");
-         this.PatientServer = (RemotePatientModel)Naming.lookup("rmi://localhost:1098/PatientServer");
-         this.AppointmentServer = (RemoteAppointmentModel)Naming.lookup("rmi://localhost:1097/AppointmentServer");
+         this.StaffServer = (RemoteStaffClinicModel) Naming
+               .lookup("rmi://localhost:1099/StaffServer");
+         this.PatientServer = (RemotePatientModel) Naming
+               .lookup("rmi://localhost:1098/PatientServer");
+         this.AppointmentServer = (RemoteAppointmentModel) Naming
+               .lookup("rmi://localhost:1097/AppointmentServer");
       }
       catch (MalformedURLException e)
       {
@@ -45,20 +51,22 @@ public class Client implements RemoteStaffClinicModel,RemotePatientModel,RemoteA
          e.printStackTrace();
       }
    }
-   public void addOneEmployee(String[] employeeData) throws RemoteException {
+
+   public void addOneEmployee(String[] employeeData) throws RemoteException
+   {
       StaffServer.addOneEmployee(employeeData);
    }
 
    public ArrayList<Employee> getEmployeeByname(String name)
          throws RemoteException
    {
-      
+
       return StaffServer.getEmployeeByname(name);
    }
 
    public void removeStaff(int id) throws RemoteException
    {
-      
+
       StaffServer.remove(id);
    }
 
@@ -71,7 +79,7 @@ public class Client implements RemoteStaffClinicModel,RemotePatientModel,RemoteA
    {
       StaffServer.callLoad(name);
    }
-   
+
    public void callLoadPateint(String name) throws IOException, RemoteException
    {
       PatientServer.callLoad(name);
@@ -80,10 +88,10 @@ public class Client implements RemoteStaffClinicModel,RemotePatientModel,RemoteA
    public ArrayList<Employee> getAllEmployeesFromTheList()
          throws RemoteException
    {
-	 return  StaffServer.getAllEmployeesFromTheList();
-   
+      return StaffServer.getAllEmployeesFromTheList();
+
    }
-   
+
    public void addPatient(String[] patientData) throws RemoteException
    {
       PatientServer.addPatient(patientData);
@@ -109,58 +117,75 @@ public class Client implements RemoteStaffClinicModel,RemotePatientModel,RemoteA
    {
       return PatientServer.getAllPatientsFromTheList();
    }
+
    @Override
    public ArrayList<Appointment> getAll() throws RemoteException
    {
-      
+
       return AppointmentServer.getAll();
    }
+
    @Override
    public AppointmentList getAllFreeAppointment() throws RemoteException
    {
       // TODO Auto-generated method stub
       return AppointmentServer.getAllFreeAppointment();
    }
+
    @Override
    public void AddAppointment(Date date, String brief, int patientId,
          int dateId) throws RemoteException
    {
       AppointmentServer.AddAppointment(date, brief, patientId, dateId);
-      
+
    }
+
    @Override
    public void removeAppointmentById(int id) throws RemoteException
    {
-     AppointmentServer.removeAppointmentById(id);
-      
+      AppointmentServer.removeAppointmentById(id);
+
    }
+
    @Override
    public ArrayList<Appointment> getAppotmenttByDate(Date date)
          throws RemoteException
    {
-      // TODO Auto-generated method stub
+
       return AppointmentServer.getAppotmenttByDate(date);
    }
+
    @Override
    public int getDateId(Date date) throws RemoteException
    {
-      // TODO Auto-generated method stub
+
       return AppointmentServer.getDateId(date);
    }
+
    @Override
    public void remove(int id) throws RemoteException
    {
-      // TODO Auto-generated method stub
-    //  AppointmentServer.removeAppointmentById(id);
-      
+
    }
+
    @Override
    public void callLoad(String name) throws IOException, RemoteException
    {
-      // TODO Auto-generated method stub
-      
-      
+
    }
-   
+
+   @Override
+   public Employee getEmployeeById(int id) throws RemoteException
+   {
+
+      return StaffServer.getEmployeeById(id);
+   }
+
+   @Override
+   public void updateEmployee(Employee employee) throws RemoteException
+   {
+      StaffServer.updateEmployee(employee);
+
+   }
 
 }

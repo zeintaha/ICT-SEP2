@@ -131,4 +131,21 @@ public class StaffDatabase implements StaffPersistence {
             e.printStackTrace();
         }
     }
+    
+    public void updateEmployee(Employee employee) {
+       
+       try
+     {
+
+          String sql = "UPDATE \"Clinic\".employee  SET firstname = ? , lastname = ?, dob = ?, startdate = ?, telnumber = ?, email = ?, gender = ?   where employeeid = '" + employee.getId() + "';";
+        
+        db.update(sql, employee.getFirstName(), employee.getLastName(), employee.getDob(), employee.getStartDate(), employee.getTelNumber(), employee.getEmail(), employee.getGender());
+
+     }
+     catch (SQLException e)
+     {
+        e.printStackTrace();
+     }
+   
+ }
 }

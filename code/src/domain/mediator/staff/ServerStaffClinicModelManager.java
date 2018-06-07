@@ -129,7 +129,6 @@ public class ServerStaffClinicModelManager extends UnicastRemoteObject
    public ArrayList<Employee> getAllEmployeesFromTheList()
    {
 	   return list.getAll();
-
     		 
    }
 
@@ -143,6 +142,19 @@ public class ServerStaffClinicModelManager extends UnicastRemoteObject
          persistence.remove(employee);
       }
 
+   }
+   
+   public Employee getEmployeeById(int id)
+   {
+     return list.getEmployeeById(id);
+   }
+   
+   public void updateEmployee(Employee employee)
+   {
+     
+       persistence.updateEmployee(employee);
+    
+  
    }
 
 }

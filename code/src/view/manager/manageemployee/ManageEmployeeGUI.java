@@ -12,10 +12,12 @@ import javax.swing.border.EmptyBorder;
 
 import clients.Client;
 import controller.employee.manager.AddEmployeeController;
+import controller.employee.manager.EditEmployeeController;
 import controller.employee.manager.RemoveEmlployeeController;
 import controller.employee.manager.SearchEmployeeController;
 import controller.patient.AddPatientController;
 import view.manager.addemployee.AddEmployeeGUI;
+import view.manager.editemployee.EditEmployeeGUI;
 import view.manager.removeemployee.RemoveEmployeeGUI;
 import view.manager.searchemployee.SearchEmployeeGUI;
 import view.secretary.appointment.addappointment.AddAppointmentGUI;
@@ -35,8 +37,7 @@ public class ManageEmployeeGUI extends JFrame
    private JButton btnRemoveEmployee;
    private JButton btnSearchEmployee;
    private MyButtonListener listener;
-   
-   
+
    private JPanel contentPane;
 
    /**
@@ -66,7 +67,7 @@ public class ManageEmployeeGUI extends JFrame
     */
    public ManageEmployeeGUI()
    {
-      listener=new MyButtonListener();
+      listener = new MyButtonListener();
       setTitle("Manage Employee");
       setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       setBounds(100, 100, 450, 300);
@@ -74,32 +75,35 @@ public class ManageEmployeeGUI extends JFrame
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       setContentPane(contentPane);
       contentPane.setLayout(null);
-      
+
       btnAddEmployee = new JButton("Add Employee");
       btnAddEmployee.setBounds(147, 30, 138, 25);
       contentPane.add(btnAddEmployee);
       btnAddEmployee.addActionListener(listener);
-      
+
       btnEditEmployee = new JButton("Edit Employee");
       btnEditEmployee.setBounds(147, 85, 138, 25);
       contentPane.add(btnEditEmployee);
       btnEditEmployee.addActionListener(listener);
-      
+
       btnRemoveEmployee = new JButton("Remove Employee");
       btnRemoveEmployee.setBounds(147, 140, 138, 25);
       contentPane.add(btnRemoveEmployee);
       btnRemoveEmployee.addActionListener(listener);
-      
+
       btnSearchEmployee = new JButton("Search Employee");
       btnSearchEmployee.setBounds(147, 195, 138, 25);
       contentPane.add(btnSearchEmployee);
       btnSearchEmployee.addActionListener(listener);
    }
-   
-   public class MyButtonListener implements ActionListener {
-      public void actionPerformed(ActionEvent e) {
-         if (e.getSource() == btnAddEmployee) {
-            
+
+   public class MyButtonListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         if (e.getSource() == btnAddEmployee)
+         {
+
             Client model = new Client();
             AddEmployeeGUI view = new AddEmployeeGUI();
             view.setVisible(true);
@@ -119,17 +123,16 @@ public class ManageEmployeeGUI extends JFrame
                e1.printStackTrace();
             }
             view.start(controller);
-            
-            
-            
+
          }
-//         else if (e.getSource() == btnEditEmployee) {
-//             gui= new AddAppointmentGUI();
-//            gui.setVisible(true);
-//         }
-         else if (e.getSource() == btnRemoveEmployee) {
+         // else if (e.getSource() == btnEditEmployee) {
+         // gui= new AddAppointmentGUI();
+         // gui.setVisible(true);
+         // }
+         else if (e.getSource() == btnRemoveEmployee)
+         {
             Client model = new Client();
-            RemoveEmployeeGUI view= new RemoveEmployeeGUI();
+            RemoveEmployeeGUI view = new RemoveEmployeeGUI();
             view.setVisible(true);
             RemoveEmlployeeController controller = null;
             try
@@ -147,12 +150,13 @@ public class ManageEmployeeGUI extends JFrame
                e1.printStackTrace();
             }
             view.start(controller);
-            
-            
+
          }
-         else if (e.getSource() == btnSearchEmployee) {
+
+         else if (e.getSource() == btnSearchEmployee)
+         {
             Client model = new Client();
-            SearchEmployeeGUI view= new SearchEmployeeGUI();
+            SearchEmployeeGUI view = new SearchEmployeeGUI();
             view.setVisible(true);
             SearchEmployeeController controller = null;
             try
@@ -171,7 +175,29 @@ public class ManageEmployeeGUI extends JFrame
             }
             view.start(controller);
          }
-         
+
+         else if (e.getSource() == btnEditEmployee)
+         {
+
+            Client model = new Client();
+            EditEmployeeGUI view = new EditEmployeeGUI();
+            EditEmployeeController controller = null;
+            try
+            {
+               controller = new EditEmployeeController(
+                     model, view);
+            }
+            catch (ClassNotFoundException | IOException e1)
+            {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }
+            view.start(controller);
+
+            view.setVisible(true);
+
+         }
+
       }
 
    }
