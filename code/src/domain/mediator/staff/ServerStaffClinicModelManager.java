@@ -31,7 +31,7 @@ public class ServerStaffClinicModelManager extends UnicastRemoteObject
 
       Registry reg = LocateRegistry.createRegistry(1099);
       reg.rebind("StaffServer", this);
-      System.out.println("Starting Staff Server....");
+      System.out.println("Starting Staff Package....");
    }
 
    public void callLoad(String name) throws IOException

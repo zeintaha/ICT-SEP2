@@ -24,7 +24,6 @@ public class AddEmployeeController {
 	public void executes() throws RemoteException {
       String[] data = view.getTextFieldValues();
 
-      clientStaff.addOneEmployee(data);
 
       boolean error = false;
       for (int i = 0; i < data.length; i++) {

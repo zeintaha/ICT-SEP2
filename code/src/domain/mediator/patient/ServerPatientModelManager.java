@@ -29,7 +29,7 @@ public class ServerPatientModelManager extends UnicastRemoteObject
 
       Registry reg = LocateRegistry.createRegistry(1098);
       reg.rebind("PatientServer", this);
-      System.out.println("Starting Patient Server....");
+      System.out.println("Starting Patient Package....");
    }
 
    @Override

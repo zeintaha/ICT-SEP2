@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 
 import clients.Client;
-import domain.mediator.staff.RemoteStaffClinicModel;
-import domain.mediator.staff.ServerStaffClinicModelManager;
 import view.manager.removeemployee.RemoveEmployeeGUI;
-import view.manager.searchemployee.SearchEmployeeGUI;
 
 public class RemoveEmlployeeController {
 

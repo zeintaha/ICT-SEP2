@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import clients.Client;
+import controller.appointment.addappointment.AddApointmnentController;
+import controller.appointment.removeappointment.RemoveAppointmentController;
 import controller.patient.AddPatientController;
 import controller.patient.RemovePatientController;
 import controller.patient.SearchPatientController;
@@ -133,8 +135,22 @@ public class ManageSecretaryGUI extends JFrame
          }
          else if (e.getSource() == btnAddAppointment)
          {
-            AddAppointmentGUI gui = new AddAppointmentGUI();
-            gui.setVisible(true);
+
+            Client model = new Client();
+            AddAppointmentGUI view = new AddAppointmentGUI();
+            AddApointmnentController controller = null;
+            try
+            {
+               controller = new AddApointmnentController(model, view);
+            }
+            catch (ClassNotFoundException | IOException e1)
+            {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }
+            view.start(controller);
+
+            view.setVisible(true);
          }
          else if (e.getSource() == btnEditPatient)
          {
@@ -148,8 +164,7 @@ public class ManageSecretaryGUI extends JFrame
          }
          else if (e.getSource() == btnRemovePatient)
          {
-            
-            
+
             Client model = new Client();
             RemovePatientGUI view = new RemovePatientGUI();
             RemovePatientController controller = null;
@@ -165,10 +180,15 @@ public class ManageSecretaryGUI extends JFrame
             view.start(controller);
             view.setVisible(true);
          }
-         // else if (e.getSource() == btnRemoveAppointment) {
-         // RemoveAppointmentGUI gui= new RemoveAppointmentGUI();
-         // gui.setVisible(true);
-         // }
+         else if (e.getSource() == btnRemoveAppointment)
+         {
+            Client model = new Client();
+            RemoveAppointmentGUI view = new RemoveAppointmentGUI();
+            RemoveAppointmentController controller = new RemoveAppointmentController(
+                  model, view);
+            view.start(controller);
+            view.setVisible(true);
+         }
          else if (e.getSource() == btnSearchPatient)
          {
 

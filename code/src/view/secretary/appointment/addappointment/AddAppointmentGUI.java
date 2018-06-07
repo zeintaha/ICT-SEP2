@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,22 +19,20 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import controller.appointment.addappointment.SearchPatientController;
+import controller.appointment.addappointment.AddApointmnentController;
+
 import domain.model.patient.Patient;
 
 public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
-	private SearchPatientController searchPatientController;
+	private AddApointmnentController addApointmnentController;
 	private JPanel contentPane;
 	private JTextField txtSearchPatientName;
 	private JLabel lblNewLabel;
 	private JButton btnSearch;
 	private JComboBox cmbSelectPatientId;
 	private JLabel lblSelectPatientId;
-	private JComboBox cmbSelectYear;
-	private JComboBox cmbSelectMonth;
 	private JTextArea textArea;
 	private JButton btnAdd;
-	private JComboBox cmbSelectDay;
 	private JComboBox cmbSelectTime;
 	private AddAppointmentButtonHandler listener;
 	private JTable table;
@@ -67,22 +66,6 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		lblSelectPatientId.setBounds(364, 14, 106, 14);
 		contentPane.add(lblSelectPatientId);
 
-		this.cmbSelectYear = new JComboBox();
-		cmbSelectYear.setBounds(34, 173, 96, 20);
-		contentPane.add(cmbSelectYear);
-
-		JLabel lblSelectAppointmentDay = new JLabel("Select Year");
-		lblSelectAppointmentDay.setBounds(34, 148, 79, 14);
-		contentPane.add(lblSelectAppointmentDay);
-
-		this.cmbSelectMonth = new JComboBox();
-		cmbSelectMonth.setBounds(169, 173, 96, 20);
-		contentPane.add(cmbSelectMonth);
-
-		JLabel lblSelectTime = new JLabel("Select Month");
-		lblSelectTime.setBounds(169, 148, 79, 14);
-		contentPane.add(lblSelectTime);
-
 		this.textArea = new JTextArea();
 		textArea.setBounds(10, 229, 708, 67);
 		contentPane.add(textArea);
@@ -91,20 +74,12 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		lblBrif.setBounds(23, 204, 33, 14);
 		contentPane.add(lblBrif);
 
-		this.cmbSelectDay = new JComboBox();
-		cmbSelectDay.setBounds(304, 173, 96, 20);
-		contentPane.add(cmbSelectDay);
-
-		JLabel lblSelectDay = new JLabel("Select Day");
-		lblSelectDay.setBounds(304, 148, 79, 14);
-		contentPane.add(lblSelectDay);
-
 		this.cmbSelectTime = new JComboBox();
-		cmbSelectTime.setBounds(439, 173, 96, 20);
+		cmbSelectTime.setBounds(248, 173, 287, 20);
 		contentPane.add(cmbSelectTime);
 
 		JLabel lblSelectTime_1 = new JLabel("Select Available Time");
-		lblSelectTime_1.setBounds(439, 148, 106, 14);
+		lblSelectTime_1.setBounds(282, 148, 160, 14);
 		contentPane.add(lblSelectTime_1);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -118,41 +93,39 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		this.btnAdd = new JButton("Add");
 		btnAdd.setBounds(596, 172, 89, 23);
 		contentPane.add(btnAdd);
-		this.btnAdd = new JButton("Add");
-		btnAdd.setBounds(466, 273, 89, 23);
-		contentPane.add(btnAdd);
+		
+		this.btnSearch = new JButton("Search");
+		btnSearch.setBounds(242, 10, 86, 23);
+		contentPane.add(btnSearch);
 	}
 
-	public void start(SearchPatientController searchPatientController) {
-		
-		this.searchPatientController = searchPatientController;
-		this.listener = new AddAppointmentButtonHandler(this.searchPatientController);
-		
+	public void start(AddApointmnentController addApointmnentController) {
+
+		this.addApointmnentController = addApointmnentController;
+		this.listener = new AddAppointmentButtonHandler(this.addApointmnentController);
+		btnAdd.setEnabled(false);
+
 		if (this.btnSearch != null) {
 
 			btnSearch.addActionListener(listener);
 		}
 
-
-		// now the next button
-
-		this.btnSearch = new JButton("Search");
-		btnSearch.setBounds(242, 10, 86, 23);
-		contentPane.add(btnSearch);
-
-			btnSearch.addActionListener(listener);
-		
-
+		if (this.btnAdd != null) {
+			btnAdd.addActionListener(listener);
+		}
 		this.setVisible(true);
 
 	}
+
 	// getting the value from the search txt field
 
 	public String getSearchTxtValue() {
 		String name = txtSearchPatientName.getText();
 		return name;
 	}
-//  void method which takes integer array to set the ides for the selected patients in the Combobox. 
+
+	// void method which takes integer array to set the ides for the selected
+	// patients in the Combobox.
 	@Override
 	public void setComboboxValue(int[] ides) {
 		for (int i = 0; i < ides.length; i++) {
@@ -195,7 +168,39 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		table.setModel(tableModel);
 
 	}
-	
 
+	public void fillComboBoxFreeAppointments(Date[] freeAppointments) {
+
+		for (int i = 0; i < freeAppointments.length; i++) {
+			cmbSelectTime.addItem(freeAppointments[i]);
+		}
+		
+	}
+
+	@Override
+	public int getSelectedPatientId() {
+		int id = (int) cmbSelectPatientId.getSelectedItem();
+		return id;
+	}
+
+	@Override
+	public String getTextAreaValue() {
+		String brief = textArea.getText();
+		return brief;
+	}
+
+	@Override
+	public Date getSelectedDate() {
+		Date time = (Date) cmbSelectTime.getSelectedItem();
+		return time;
+	}
 	
+	public void showError() {
+      
+      JOptionPane.showMessageDialog(contentPane, "please fill all the fields before adding.");
+  }
+  public void enableRemoveButton(boolean enable) {
+      btnAdd.setEnabled(enable);
+  }
+
 }

@@ -7,54 +7,83 @@ import domain.model.patient.Patient;
 
 public class Appointment implements Serializable {
 
-	private Date dateOfAppointment;
-	private Date time;
-	private String brief;
-	private Patient patient;
+    private Date dateOfAppointment;
+    private String brief;
+    private int patientid;
+    private int dateOfAppointmentId;
+    private String patientName ;
 
-	public Appointment(Date dateOfAppointment, Date time, String brief, Patient patient) {
-		this.dateOfAppointment = dateOfAppointment;
-		this.time = time;
-		this.brief = brief;
-		this.patient = patient;
-	}
+    
+    
+    
+    
+    public String getPatientName() {
+        return patientName;
+    }
 
-	public Date getDateOfAppointment() {
-		return dateOfAppointment;
-	}
 
-	public void setDateOfAppointment(Date dateOfAppointment) {
-		this.dateOfAppointment = dateOfAppointment;
-	}
+    public Appointment(String patientName,Date dateOfAppointment,String brief,int dateOfAppointmentId) {
+        this.patientName = patientName;
+        this.dateOfAppointment = dateOfAppointment;
+        this.brief = brief;
+        this.dateOfAppointmentId = dateOfAppointmentId;
+    }
+    
+    
+    public Appointment(Date dateOfAppointment, int dateOfAppointmentId) {
+        this.dateOfAppointment = dateOfAppointment;
+        this.dateOfAppointmentId = dateOfAppointmentId;
+    }
 
-	public Date getTime() {
-		return time;
-	}
+    public int getPatientid() {
+        return patientid;
+    }
 
-	public void setTime(Date time) {
-		this.time = time;
-	}
+    public int getDateOfAppointmentId() {
+        return dateOfAppointmentId ;
+    }
 
-	public String getBrief() {
-		return brief;
-	}
+    public Appointment(Date dateOfAppointment, String brief, int patientid, int dateOfAppointmentId) {
+        this.dateOfAppointment = dateOfAppointment;
+        this.dateOfAppointmentId = dateOfAppointmentId;
+        this.brief = brief;
+        this.patientid = patientid;
+    }
 
-	public void setBrief(String brief) {
-		this.brief = brief;
-	}
+    public Appointment(String brief, int patientid, int dateOfAppointmentId) {
 
-	public Patient getPatient() {
-		return patient;
-	}
+        this.dateOfAppointmentId = dateOfAppointmentId;
+        this.brief = brief;
+        this.patientid = patientid;
+    }
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
+    public Date getDateOfAppointment() {
+        return dateOfAppointment;
+    }
 
-	@Override
-	public String toString() {
-		return " dateOfAppointment=" + dateOfAppointment + ", time=" + time + ", brief=" + brief + ", patient="
-				+ patient + "]";
-	}
+    public void setDateOfAppointment(Date dateOfAppointment) {
+        this.dateOfAppointment = dateOfAppointment;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public int getPatient() {
+        return patientid;
+    }
+
+    public void setPatient(int patientid) {
+        this.patientid = patientid;
+    }
+
+    @Override
+    public String toString() {
+        return " dateOfAppointment=" + dateOfAppointment + ", brief=" + brief + ", patientId=" + patientid + "]";
+    }
 
 }
