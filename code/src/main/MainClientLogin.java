@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -16,13 +15,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import domain.mediator.patient.PatientDatabase;
 import domain.mediator.staff.StaffDatabase;
-import domain.model.patient.Patient;
-import domain.model.patient.PatientList;
 import domain.model.staff.Doctor;
 import domain.model.staff.Employee;
-import domain.model.staff.EmployeeList;
 import domain.model.staff.Manager;
 import domain.model.staff.Secretary;
 import view.manager.manageemployee.ManageEmployeeGUI;
