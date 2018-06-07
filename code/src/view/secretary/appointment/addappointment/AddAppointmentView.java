@@ -7,20 +7,22 @@ import controller.appointment.addappointment.AddApointmnentController;
 import domain.model.patient.Patient;
 
 public interface AddAppointmentView {
-    public void start(AddApointmnentController addApointmnentController);
+	public void start(AddApointmnentController addApointmnentController);
 
-    public String getSearchTxtValue();
+	public String getSearchTxtValue();
 
-    public void showTable(ArrayList<Patient> patients);
+	public void showTable(ArrayList<Patient> patients);
 
-    public int getSelectedItemFromBox();
+	public int getSelectedItemFromBox();
 
-    public void setComboboxValue(int[] ides);
+	public void setComboboxValue(int[] ides);
 
-    public int getSelectedPatientId();
+	public int getSelectedPatientId();
 
-    public String getTextAreaValue();
+	public String getTextAreaValue();
 
-    public Date getSelectedDate();
+	public Date getSelectedDate();
+
+	public void showConfirmation();
 
 }

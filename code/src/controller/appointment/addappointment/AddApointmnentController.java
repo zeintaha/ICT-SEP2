@@ -5,11 +5,6 @@ import java.rmi.RemoteException;
 import java.util.Date;
 
 import clients.Client;
-import domain.mediator.appointment.RemoteAppointmentModel;
-import domain.mediator.appointment.ServerAppointmentModelManager;
-import domain.mediator.patient.RemotePatientModel;
-import domain.mediator.patient.ServerPatientModelManager;
-import domain.model.patient.AppointmentList;
 import view.secretary.appointment.addappointment.AddAppointmentGUI;
 
 public class AddApointmnentController {
@@ -55,28 +50,32 @@ public class AddApointmnentController {
            }
 
            addAppointmentGUI.showTable(client.getAllPatientsFromTheList());
+           
+           
+           
+//
+//           int[] ides = new int[client.getAllPatientsFromTheList().size()];
+//           for (int i = 0; i < ides.length; i++) {
+//               ides[i] = client.getAllPatientsFromTheList().get(i).getId();
+//
+//           }
+//
+//           addAppointmentGUI.setComboboxValue(ides);
 
-           int[] ides = new int[client.getAllPatientsFromTheList().size()];
-           for (int i = 0; i < ides.length; i++) {
-               ides[i] = client.getAllPatientsFromTheList().get(i).getId();
-
-           }
-
-           addAppointmentGUI.setComboboxValue(ides);
-
+           setPatientIdComboBoxValue();
        
            
-           Date[] freeAppointments = new Date[client.getAllFreeAppointment().getNumberOfAppointment()];
-
-           for (int i = 0; i < freeAppointments.length; i++) {
-               
-               freeAppointments[i] = client.getAllFreeAppointment().getAppointmentByIndex(i)
-                       .getDateOfAppointment();
-               
-           }
-               addAppointmentGUI.fillComboBoxFreeAppointments(freeAppointments);
+//           Date[] freeAppointments = new Date[client.getAllFreeAppointment().getNumberOfAppointment()];
+//
+//           for (int i = 0; i < freeAppointments.length; i++) {
+//               
+//               freeAppointments[i] = client.getAllFreeAppointment().getAppointmentByIndex(i)
+//                       .getDateOfAppointment();
+//               
+//           }
+//               addAppointmentGUI.fillComboBoxFreeAppointments(freeAppointments);
            
-           
+           fillComboBoxForFreeAppointment();
        }
         
     }
@@ -88,11 +87,47 @@ public class AddApointmnentController {
         int id = client.getDateId(appointmentDate);
         
         client.AddAppointment(appointmentDate,brief,patientId,id);
-        System.out.println(" Hi from executeAdd controller");
+       
         
-        
+        addAppointmentGUI.showConfirmation();
         
         
 
     }
+    
+    
+
+public void setPatientIdComboBoxValue() throws RemoteException {
+		int[] ides = new int[client.getAllPatientsFromTheList().size()];
+		for (int i = 0; i < ides.length; i++) {
+
+			ides[i] = client.getAllPatientsFromTheList().get(i).getId();
+
+		}
+
+		addAppointmentGUI.setComboboxValue(ides);
+	}
+
+
+
+
+
+
+	public void fillComboBoxForFreeAppointment() throws RemoteException {
+
+		Date[] freeAppointments = new Date[client.getAllFreeAppointment().getNumberOfAppointment()];
+
+		for (int i = 0; i < freeAppointments.length; i++) {
+
+			freeAppointments[i] = client.getAllFreeAppointment().getAppointmentByIndex(i).getDateOfAppointment();
+
+		}
+		addAppointmentGUI.fillComboBoxFreeAppointments(freeAppointments);
+
+	}
+    
+    
+    
+    
+    
 }

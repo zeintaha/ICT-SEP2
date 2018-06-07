@@ -93,7 +93,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		this.btnAdd = new JButton("Add");
 		btnAdd.setBounds(596, 172, 89, 23);
 		contentPane.add(btnAdd);
-		
+
 		this.btnSearch = new JButton("Search");
 		btnSearch.setBounds(242, 10, 86, 23);
 		contentPane.add(btnSearch);
@@ -124,8 +124,8 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		return name;
 	}
 
-	// void method which takes integer array to set the ides for the selected
-	// patients in the Combobox.
+	// void method which takes integer array to set the id for the selected
+	// patients in the Combo box.
 	@Override
 	public void setComboboxValue(int[] ides) {
 		for (int i = 0; i < ides.length; i++) {
@@ -174,7 +174,7 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		for (int i = 0; i < freeAppointments.length; i++) {
 			cmbSelectTime.addItem(freeAppointments[i]);
 		}
-		
+
 	}
 
 	@Override
@@ -194,13 +194,20 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 		Date time = (Date) cmbSelectTime.getSelectedItem();
 		return time;
 	}
-	
+
 	public void showError() {
-      
-      JOptionPane.showMessageDialog(contentPane, "please fill all the fields before adding.");
-  }
-  public void enableRemoveButton(boolean enable) {
-      btnAdd.setEnabled(enable);
-  }
+
+		JOptionPane.showMessageDialog(contentPane, "please fill all the fields before adding.");
+	}
+
+	public void enableRemoveButton(boolean enable) {
+
+		btnAdd.setEnabled(enable);
+	}
+
+	public void showConfirmation() {
+
+		JOptionPane.showMessageDialog(contentPane, " an appointment has been registered.");
+	}
 
 }
