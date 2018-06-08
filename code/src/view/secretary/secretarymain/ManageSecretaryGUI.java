@@ -35,16 +35,13 @@ public class ManageSecretaryGUI extends JFrame
    private JButton btnAddAppointment;
    private JButton btnEditAppointment;
    private JButton btnRemoveAppointment;
-   private JButton btnSearchAppointment;
    private JButton btnRequestMedicineRenewed;
-   private JButton btnListAppointment;
 
    /**
     * Create the frame.
     */
    public ManageSecretaryGUI()
    {
-      listener = new MyButtonListener();
       setTitle("Secretary Main");
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setBounds(100, 100, 620, 350);
@@ -88,144 +85,10 @@ public class ManageSecretaryGUI extends JFrame
       contentPane.add(btnSearchPatient);
       btnSearchPatient.addActionListener(listener);
 
-      btnSearchAppointment = new JButton("Search Appointment");
-      btnSearchAppointment.setBounds(347, 195, 162, 25);
-      contentPane.add(btnSearchAppointment);
-      btnSearchAppointment.addActionListener(listener);
-
       btnRequestMedicineRenewed = new JButton("Renew Medicine");
-      btnRequestMedicineRenewed.setBounds(87, 250, 162, 25);
+      btnRequestMedicineRenewed.setBounds(347, 195, 162, 25);
       contentPane.add(btnRequestMedicineRenewed);
       btnRequestMedicineRenewed.addActionListener(listener);
 
-      btnListAppointment = new JButton("List Of Appointments");
-      btnListAppointment.setBounds(347, 250, 162, 25);
-      contentPane.add(btnListAppointment);
-      btnListAppointment.addActionListener(listener);
-
    }
-
-   public class MyButtonListener implements ActionListener
-   {
-      public void actionPerformed(ActionEvent e)
-      {
-         if (e.getSource() == btnAddPatient)
-         {
-
-            Client model = new Client();
-            AddPatientGUI view = new AddPatientGUI();
-            view.setVisible(true);
-            AddPatientController controller = null;
-            try
-            {
-               controller = new AddPatientController(model, view);
-            }
-            catch (ClassNotFoundException e1)
-            {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-            catch (IOException e1)
-            {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-            view.start(controller);
-
-         }
-         else if (e.getSource() == btnAddAppointment)
-         {
-
-            Client model = new Client();
-            AddAppointmentGUI view = new AddAppointmentGUI();
-            AddApointmnentController controller = null;
-            try
-            {
-               controller = new AddApointmnentController(model, view);
-            }
-            catch (ClassNotFoundException | IOException e1)
-            {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-            view.start(controller);
-
-            view.setVisible(true);
-         }
-         else if (e.getSource() == btnEditAppointment)
-         {
-            RemoveAppointmentGUI  gui = new RemoveAppointmentGUI();
-            // gui.setVisible(true);
-         }
-         else if (e.getSource() == btnRemovePatient)
-         {
-
-            Client model = new Client();
-            RemovePatientGUI view = new RemovePatientGUI();
-            RemovePatientController controller = null;
-            try
-            {
-               controller = new RemovePatientController(model, view);
-            }
-            catch (ClassNotFoundException | IOException e1)
-            {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-            view.start(controller);
-            view.setVisible(true);
-         }
-         else if (e.getSource() == btnRemoveAppointment)
-         {
-            Client model = new Client();
-            RemoveAppointmentGUI view = new RemoveAppointmentGUI();
-            RemoveAppointmentController controller = new RemoveAppointmentController(
-                  model, view);
-            view.start(controller);
-            view.setVisible(true);
-         }
-         else if (e.getSource() == btnSearchPatient)
-         {
-
-            Client client = new Client();
-            SearchPatientGUI view = new SearchPatientGUI();
-            SearchPatientController controller = null;
-            try
-            {
-               controller = new SearchPatientController(client, view);
-            }
-            catch (ClassNotFoundException e1)
-            {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-            catch (IOException e1)
-            {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-            view.start(controller);
-
-            view.setVisible(true);
-         }
-         else if (e.getSource() == btnEditPatient)
-         {
-
-            Client model = new Client();    
-            EditPatientGUI view = new EditPatientGUI();
-            EditPatientController conto = null;
-            try
-            {
-               conto = new EditPatientController(model,view);
-            }
-            catch (ClassNotFoundException | IOException e1)
-            {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-            view.start(conto);
-            view.setVisible(true);
-      }
-
-      }}
 }
