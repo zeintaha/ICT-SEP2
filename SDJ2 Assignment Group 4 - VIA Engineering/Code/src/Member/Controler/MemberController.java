@@ -9,14 +9,14 @@ import Member.domain.mediator.MemberClient;
 public class MemberController
 {
    private MemberView view;
-   private MemberClient modelManager;
+   private MemberClient client;
 
    public MemberController(MemberView view,
          MemberClient modelManager)
    {
 
       this.view = view;
-      this.modelManager = modelManager;
+      this.client = modelManager;
    }
 
    public void execute(String what) throws RemoteException
@@ -24,10 +24,10 @@ public class MemberController
       switch (what)
       {
          case "1":
-            view.show("" + modelManager.getAll());
+            view.show("" + client.getAll());
             break;
          case "2":
-            view.show("" + modelManager.getMembershipNotPaid());
+            view.show("" + client.getMembershipNotPaid());
          case "3":
             System.out.println("Quit");
             break;

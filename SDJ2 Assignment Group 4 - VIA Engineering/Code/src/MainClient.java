@@ -11,10 +11,10 @@ public class MainClient
    public static void main(String[] args) throws RemoteException
    {
       
-       MemberClient model = new MemberClient();
+       MemberClient client = new MemberClient();
     
       MemberView view = new MemberConsol();
-      MemberController controler = new MemberController(view, model);
+      MemberController controler = new MemberController(view, client);
       view.start(controler);
    }
    
