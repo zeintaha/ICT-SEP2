@@ -206,7 +206,13 @@ public class AddAppointmentGUI extends JFrame implements AddAppointmentView {
 
 	public void showConfirmation() {
 
-		JOptionPane.showMessageDialog(contentPane, " an appointment has been registered.");
+		JOptionPane.showMessageDialog(contentPane, " an appointment has been registered at " + getSelectedDate().toString()+" to the patient with id number : "+ getSelectedPatientId());
+	}
+
+	@Override
+	public void patientNotFoundError() {
+		JOptionPane.showMessageDialog(contentPane, " Patient not found.");
+		
 	}
 
 }

@@ -24,5 +24,6 @@ public interface AddAppointmentView {
 	public Date getSelectedDate();
 
 	public void showConfirmation();
+	public void patientNotFoundError();
 
 }

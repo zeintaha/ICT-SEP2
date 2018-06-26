@@ -23,7 +23,7 @@ public class AddApointmnentController {
 
 	// execute method to perform the action caused by pressing the search button
 	public void executeSearch() throws RemoteException {
-		String name = ((AddAppointmentGUI) addAppointmentGUI).getSearchTxtValue();
+		String name =  addAppointmentGUI.getSearchTxtValue();
 		boolean error = false;
 		if (name.isEmpty()) {
 			addAppointmentGUI.showError();
@@ -33,7 +33,7 @@ public class AddApointmnentController {
 			addAppointmentGUI.enableRemoveButton(true);
 			if (name.length() > 1) {
 				name = name.substring(0, 1).toUpperCase()
-						+ ((AddAppointmentGUI) addAppointmentGUI).getSearchTxtValue().substring(1).toLowerCase();
+						+ addAppointmentGUI.getSearchTxtValue().substring(1).toLowerCase();
 			}
 			try {
 				client.callLoadPateint(name);
@@ -41,6 +41,10 @@ public class AddApointmnentController {
 				e.printStackTrace();
 			}
 			addAppointmentGUI.showTable(client.getAllPatientsFromTheList());
+			if(client.getAllPatientsFromTheList().size()<1) {
+				addAppointmentGUI.patientNotFoundError();
+				
+			}
 			setPatientIdComboBoxValue();
 			fillComboBoxForFreeAppointment();
 		}
